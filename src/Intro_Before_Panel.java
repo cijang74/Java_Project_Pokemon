@@ -21,12 +21,12 @@ class Intro_Before_Panel extends JPanel
         setLayout(null);
         this.NAME = win.NAME;
         System.out.print(win.NAME);
-        String[] Say_Dr_Text = {"", "흐으으음....", "....아! 자네로군! " + this.NAME, "자네가 포켓몬 성장 연구를 도와겠다던 " + this.NAME + " 군 맞는가?",
+        String[] Say_Dr_Text = {"", "..................", "....아! 손님이 왔었군! ", "혹시 자네가 포켓몬 성장 연구를 도와겠다던 " + this.NAME + " 군?",
         "정말 고맙네. 마침 일손이 부족하던 참이었어.", "아직 연구가 진횅되지 않은 포켓몬을 3마리나 발견했다네.", "그 중 한 마리를 자네에게 맡기도록 하겠네.",
         "선택을 번복할 수 없으니 신중히 결정하도록 하게.", "아 참, 트레이너의 성격에 맞는 포켓몬을 고른다면", "포켓몬을 더 재밌게 키울 수 있을 걸세." ,
                 "여기 자네의 성격에 맞는 포켓몬을 한 번 골라보게."};
 
-        Say_Dr = new JLabel("흠....");
+        Say_Dr = new JLabel("흐으음.........");
         Say_Dr.setFont(new Font ("Helvetica", Font.BOLD, 30));
 
         Next_Button = new JButton("다음");
