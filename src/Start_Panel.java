@@ -5,22 +5,25 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-public class Start_Panel extends JPanel
-{
+public class Start_Panel extends JPanel{
     // 변수들 선언
-    static public String NAME = null;
+    public static String NAME = null;
     private JLabel Say_Give_Name;
     private JTextField Name_Text_Field;
     private JButton Start_Button;
+    private JPanelChange win;
 
-    public Start_Panel()
+    public Start_Panel(JPanelChange win)
             // 해당 패널은 맨 처음 보여지는 패널로서, 사용자에게 이름을 입력받는다.
     {
+        this.win = win;
+        setLayout(null);
+
         // 라벨 설정
         Say_Give_Name = new JLabel("포켓몬 세상에서 사용 할 당신의 이름을 입력하세요. (최대 6글자)");
         Say_Give_Name.setFont(new Font ("Helvetica", Font.PLAIN, 19));
 
-        // 텍스트 필드 설정 + 텍스트 필드 리스터 설정
+        // 텍스트 필드 설정 + 텍스트 필드 리스너 설정
         Name_Text_Field = new JTextField(6); // 입력가능한 문자의 개수 6
         Name_Text_Field.addKeyListener(new KeyListener() {
             @Override
@@ -59,13 +62,12 @@ public class Start_Panel extends JPanel
             }
         });
 
-        this.setPreferredSize(new Dimension(600, 100)); // 패널 사이즈 설정
-        this.setLayout(new GridLayout(3,0, 5, 5)); // 그리드 형식 배치
-        // 3: 열 0: 행, 5: 각 그리드 사이의 가로 / 세로 거리값
-
         // 페널에 추가
+        Say_Give_Name.setBounds(400, 100, 1280, 50);
         this.add(Say_Give_Name);
+        Name_Text_Field.setBounds(120, 200, 1020, 50);
         this.add(Name_Text_Field);
+        Start_Button.setBounds(500, 400, 300, 100);
         this.add(Start_Button);
     }
 
@@ -78,10 +80,14 @@ public class Start_Panel extends JPanel
                 Say_Give_Name.setText("6글자가 초과되었습니다. 다시 입력하여 주십시오.");
             }
 
+            else if ((NAME.trim()).length() == 0)
+            {
+                Say_Give_Name.setText("이름이 입력되지 않았습니다. 다시 입력하여 주십시오.");
+            }
+
             else
             {
-                Say_Give_Name.setText(NAME + "님, 환영합니다. 앞으로의 여정에 행운이 있기를 바랍니다."); // 이름을 바탕으로 라벨 수정
-
+                win.change("type_before_intro", NAME);
             }
         }
     }
