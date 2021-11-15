@@ -70,7 +70,6 @@ public class Start_Panel extends JPanel{
         Start_Button.setBounds(500, 400, 300, 100);
         this.add(Start_Button);
     }
-
     private void Right_Name()
     {
         if (NAME != null)
