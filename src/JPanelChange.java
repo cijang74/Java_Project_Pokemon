@@ -5,9 +5,9 @@ public class JPanelChange extends JFrame
 {
     // 각 프레임에 전달받아 쓰는 변수들
     public static String NAME; // 이름
-    public Pokemon player_pokemon;
-    private int Dua_Date = 30;
-    private int Money = 0;
+    public Pokemon player_pokemon; // 플레이어의 포켓몬
+    private int Dua_Date = 30; // 남은기간(default)
+    private int Money = 0; // 소지금(default)
 
     // 다른 패널로 변경시켜주기 위해 선언된 패널들
     private Start_Panel start_panel = null;
@@ -30,6 +30,7 @@ public class JPanelChange extends JFrame
 
     public void change(String panelType, String NAME)
     // a패널에서 b패널로 바꿔주기 위한 메서드 (매개변수는 바꾸고자 하는 패널과 전달하고싶은 데이터들)
+    // !!!!패널 추가는 아래의 오버로딩한 change 매서드에!!!!
     {
         if (panelType.equals("type_before_intro"))
         // 만약 바꾸고자 하는 패널이 "type_before_intro" 이라면
@@ -49,7 +50,7 @@ public class JPanelChange extends JFrame
             repaint();
         }
 
-        // 위 if문과 구조 동일. 새로운 패널 만들 떄는 else if문으로 추가해줘!
+        // 위 if문과 구조 동일.
         else if (panelType.equals("type_choose"))
         {
             intro_choose_panel = new Intro_Choose_Panel(this, NAME);
@@ -58,18 +59,11 @@ public class JPanelChange extends JFrame
             revalidate();
             repaint();
         }
-
-        else
-        {
-            getContentPane().removeAll();
-            getContentPane().add(start_panel);
-            revalidate();
-            repaint();
-        }
     }
 
     public void change(String panelType, Pokemon player_pokemon)
-    // a패널에서 b패널로 바꿔주기 위한 메서드 (매개변수는 바꾸고자 하는 패널과 전달하고싶은 데이터들)
+    // a패널에서 b패널로 바꿔주기 위한 메서드 (오버로딩)
+    //이름은 한번만 start패널에서 전달받아서 win에 저장시켜주면 되기때문에 choose패널에서 포켓몬을 선택하여 객체가 생성된 이후의 패널은 여기서 교체시킴)
     {
         if (panelType.equals("type_after_intro"))
         // 만약 바꾸고자 하는 패널이 "type_before_intro" 이라면

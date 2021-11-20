@@ -18,11 +18,11 @@ class Intro_After_Panel extends JPanel
     private JPanelChange win; // win
 
     public Intro_After_Panel(JPanelChange win, String NAME, Pokemon player_pokemon)
-    // 포켓몬을 선택하기 전에 박사와 대화하는 패널
+    // 포켓몬을 선택한 후에 박사와 대화하는 패널
     {
-        // 매개변수로 전달받은 win을 해당 클래스 안에 있는 win에 저장 하므로서 여기서도 win이라는 이름으로 쓰게함
-        this.win = win;
-        this.player_pokemon = player_pokemon;
+        // 매개변수로 win 자신과 player_pokemon을 가져와서 해당 클레스에 저장
+        this.win = win; // 패널에서 받아온 데이터들(이름, 날짜, 돈 등..)이 저장되어 있으며 패널을 교체하는 기능이 있음
+        this.player_pokemon = player_pokemon; // 플레이어가 선택한 포켓몬의 정보가 들어있음
 
         // 배치 관리자 설정: 배치 관리자 사용안함
         setLayout(null);
@@ -53,7 +53,7 @@ class Intro_After_Panel extends JPanel
                     // win 함수 안에 있는 change()함수를 사용하여 다음 패널로 바꿔줌
                     // (매개변수는 바꾸고자 하는 패널의 타입과 다른 패널에서도 해당 패널에서 입력받은 변수를 사용할 수 있도록 하는 변수)
                     win.change("type_select", player_pokemon);
-                    // 해당 변수의 'NAME'이라는 변수를 win 메서드에 에 보냄으로서 다른 패널들도 해당 변수를 사용할 수 있도록 함
+                    // 이제 선택패널로 교체해줌
                 }
 
                 else // 대화가 안끝났으면
@@ -66,7 +66,7 @@ class Intro_After_Panel extends JPanel
 
         // 위에서 설정한 컴포넌트들의 크기설정
         Image_Label.setBounds(330, 50, 180, 384);
-        player_pokemon.Portray.setBounds(550,175,250,250);
+        player_pokemon.Portray.setBounds(550,175,250,250); // 포켓몬 class 안에 있는 JLabel임
         Say_Dr.setBounds(100, 570, 1280, 50);
         Next_Button.setBounds(1000, 540, 200, 100);
 
@@ -75,6 +75,5 @@ class Intro_After_Panel extends JPanel
         this.add(player_pokemon.Portray);
         this.add(Say_Dr);
         this.add(Next_Button);
-
     }
 }

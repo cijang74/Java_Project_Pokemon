@@ -18,7 +18,6 @@ class Intro_Choose_Panel extends JPanel
     private JLabel ImageLabel = new JLabel(); // 라벨
     private JButton Choose_Button; // 버튼
     private JPanelChange win; // win
-    private int Check_Index = 0;
 
     public Intro_Choose_Panel(JPanelChange win, String NAME)
     // 처음 시작패널, 사용자에게 이름을 입력받음
@@ -90,16 +89,24 @@ class Intro_Choose_Panel extends JPanel
     class ButtonListener implements ActionListener {
         public void actionPerformed (ActionEvent event)
         {
+            // 만약 0번째 라디오 버튼(리아코)가 선택되었다면
             if (Starting_Pokemon_Img[0].isSelected())
             {
+                // 포켓몬 객체 생성
                 Pokemon player_pokemon = new Pokemon("리아코", "물", 1);
+                // 박사와 대화를 하는 패널2로 이동
                 win.change("type_after_intro", player_pokemon);
             }
+
+            // 만약 1번째 라디오 버튼(브케인)가 선택되었다면
             else if (Starting_Pokemon_Img[1].isSelected())
             {
+                // 위 if문과 동일
                 Pokemon player_pokemon = new Pokemon("브케인", "불", 1);
                 win.change("type_after_intro", player_pokemon);
             }
+
+            // 만약 1번째 라디오 버튼(치코리타)가 선택되었다면
             else
             {
                 Pokemon player_pokemon = new Pokemon("치코리타", "풀", 1);
