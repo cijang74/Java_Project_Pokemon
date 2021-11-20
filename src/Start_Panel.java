@@ -84,6 +84,7 @@ public class Start_Panel extends JPanel{
         this.add(Name_Text_Field);
         this.add(Start_Button);
 
+        // 해당 패널에 포커스를 두어야 키보드 입력이 정상적으로 작동
         setFocusable(true);
     }
 
