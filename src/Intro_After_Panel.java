@@ -5,10 +5,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
-class Intro_Before_Panel extends JPanel
+class Intro_After_Panel extends JPanel
 {
     // 해당 클래스에서 사용할 변수들 선언 (win은 앵간하면 선언해줘)
     private String NAME; // 이름
+    private Pokemon player_pokemon;
     private JLabel Say_Dr; // 라벨
     private ImageIcon Dr_Image = new ImageIcon("오박사.png"); // 아이콘 이미지
     private JLabel Image_Label = new JLabel(Dr_Image); // 아이콘 이미지를 라벨화
@@ -16,23 +17,24 @@ class Intro_Before_Panel extends JPanel
     private int count = 0; // 대화가 끝났는지 확인하기 위한 변수
     private JPanelChange win; // win
 
-    public Intro_Before_Panel(JPanelChange win, String NAME)
+    public Intro_After_Panel(JPanelChange win, String NAME, Pokemon player_pokemon)
     // 포켓몬을 선택하기 전에 박사와 대화하는 패널
     {
         // 매개변수로 전달받은 win을 해당 클래스 안에 있는 win에 저장 하므로서 여기서도 win이라는 이름으로 쓰게함
         this.win = win;
+        this.player_pokemon = player_pokemon;
 
         // 배치 관리자 설정: 배치 관리자 사용안함
         setLayout(null);
 
         // 라벨에서 사용할 대화들을 배열로 선언 (맨 처음 ""는 생략)
-        String[] Say_Dr_Text = {"", "..................", "....아! 손님이 왔었군! ", "혹시 자네가 포켓몬 성장 연구를 도와겠다던 " + NAME + "군?",
-        "정말 고맙네. 마침 일손이 부족하던 참이었어.", "아직 연구가 진횅되지 않은 포켓몬을 3마리나 발견했다네.", "그 중 한 마리를 자네에게 맡기도록 하겠네.",
-        "선택을 번복할 수 없으니 신중히 결정하도록 하게.", "아 참, 트레이너의 성격에 맞는 포켓몬을 고른다면", "포켓몬을 더 재밌게 키울 수 있을 걸세." ,
-                "여기 자네의 성격에 맞는 포켓몬을 한 번 골라보게."};
+        String[] Say_Dr_Text = {"", "자네라면 " + player_pokemon.Name + "를 선택할 줄 알았네!", "이제부터 자네에게 30일동안 내 소중한 포켓몬을 맡기겠네.",
+                "그 동안 " + player_pokemon.Name + "을 열심히 성장시켜서", "해당 포켓몬의 자세한 정보를 전달해주게!",
+                "마지막 날에는 우리 연구소의 직원이 자네에게 찾아올걸세.", "그 직원을 이긴다면 대학원생인 자네에게 박사 학위를 주겠네."
+                ,"이것으로 내가 하고싶은 말은 끝일세.", NAME + "군, 앞으로의 여행에 행운이 있기를 바라네!"};
 
         // (처음에 보여지는) 라벨 설정
-        Say_Dr = new JLabel("흐으음........."); // 라벨 내용
+        Say_Dr = new JLabel("음...역시!"); // 라벨 내용
         Say_Dr.setFont(new Font ("Helvetica", Font.BOLD, 30)); // 라벨 폰트 설정
 
 
@@ -50,7 +52,7 @@ class Intro_Before_Panel extends JPanel
                 {
                     // win 함수 안에 있는 change()함수를 사용하여 다음 패널로 바꿔줌
                     // (매개변수는 바꾸고자 하는 패널의 타입과 다른 패널에서도 해당 패널에서 입력받은 변수를 사용할 수 있도록 하는 변수)
-                    win.change("type_choose", NAME);
+                    win.change("type_select", player_pokemon);
                     // 해당 변수의 'NAME'이라는 변수를 win 메서드에 에 보냄으로서 다른 패널들도 해당 변수를 사용할 수 있도록 함
                 }
 
@@ -63,12 +65,14 @@ class Intro_Before_Panel extends JPanel
         });
 
         // 위에서 설정한 컴포넌트들의 크기설정
-        Image_Label.setBounds(550, 50, 180, 384);
+        Image_Label.setBounds(330, 50, 180, 384);
+        player_pokemon.Portray.setBounds(550,175,250,250);
         Say_Dr.setBounds(100, 570, 1280, 50);
         Next_Button.setBounds(1000, 540, 200, 100);
 
         // 위에서 설정한 컴포넌트들을 패널에 추가해줌
         this.add(Image_Label);
+        this.add(player_pokemon.Portray);
         this.add(Say_Dr);
         this.add(Next_Button);
 

@@ -1,11 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 class Intro_Choose_Panel extends JPanel
 {
     // 해당 클래스에서 사용할 변수들 선언 (win은 앵간하면 선언해줘)
+    private String NAME; // 이름
     private JLabel Say_Dr; // 라벨
     private JRadioButton [] Starting_Pokemon_Img = new JRadioButton[3]; // 라디오 버튼형 배열
     private String [] Text = {"열정적인 성격", "차분한 성격", "고통을 즐기는 성격"}; // 문자 배열
@@ -15,8 +18,9 @@ class Intro_Choose_Panel extends JPanel
     private JLabel ImageLabel = new JLabel(); // 라벨
     private JButton Choose_Button; // 버튼
     private JPanelChange win; // win
+    private int Check_Index = 0;
 
-    public Intro_Choose_Panel(JPanelChange win)
+    public Intro_Choose_Panel(JPanelChange win, String NAME)
     // 처음 시작패널, 사용자에게 이름을 입력받음
     {
         // 매개변수로 전달받은 win을 해당 클래스 안에 있는 win에 저장 하므로서 여기서도 win이라는 이름으로 쓰게함
@@ -31,6 +35,7 @@ class Intro_Choose_Panel extends JPanel
 
         // 버튼 설정
         Choose_Button = new JButton("이 포켓몬으로 할래요!");
+        Choose_Button.addActionListener(new ButtonListener());
 
         ButtonGroup g = new ButtonGroup(); // 버튼들을 묶어줄 그룹 선언
         JPanel radioPanel = new JPanel(); // 라디오 패널 선언
@@ -79,6 +84,27 @@ class Intro_Choose_Panel extends JPanel
             else
                 // 이미지 라벨을 치코리타 이미지로 변경해줌
                 ImageLabel.setIcon(Pokemon_Images[2]);
+        }
+    }
+
+    class ButtonListener implements ActionListener {
+        public void actionPerformed (ActionEvent event)
+        {
+            if (Starting_Pokemon_Img[0].isSelected())
+            {
+                Pokemon player_pokemon = new Pokemon("리아코", "물", 1);
+                win.change("type_after_intro", player_pokemon);
+            }
+            else if (Starting_Pokemon_Img[1].isSelected())
+            {
+                Pokemon player_pokemon = new Pokemon("브케인", "불", 1);
+                win.change("type_after_intro", player_pokemon);
+            }
+            else
+            {
+                Pokemon player_pokemon = new Pokemon("치코리타", "풀", 1);
+                win.change("type_after_intro", player_pokemon);
+            }
         }
     }
 }

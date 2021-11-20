@@ -83,6 +83,8 @@ public class Start_Panel extends JPanel{
         this.add(Say_Give_Name);
         this.add(Name_Text_Field);
         this.add(Start_Button);
+
+        setFocusable(true);
     }
 
     private void Right_Name()
