@@ -79,6 +79,7 @@ public class Start_Panel extends JPanel{
         Name_Text_Field.setBounds(120, 200, 1020, 50);
         Start_Button.setBounds(500, 400, 300, 100);
 
+
         // 위에서 설정한 컴포넌트들을 패널에 추가해줌
         this.add(Say_Give_Name);
         this.add(Name_Text_Field);

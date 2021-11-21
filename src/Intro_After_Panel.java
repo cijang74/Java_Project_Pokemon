@@ -13,6 +13,8 @@ class Intro_After_Panel extends JPanel
     private JLabel Say_Dr; // 라벨
     private ImageIcon Dr_Image = new ImageIcon("오박사.png"); // 아이콘 이미지
     private JLabel Image_Label = new JLabel(Dr_Image); // 아이콘 이미지를 라벨화
+    private ImageIcon Bar = new ImageIcon("Bar.png");
+    private JLabel Bar_Label = new JLabel(Bar);
     private JButton Next_Button; // 버튼
     private int count = 0; // 대화가 끝났는지 확인하기 위한 변수
     private JPanelChange win; // win
@@ -69,11 +71,15 @@ class Intro_After_Panel extends JPanel
         player_pokemon.Portray.setBounds(550,175,250,250); // 포켓몬 class 안에 있는 JLabel임
         Say_Dr.setBounds(100, 570, 1280, 50);
         Next_Button.setBounds(1000, 540, 200, 100);
+        Bar_Label.setBounds(0,500,1280,10);
+
+        setBackground(Color.white);
 
         // 위에서 설정한 컴포넌트들을 패널에 추가해줌
         this.add(Image_Label);
         this.add(player_pokemon.Portray);
         this.add(Say_Dr);
         this.add(Next_Button);
+        this.add(Bar_Label);
     }
 }

@@ -140,6 +140,8 @@ public class Select_Panel extends JPanel{
 
         player_pokemon.Portray.setBounds(50,100,290,290);
 
+        setBackground(Color.white);
+
         // 위에서 설정한 컴포넌트들을 패널에 추가해줌
         this.add(Dua_Date_Label);
         this.add(Money_Label);

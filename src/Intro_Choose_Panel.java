@@ -43,6 +43,7 @@ class Intro_Choose_Panel extends JPanel
         for(int i = 0; i <Starting_Pokemon_Img.length; i++)
         {
             Starting_Pokemon_Img[i] = new JRadioButton(Text[i]); // 라디오 버튼형 배열에 텍스트가 설정된 라디오 버튼 객체 생성 후 넣어줌
+            Starting_Pokemon_Img[i].setBackground(Color.white);
             g.add(Starting_Pokemon_Img[i]); //그룹에 추가
             radioPanel.add(Starting_Pokemon_Img[i]); // 라디오 패널에 추가
             Starting_Pokemon_Img[i].addItemListener(new MyItemListener()); // 아래(71줄)에서 만든 리스너를 적용시켜줌
@@ -56,6 +57,9 @@ class Intro_Choose_Panel extends JPanel
         Say_Dr.setBounds(310, 10, 1000, 100);
         ImageLabel.setBounds(550, 240, 250, 250);
         Dr_Image_Label.setBounds(180, 120, 180, 384);
+
+        setBackground(Color.white);
+        radioPanel.setBackground(Color.white);
 
         // 위에서 설정한 컴포넌트들을 패널에 추가해줌
         this.add(radioPanel); // 포켓몬 선택하는거
