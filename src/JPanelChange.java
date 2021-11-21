@@ -63,7 +63,7 @@ public class JPanelChange extends JFrame
 
     public void change(String panelType, Pokemon player_pokemon)
     // a패널에서 b패널로 바꿔주기 위한 메서드 (오버로딩)
-    //이름은 한번만 start패널에서 전달받아서 win에 저장시켜주면 되기때문에 choose패널에서 포켓몬을 선택하여 객체가 생성된 이후의 패널은 여기서 교체시킴)
+    // 이 름은 한번만 start패널에서 전달받아서 win에 저장시켜주면 되기때문에 choose패널에서 포켓몬을 선택하여 객체가 생성된 이후의 패널은 여기서 교체시킴)
     {
         if (panelType.equals("type_after_intro"))
         // 만약 바꾸고자 하는 패널이 "type_before_intro" 이라면
