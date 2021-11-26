@@ -9,6 +9,7 @@ public class Fight_Panel extends JPanel
     // 각 프레임에 전달받아 쓰는 변수들
     public String NAME; // 이름
     public Pokemon player_pokemon; // 플레이어의 포켓몬 정보
+    public Opponent opponent;
     private int Dua_Date; // 남은기간
     private int Money; // 소지금
 
@@ -36,7 +37,7 @@ public class Fight_Panel extends JPanel
 
     private JPanelChange win; // win
 
-    public Fight_Panel(JPanelChange win, String NAME, Pokemon player_pokemon, Pokemon opponent_pokemon, int Dua_Date, int Money)
+    public Fight_Panel(JPanelChange win, String NAME, Pokemon player_pokemon, int Dua_Date, int Money)
     {
         // 매개변수로 전달받은 값들을 해당 클래스에 저장
         this.win = win;

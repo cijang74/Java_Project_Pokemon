@@ -17,6 +17,7 @@ public class JPanelChange extends JFrame
     private Select_Panel select_panel = null;
     private Shop_Panel shop_panel = null;
     private Training_Panel training_panel = null;
+    private Fight_Panel normal_fight_panel = null;
 
     public Start_Panel getStart_panel()
     // 메인 클래스에서 해당 패널을 불러오기 위한 메서드
@@ -107,6 +108,14 @@ public class JPanelChange extends JFrame
             training_panel = new Training_Panel(this, player_pokemon, this.Dua_Date, this.Money);
             getContentPane().removeAll();
             getContentPane().add(training_panel);
+            revalidate();
+            repaint();
+        }
+        else if (panelType.equals("type_normal_fight"))
+        {
+            normal_fight_panel = new Fight_Panel(this, NAME, player_pokemon, this.Dua_Date, this.Money);
+            getContentPane().removeAll();
+            getContentPane().add(shop_panel);
             revalidate();
             repaint();
         }

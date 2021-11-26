@@ -45,15 +45,18 @@ class Pokemon extends Pokemon_Common_Skills
         }
     }
 
-    public Pokemon(String Name, String type, int Hp, int Def, int Atk, int Spd, int level)
+    public Pokemon(String Name, String type, int Hp, int Def, int Atk, int Spd, int level, String image_file)
             // 포켓몬 생성자2(오버로딩)
     {
         this.Name = Name;
         this.type = type;
         this.Level = level;
-        this.Hp += Hp;
-        this.Def += Def;
-        this.Atk += Atk;
-        this.Spd += Spd;
+        this.Hp = this.Level + Hp;
+        this.Def = this.Level + Def;
+        this.Atk = this.Level + Atk;
+        this.Spd = this.Level + Spd;
+
+        this.Image = new ImageIcon(image_file); // 아이콘 이미지
+        this.Portray = new JLabel(this.Image);
     }
 }

@@ -107,7 +107,7 @@ public class Select_Panel extends JPanel{
             public void actionPerformed(ActionEvent e)
             // 버튼을 클릭하면
             {
-
+                win.change("type_normal_fight", player_pokemon);
             }
         });
 
