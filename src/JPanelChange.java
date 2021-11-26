@@ -1,13 +1,13 @@
 import javax.swing.*;
 
 public class JPanelChange extends JFrame
-    // 이전 패널의 컴포넌트를 모두 지우고 다음 패널의 컴포넌트를 불러오는 메소드가 있는 클래스, 프레임 역할을 함.
+//이전 패널의 컴포넌트를 모두 지우고 다음 패널의 컴포넌트를 불러오는 메소드가 있는 클래스, 프레임 역할을 함.
 {
     // 각 프레임에 전달받아 쓰는 변수들
     public static String NAME; // 이름
     public Pokemon player_pokemon; // 플레이어의 포켓몬
-    private int Dua_Date = 30; // 남은기간(default)
-    private int Money = 0; // 소지금(default)
+    public int Dua_Date = 30; // 남은기간(default)
+    public int Money = 500; // 소지금(default)
 
     // 다른 패널로 변경시켜주기 위해 선언된 패널들
     private Start_Panel start_panel = null;
@@ -15,6 +15,8 @@ public class JPanelChange extends JFrame
     private Intro_After_Panel intro_after_panel = null;
     private Intro_Choose_Panel intro_choose_panel = null;
     private Select_Panel select_panel = null;
+    private Shop_Panel shop_panel = null;
+    private Training_Panel training_panel = null;
 
     public Start_Panel getStart_panel()
     // 메인 클래스에서 해당 패널을 불러오기 위한 메서드
@@ -63,7 +65,7 @@ public class JPanelChange extends JFrame
 
     public void change(String panelType, Pokemon player_pokemon)
     // a패널에서 b패널로 바꿔주기 위한 메서드 (오버로딩)
-    // 이 름은 한번만 start패널에서 전달받아서 win에 저장시켜주면 되기때문에 choose패널에서 포켓몬을 선택하여 객체가 생성된 이후의 패널은 여기서 교체시킴)
+    //이름은 한번만 start패널에서 전달받아서 win에 저장시켜주면 되기때문에 choose패널에서 포켓몬을 선택하여 객체가 생성된 이후의 패널은 여기서 교체시킴)
     {
         if (panelType.equals("type_after_intro"))
         // 만약 바꾸고자 하는 패널이 "type_before_intro" 이라면
@@ -92,5 +94,22 @@ public class JPanelChange extends JFrame
             revalidate();
             repaint();
         }
+        else if (panelType.equals("type_shop"))
+        {
+            shop_panel = new Shop_Panel(this, player_pokemon, this.Dua_Date, this.Money);
+            getContentPane().removeAll();
+            getContentPane().add(shop_panel);
+            revalidate();
+            repaint();
+        }
+        else if (panelType.equals("type_training"))
+        {
+            training_panel = new Training_Panel(this, player_pokemon, this.Dua_Date, this.Money);
+            getContentPane().removeAll();
+            getContentPane().add(training_panel);
+            revalidate();
+            repaint();
+        }
+
     }
 }
