@@ -118,13 +118,13 @@ class Pokemon_Common_Skills
             {
                 int leastDamage = 1;
                 player_pokemon.Hp -= leastDamage;
-                return opponent.opponent_pokemon.Name + "의 몸통박치기로 " + player_pokemon.Name + "는 " + leastDamage + "의 피해를 입었다!";
+                return opponent.opponent_pokemon.Name + "의 몸통박치기로 " + player_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
             }
 
             else
             {
                 player_pokemon.Hp -= opponent.opponent_pokemon.Atk - player_pokemon.Def;
-                return opponent.opponent_pokemon.Name + "의 몸통박치기로 " + player_pokemon.Name + "는 " + player_pokemon.Atk + "의 피해를 입었다!";
+                return opponent.opponent_pokemon.Name + "의 몸통박치기로 " + player_pokemon.Name + "은(는) " + opponent.opponent_pokemon.Atk + "의 피해를 입었다!";
             }
         }
 
@@ -135,13 +135,13 @@ class Pokemon_Common_Skills
             {
                 int leastDamage = 1;
                 opponent.opponent_pokemon.Hp -= leastDamage;
-                return player_pokemon.Name + "의 몸통박치기로 " + opponent.opponent_pokemon.Name + "는 " + leastDamage + "의 피해를 입었다!";
+                return player_pokemon.Name + "의 몸통박치기로 " + opponent.opponent_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
             }
 
             else
             {
                 opponent.opponent_pokemon.Hp -= player_pokemon.Atk - opponent.opponent_pokemon.Def;
-                return player_pokemon.Name + "의 몸통박치기로 " + opponent.opponent_pokemon.Name + "는 " + player_pokemon.Atk + "의 피해를 입었다!";
+                return player_pokemon.Name + "의 몸통박치기로 " + opponent.opponent_pokemon.Name + "은(는) " + player_pokemon.Atk + "의 피해를 입었다!";
             }
         }
     }
@@ -162,7 +162,7 @@ class Pokemon_Common_Skills
             else
             {
                 player_pokemon.Hp -= opponent.opponent_pokemon.Atk - player_pokemon.Def;
-                return opponent.opponent_pokemon.Name + "의 햘퀴기로 " + player_pokemon.Name + "은(는) " + player_pokemon.Atk + "의 피해를 입었다!";
+                return opponent.opponent_pokemon.Name + "의 햘퀴기로 " + player_pokemon.Name + "은(는) " + opponent.opponent_pokemon.Atk + "의 피해를 입었다!";
             }
         }
 
@@ -251,7 +251,7 @@ class Pokemon_Common_Skills
             else
             {
                 player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 5 - player_pokemon.Def;
-                return opponent.opponent_pokemon.Name + "의 물기로 " + player_pokemon.Name + "은(는) " + (player_pokemon.Atk + 5) + "의 피해를 입었다!";
+                return opponent.opponent_pokemon.Name + "의 물기로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk + 5) + "의 피해를 입었다!";
             }
         }
 
@@ -305,7 +305,7 @@ class Pokemon_Common_Skills
             else
             {
                 player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 5 - player_pokemon.Def;
-                return opponent.opponent_pokemon.Name + "의 베어가르기로 " + player_pokemon.Name + "은(는) " + (player_pokemon.Atk + 5) + "의 피해를 입었다!";
+                return opponent.opponent_pokemon.Name + "의 베어가르기로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk + 5) + "의 피해를 입었다!";
             }
         }
 
@@ -343,7 +343,7 @@ class Pokemon_Common_Skills
             else
             {
                 player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 15 - player_pokemon.Def;
-                return opponent.opponent_pokemon.Name + "의 파괴광선으로 " + player_pokemon.Name + "은(는) " + (player_pokemon.Atk + 15) + "의 피해를 입었다!";
+                return opponent.opponent_pokemon.Name + "의 파괴광선으로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk + 15) + "의 피해를 입었다!";
             }
         }
 
@@ -383,7 +383,7 @@ class Pokemon_Common_Skills
             else
             {
                 player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 10 - player_pokemon.Def;
-                return opponent.opponent_pokemon.Name + "의 거품광선으로 " + player_pokemon.Name + "은(는) " + (player_pokemon.Atk + 10) + "의 피해를 입었다!";
+                return opponent.opponent_pokemon.Name + "의 거품광선으로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk + 10) + "의 피해를 입었다!";
             }
         }
 
@@ -421,7 +421,7 @@ class Pokemon_Common_Skills
             else
             {
                 player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 10 - player_pokemon.Def;
-                return opponent.opponent_pokemon.Name + "의 불꽃세례로 " + player_pokemon.Name + "은(는) " + (player_pokemon.Atk + 10) + "의 피해를 입었다!";
+                return opponent.opponent_pokemon.Name + "의 불꽃세례로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk + 10) + "의 피해를 입었다!";
             }
         }
 
@@ -459,7 +459,7 @@ class Pokemon_Common_Skills
             else
             {
                 player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 10 - player_pokemon.Def;
-                return opponent.opponent_pokemon.Name + "의 잎날가르기로 " + player_pokemon.Name + "은(는) " + (player_pokemon.Atk + 10) + "의 피해를 입었다!";
+                return opponent.opponent_pokemon.Name + "의 잎날가르기로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk + 10) + "의 피해를 입었다!";
             }
         }
 
@@ -497,7 +497,7 @@ class Pokemon_Common_Skills
             else
             {
                 player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 10 - player_pokemon.Def;
-                return opponent.opponent_pokemon.Name + "의 10만볼트로 " + player_pokemon.Name + "은(는) " + (player_pokemon.Atk + 10) + "의 피해를 입었다!";
+                return opponent.opponent_pokemon.Name + "의 10만볼트로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk + 10) + "의 피해를 입었다!";
             }
         }
 
@@ -535,7 +535,7 @@ class Pokemon_Common_Skills
             else
             {
                 player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 10 - player_pokemon.Def;
-                return opponent.opponent_pokemon.Name + "의 드래곤크루로 " + player_pokemon.Name + "은(는) " + (player_pokemon.Atk + 10) + "의 피해를 입었다!";
+                return opponent.opponent_pokemon.Name + "의 드래곤크루로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk + 10) + "의 피해를 입었다!";
             }
         }
 
@@ -573,7 +573,7 @@ class Pokemon_Common_Skills
             else
             {
                 player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 10 - player_pokemon.Def;
-                return opponent.opponent_pokemon.Name + "의 속임수로 " + player_pokemon.Name + "은(는) " + (player_pokemon.Atk + 10) + "의 피해를 입었다!";
+                return opponent.opponent_pokemon.Name + "의 속임수로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk + 10) + "의 피해를 입었다!";
             }
         }
 
@@ -611,7 +611,7 @@ class Pokemon_Common_Skills
             else
             {
                 player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 10 - player_pokemon.Def;
-                return opponent.opponent_pokemon.Name + "의 힘껏치기로 " + player_pokemon.Name + "은(는) " + (player_pokemon.Atk + 10) + "의 피해를 입었다!";
+                return opponent.opponent_pokemon.Name + "의 힘껏치기로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk + 10) + "의 피해를 입었다!";
             }
         }
 
@@ -649,7 +649,7 @@ class Pokemon_Common_Skills
             else
             {
                 player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 10 - player_pokemon.Def;
-                return opponent.opponent_pokemon.Name + "의 염동력으로 " + player_pokemon.Name + "은(는) " + (player_pokemon.Atk + 10) + "의 피해를 입었다!";
+                return opponent.opponent_pokemon.Name + "의 염동력으로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk + 10) + "의 피해를 입었다!";
             }
         }
 

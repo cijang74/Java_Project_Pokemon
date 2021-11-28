@@ -28,6 +28,7 @@ public class Select_Panel extends JPanel{
     private JButton Grand_Prix_Button; // 버튼
     private JButton Normal_Fight_Button; // 버튼
     private JButton Shop_Button; // 버튼
+    private JButton Last_Battle_Button;
 
     private TitledBorder tborder; // 컴포넌트를 둘러싸는 테두리
 
@@ -96,7 +97,7 @@ public class Select_Panel extends JPanel{
             public void actionPerformed(ActionEvent e)
             // 버튼을 클릭하면
             {
-
+                win.change("type_grand_prix", player_pokemon);
             }
         });
 
@@ -122,6 +123,17 @@ public class Select_Panel extends JPanel{
             }
         });
 
+        Last_Battle_Button = new JButton("결전"); // 버튼 안에 들어갈 텍스트 설정
+        Last_Battle_Button.addActionListener(new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            // 버튼을 클릭하면
+            {
+                win.change("type_last_fight", player_pokemon);
+            }
+        });
+
         // 위에서 설정한 컴포넌트들의 크기설정
         Dua_Date_Label.setBounds(1050, 550, 1280, 50);
         Money_Label.setBounds(1050, 580, 1280, 50);
@@ -137,6 +149,8 @@ public class Select_Panel extends JPanel{
         Normal_Fight_Button.setBounds(400, 360, 300, 100);
         Grand_Prix_Button.setBounds(800, 120, 300, 100);
         Shop_Button.setBounds(800, 360, 300, 100);
+
+        Last_Battle_Button.setBounds(600,240,300,100);
 
         player_pokemon.Portray.setBounds(50,100,290,290);
 
@@ -154,5 +168,31 @@ public class Select_Panel extends JPanel{
         this.add(Normal_Fight_Button);
         this.add(Grand_Prix_Button);
         this.add(Shop_Button);
+
+        // 5의 배수인 날은 그랑프리 패널만 선택 가능
+        if ((Dua_Date != 30 && Dua_Date != 0) && Dua_Date % 5 ==0)
+        {
+            Training_Button.setEnabled(false);
+            Normal_Fight_Button.setEnabled(false);
+            Shop_Button.setEnabled(false);
+            Grand_Prix_Button.setEnabled(true);
+        }
+
+        else if(Dua_Date == 0)
+        {
+            Training_Button.setEnabled(false);
+            Normal_Fight_Button.setEnabled(false);
+            Shop_Button.setEnabled(false);
+            Grand_Prix_Button.setEnabled(false);
+            this.add(Last_Battle_Button);
+        }
+
+        else
+        {
+            Training_Button.setEnabled(true);
+            Normal_Fight_Button.setEnabled(true);
+            Shop_Button.setEnabled(true);
+            Grand_Prix_Button.setEnabled(false);
+        }
     }
 }

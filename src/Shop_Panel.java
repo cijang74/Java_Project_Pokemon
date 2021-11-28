@@ -78,7 +78,7 @@ public class Shop_Panel extends JPanel{
 
         O_fruit_Button = new JButton("100G");
         O_fruit_Button.setFont(new Font ("Helvetica", Font.PLAIN, 20));
-        O_fruit_Button.setForeground(Color.YELLOW);
+        O_fruit_Button.setForeground(Color.BLACK);
         O_fruit_Button.addActionListener(new ActionListener() // 오랭열매 구매버튼을 클릭했을때
         {
             public void actionPerformed(ActionEvent e)
@@ -102,7 +102,7 @@ public class Shop_Panel extends JPanel{
         }); // 이하 같음
         beo_fruit_button = new JButton("100G");
         beo_fruit_button.setFont(new Font ("Helvetica", Font.PLAIN, 20));
-        beo_fruit_button.setForeground(Color.YELLOW);
+        beo_fruit_button.setForeground(Color.BLACK);
         beo_fruit_button.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
@@ -126,7 +126,7 @@ public class Shop_Panel extends JPanel{
         });
         bae_fruit_button = new JButton("100G");
         bae_fruit_button.setFont(new Font ("Helvetica", Font.PLAIN, 20));
-        bae_fruit_button.setForeground(Color.YELLOW);
+        bae_fruit_button.setForeground(Color.BLACK);
         bae_fruit_button.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
@@ -150,7 +150,7 @@ public class Shop_Panel extends JPanel{
         });
         gwa_fruit_button = new JButton("100G");
         gwa_fruit_button.setFont(new Font ("Helvetica", Font.PLAIN, 20));
-        gwa_fruit_button.setForeground(Color.YELLOW);
+        gwa_fruit_button.setForeground(Color.BLACK);
         gwa_fruit_button.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)

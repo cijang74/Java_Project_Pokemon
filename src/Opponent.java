@@ -19,7 +19,7 @@ class Opponent
                 this.opponent_name = "코더 지망생 종훈";
                 // String Name, String type, int Hp, int Def, int Atk, int Spd, int level, String image_file
 
-                if (player_pokemon.Level < 10)
+                if (player_pokemon.Level < 5)
                 {
                     try {
                         this.opponent_pokemon = new Pokemon("꼬리선", "노말", 0, 0, 0, 0, 2,
@@ -44,7 +44,7 @@ class Opponent
             {
                 this.opponent_name = "전자기사 동원";
 
-                if (player_pokemon.Level < 10)
+                if (player_pokemon.Level < 5)
                 {
                     try {
                         this.opponent_pokemon = new Pokemon("찌리리공", "전기", 0, 0, 0, 0, 3,
@@ -69,7 +69,7 @@ class Opponent
             {
                 this.opponent_name = "학부연구생 재훈";
 
-                if (player_pokemon.Level < 10)
+                if (player_pokemon.Level < 5)
                 {
                     try {
                         this.opponent_pokemon = new Pokemon("먹고자", "노말", 0, 0, 0, 0, 2,
@@ -94,7 +94,7 @@ class Opponent
             {
                 this.opponent_name = "수학자 서흔";
 
-                if (player_pokemon.Level < 10)
+                if (player_pokemon.Level < 5)
                 {
                     try {
                         this.opponent_pokemon = new Pokemon("케이시", "에스퍼", 0, 0, 0, 0, 3,
@@ -119,7 +119,7 @@ class Opponent
             {
                 this.opponent_name = "미스터 Um Jun-sik";
 
-                if (player_pokemon.Level < 10)
+                if (player_pokemon.Level < 5)
                 {
                     try {
                         this.opponent_pokemon = new Pokemon("뽀록나", "독", 0, 0, 0, 0, 2,
@@ -144,7 +144,7 @@ class Opponent
             {
                 this.opponent_name = "파카 판매자 인욱";
 
-                if (player_pokemon.Level < 10)
+                if (player_pokemon.Level < 5)
                 {
                     try {
                         this.opponent_pokemon = new Pokemon("탐리스", "노말", 0, 0, 0, 0, 3,
@@ -170,7 +170,7 @@ class Opponent
             {
                 this.opponent_name = "선글라스 보이 찬호";
 
-                if (player_pokemon.Level < 10)
+                if (player_pokemon.Level < 5)
                 {
                     try {
                         this.opponent_pokemon = new Pokemon("악비르", "악", 0, 0, 0, 0, 2,
@@ -195,7 +195,7 @@ class Opponent
             {
                 this.opponent_name = "쥐 애호가 지환";
 
-                if (player_pokemon.Level < 10)
+                if (player_pokemon.Level < 5)
                 {
                     try {
                         this.opponent_pokemon = new Pokemon("꼬렛", "노말", 0, 0, 0, 0, 3,
@@ -220,7 +220,7 @@ class Opponent
             {
                 this.opponent_name = "취권도사 재석";
 
-                if (player_pokemon.Level < 10)
+                if (player_pokemon.Level < 5)
                 {
                     try {
                         this.opponent_pokemon = new Pokemon("얼루기", "노말", 0, 0, 0, 0, 2,
@@ -245,7 +245,7 @@ class Opponent
             {
                 this.opponent_name = "대리기사 상길";
 
-                if (player_pokemon.Level < 10)
+                if (player_pokemon.Level < 5)
                 {
                     try {
                         this.opponent_pokemon = new Pokemon("쉘곤", "드래곤", 0, 0, 0, 0, 3,

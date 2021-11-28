@@ -107,4 +107,43 @@ class Pokemon extends Pokemon_Common_Skills
         return Log;
     }
 
+    public void Exp_Update()
+    {
+        System.out.print(this.Exp);
+        if (this.Exp >= 5 && this.Exp <= 15)
+        {
+            this.Level = 2;
+        }
+
+        else if (this.Exp > 15 && this.Exp <= 30)
+        {
+            this.Level = 3;
+        }
+
+        else if (this.Exp > 30 && this.Exp <= 50)
+        {
+            this.Level = 4;
+        }
+
+        else if (this.Exp > 50 && this.Exp <= 75)
+        {
+            this.Level = 5;
+        }
+
+        else if (this.Exp > 75 && this.Exp <= 105)
+        {
+            this.Level = 6;
+        }
+
+        else if (this.Exp > 105 && this.Exp <= 140)
+        {
+            this.Level = 7;
+        }
+
+        else if (this.Exp > 140 && this.Exp <= 180)
+        {
+            this.Level = 8;
+        }
+    }
+
 }
