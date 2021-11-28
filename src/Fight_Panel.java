@@ -18,18 +18,12 @@ public class Fight_Panel extends JPanel
     private int Dua_Date; // 남은기간
     private int Money; // 소지금
     private int turn = 0;
+    private String[] result = new String[20];
+    boolean end = true;
 
     // 컴포넌트: 라벨
     private JLabel now_Panel;
-    private JLabel battle_Log;
-    private JLabel battle_Log2;
-    private JLabel battle_Log3;
-    private JLabel battle_Log4;
-    private JLabel battle_Log5;
-    private JLabel battle_Log6;
-    private JLabel battle_Log7;
-    private JLabel battle_Log8;
-    private JLabel battle_Log9;
+    private JLabel[] battle_Log = new JLabel[20];
 
     private JLabel player_name;
     private JLabel opponent_name; // 상대 트래이너 이름
@@ -69,8 +63,8 @@ public class Fight_Panel extends JPanel
         now_Panel = new JLabel(Label_Config()); // 라벨 내용
         now_Panel.setFont(new Font ("Helvetica", Font.PLAIN, 19)); // 라벨 폰트 설정
 
-        battle_Log = new JLabel(opponent.opponent_name + "과(와)의 대전이 시작되었다!"); // 라벨 내용
-        battle_Log.setFont(new Font ("Helvetica", Font.PLAIN, 19)); // 라벨 폰트 설정
+        battle_Log[0] = new JLabel(opponent.opponent_name + "과(와)의 대전이 시작되었다!"); // 라벨 내용
+        battle_Log[0].setFont(new Font ("Helvetica", Font.PLAIN, 15)); // 라벨 폰트 설정
 
         player_name = new JLabel(NAME); // 라벨 내용
         player_name.setFont(new Font ("Helvetica", Font.PLAIN, 19)); // 라벨 폰트 설정
@@ -135,6 +129,7 @@ public class Fight_Panel extends JPanel
 
         Back_Button = new JButton("돌아가기");
         Back_Button.setFont(new Font ("Helvetica", Font.PLAIN, 20));
+        Back_Button.setEnabled(false);
         Back_Button.addActionListener(new ActionListener() // 돌아가기 버튼을 클릭했을떄
         {
             public void actionPerformed(ActionEvent e)
@@ -144,7 +139,7 @@ public class Fight_Panel extends JPanel
         });
 
         now_Panel.setBounds(600, 10, 1280,50);
-        battle_Log.setBounds(370,65, 1280,30);
+
         player_name.setBounds(50, 370, 1280, 50);
         opponent_name.setBounds(930, 370, 1280, 50);
 
@@ -164,18 +159,21 @@ public class Fight_Panel extends JPanel
         opponent.opponent_pokemon.Portray.setBorder(tborder); // 태두리 설정
 
         this.add(now_Panel);
-        this.add(battle_Log);
         this.add(player_name);
         this.add(opponent_name);
 
         this.add(p_Skill1);
         this.add(p_Skill2);
 
+        battle_Log[0].setBounds(370,65 + (0 * 30), 1280,30);
+        this.add(battle_Log[0]);
+
         this.add(player_pokemon.Portray);
         this.add(opponent.opponent_pokemon.Portray);
         this.add(Log_Background_Label);
+        this.add(Back_Button);
 
-        if (player_pokemon.Spd < opponent.opponent_pokemon.Spd || turn == 0)
+        if (player_pokemon.Spd < opponent.opponent_pokemon.Spd && turn == 0)
         // 상대가 스피드가 더 빠르다면 상대 먼저 선제공격
         {
             Opponent_turn_attack();
@@ -192,12 +190,23 @@ public class Fight_Panel extends JPanel
         if ((int)(286*((double)player_pokemon.Hp / (double) player_pokemon.Full_Hp)) > 0)
         {
             g.fillRect(52,350,(int)(286*((double)player_pokemon.Hp / (double) player_pokemon.Full_Hp)),30);
-            this.add(Back_Button);
         }
 
         else
         {
             g.fillRect(52,350,0,30);
+
+            Back_Button.setEnabled(true);
+            p_Skill1.setEnabled(false);
+            p_Skill2.setEnabled(false);
+            if (player_pokemon.skillArray[2] != null)
+            {
+                p_Skill3.setEnabled(false);
+            }
+            if (player_pokemon.skillArray[3] != null)
+            {
+                p_Skill4.setEnabled(false);
+            }
         }
 
         g.setColor(Color.BLACK);
@@ -207,12 +216,22 @@ public class Fight_Panel extends JPanel
         if ((int)(286*((double)opponent.opponent_pokemon.Hp / (double) opponent.opponent_pokemon.Full_Hp)) > 0)
         {
             g.fillRect(932,350,(int)(286*((double)opponent.opponent_pokemon.Hp / (double) opponent.opponent_pokemon.Full_Hp)),30);
-            this.add(Back_Button);
         }
 
         else
         {
             g.fillRect(932,350,0,30);
+            Back_Button.setEnabled(true);
+            p_Skill1.setEnabled(false);
+            p_Skill2.setEnabled(false);
+            if (player_pokemon.skillArray[2] != null)
+            {
+                p_Skill3.setEnabled(false);
+            }
+            if (player_pokemon.skillArray[3] != null)
+            {
+                p_Skill4.setEnabled(false);
+            }
         }
 
         repaint();
@@ -226,11 +245,24 @@ public class Fight_Panel extends JPanel
 
     public void player_turn_attack(String skill)
     {
-        // 일정 시간 이후에 실행할 코드
         System.out.print("플레이어 포켓몬 행동함");
-        player_pokemon.Use_Skill(player_pokemon, opponent, skill);
         turn++;
-        Opponent_turn_attack();
+        result[turn] = player_pokemon.Use_Skill(player_pokemon, opponent, skill);
+
+        battle_Log[turn] = new JLabel(result[turn]); // 라벨 내용
+        battle_Log[turn].setFont(new Font ("Helvetica", Font.PLAIN, 15)); // 라벨 폰트 설정
+        Update_Log();
+
+        if(opponent.opponent_pokemon.Hp <= 0)
+        {
+            battle_Log[turn + 1] = new JLabel("대전에서 승리하였다!"); // 라벨 내용
+            battle_Log[turn + 1].setFont(new Font ("Helvetica", Font.PLAIN, 15)); // 라벨 폰트 설정
+            Update_Log(end);
+        }
+        else
+        {
+            Opponent_turn_attack();
+        }
     }
 
     private void Opponent_turn_attack()
@@ -252,23 +284,59 @@ public class Fight_Panel extends JPanel
             @Override
             public void run() {
                 // 일정 시간 이후에 실행할 코드
-                opponent.opponent_pokemon.Opponent_Use_Skill(player_pokemon, opponent);
-                p_Skill1.setEnabled(true);
-                p_Skill2.setEnabled(true);
+                result[turn] = opponent.opponent_pokemon.Opponent_Use_Skill(player_pokemon, opponent);
+                if(player_pokemon.Hp <= 0)
+                {
+                    battle_Log[turn] = new JLabel(result[turn]); // 라벨 내용
+                    battle_Log[turn].setFont(new Font ("Helvetica", Font.PLAIN, 15)); // 라벨 폰트 설정
+                    battle_Log[turn + 1] = new JLabel("대전에서 패배하였다..."); // 라벨 내용
+                    battle_Log[turn + 1].setFont(new Font ("Helvetica", Font.PLAIN, 15)); // 라벨 폰트 설정
+                    Update_Log(end);
+                }
 
-                if (player_pokemon.skillArray[2] != null)
+                else
                 {
-                    p_Skill3.setEnabled(true);
+                    p_Skill1.setEnabled(true);
+                    p_Skill2.setEnabled(true);
+
+                    battle_Log[turn] = new JLabel(result[turn]); // 라벨 내용
+                    battle_Log[turn].setFont(new Font ("Helvetica", Font.PLAIN, 15)); // 라벨 폰트 설정
+
+                    if (player_pokemon.skillArray[2] != null)
+                    {
+                        p_Skill3.setEnabled(true);
+                    }
+                    if (player_pokemon.skillArray[3] != null)
+                    {
+                        p_Skill4.setEnabled(true);
+                    }
+                    Update_Log();
+                    System.out.print("현재 체력은 " + opponent.opponent_pokemon.Hp + " / " + opponent.opponent_pokemon.Full_Hp + "\n");
+                    System.out.print((int)(286*((double)opponent.opponent_pokemon.Hp / (double) opponent.opponent_pokemon.Full_Hp)));
                 }
-                if (player_pokemon.skillArray[3] != null)
-                {
-                    p_Skill4.setEnabled(true);
-                }
-                System.out.print("현재 체력은 " + opponent.opponent_pokemon.Hp + " / " + opponent.opponent_pokemon.Full_Hp + "\n");
-                System.out.print((int)(286*((double)opponent.opponent_pokemon.Hp / (double) opponent.opponent_pokemon.Full_Hp)));
             }
         };
-        timer1.schedule(task1,3000);
         turn++;
+        timer1.schedule(task1,3000);
+    }
+
+    private void Update_Log()
+    {
+        for(int i = 0; i <= turn; i++)
+        {
+            battle_Log[i].setFont(new Font ("Helvetica", Font.PLAIN, 15));
+            battle_Log[i].setBounds(370,65 + (i * 30), 1280,30);
+            this.add(battle_Log[i]);
+        }
+    }
+
+    private void Update_Log(boolean end)
+    {
+        for(int i = 0; i <= turn + 1; i++)
+        {
+            battle_Log[i].setFont(new Font ("Helvetica", Font.PLAIN, 15));
+            battle_Log[i].setBounds(370,65 + (i * 30), 1280,30);
+            this.add(battle_Log[i]);
+        }
     }
 }

@@ -89,6 +89,7 @@ public class JPanelChange extends JFrame
         // 위 if문과 구조 동일. 새로운 패널 만들 떄는 else if문으로 추가해줘!
         else if (panelType.equals("type_select"))
         {
+            resetPokemon();
             select_panel = new Select_Panel(this, NAME, player_pokemon, this.Dua_Date, this.Money);
             getContentPane().removeAll();
             getContentPane().add(select_panel);
@@ -120,5 +121,12 @@ public class JPanelChange extends JFrame
             repaint();
         }
 
+    }
+    private void resetPokemon()
+    {
+        player_pokemon.Hp = player_pokemon.Full_Hp;
+        player_pokemon.Def = player_pokemon.Full_Def;
+        player_pokemon.Atk = player_pokemon.Full_Atk;
+        player_pokemon.Spd = player_pokemon.Full_Spd;
     }
 }

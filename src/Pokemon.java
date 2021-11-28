@@ -13,7 +13,6 @@ class Pokemon extends Pokemon_Common_Skills
     public int Level;
     public int Hp, Def, Atk, Spd, Full_Hp, Full_Def, Full_Atk, Full_Spd;
     public int Exp;
-    public int result;
     public String Name;
     public String type;
     String[] skillArray = new String[4];
@@ -89,18 +88,23 @@ class Pokemon extends Pokemon_Common_Skills
         this.Portray = new JLabel(this.Pokemon_Image);
     }
 
-    public void Use_Skill(Pokemon player_pokemon, Opponent opponent, String what_use)
+    public String Use_Skill(Pokemon player_pokemon, Opponent opponent, String what_use)
     {
-        Common_Skills(what_use, player_pokemon, opponent, true);
+        String Log;
+        Log = Common_Skills(what_use, player_pokemon, opponent, true);
+        return Log;
     }
 
-    public void Opponent_Use_Skill(Pokemon player_pokemon, Opponent opponent)
+    public String Opponent_Use_Skill(Pokemon player_pokemon, Opponent opponent)
     {
         Random random = new Random();
         random.setSeed(System.currentTimeMillis());
 
         int what_use = random.nextInt(3);
-        Common_Skills(this.skillArray[what_use], player_pokemon, opponent, false);
+
+        String Log;
+        Log = Common_Skills(this.skillArray[what_use], player_pokemon, opponent, false);
+        return Log;
     }
 
 }
