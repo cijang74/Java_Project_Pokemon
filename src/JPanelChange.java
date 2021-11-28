@@ -115,7 +115,7 @@ public class JPanelChange extends JFrame
         {
             normal_fight_panel = new Fight_Panel(this, NAME, player_pokemon, this.Dua_Date, this.Money);
             getContentPane().removeAll();
-            getContentPane().add(shop_panel);
+            getContentPane().add(normal_fight_panel);
             revalidate();
             repaint();
         }
