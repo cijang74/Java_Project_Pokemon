@@ -88,7 +88,8 @@ public class Shop_Panel extends JPanel{
                     Random random = new Random();
                     int ran = random.nextInt(5) + 1; // 1부터 5까지 임의의 숫자 생성
                     JOptionPane.showMessageDialog(null, "HP가"+ ran +"만큼 상승했습니다."); //알림
-                    player_pokemon.Hp += ran; // 임의의 숫자 해당하는 값에 더하기
+                    player_pokemon.Full_Hp += ran; // 임의의 숫자 해당하는 값에 더하기
+                    player_pokemon.Hp = player_pokemon.Full_Hp;
                     win.Money -= 100; // 돈 조정
                     win.Dua_Date -= 1; // 기간 조정
                     win.change("type_select", player_pokemon); // 선택패널로 돌아가기
@@ -111,7 +112,8 @@ public class Shop_Panel extends JPanel{
                     Random random = new Random();
                     int ran = random.nextInt(5) + 1;
                     JOptionPane.showMessageDialog(null, "ATK가"+ ran +"만큼 상승했습니다.");
-                    player_pokemon.Atk += ran;
+                    player_pokemon.Full_Atk += ran;
+                    player_pokemon.Atk = player_pokemon.Full_Atk;
                     win.Money -= 100;
                     win.Dua_Date -= 1;
                     win.change("type_select", player_pokemon);
@@ -134,7 +136,8 @@ public class Shop_Panel extends JPanel{
                     Random random = new Random();
                     int ran = random.nextInt(5) + 1;
                     JOptionPane.showMessageDialog(null, "DF가"+ ran +"만큼 상승했습니다.");
-                    player_pokemon.Def += ran;
+                    player_pokemon.Full_Def += ran;
+                    player_pokemon.Def = player_pokemon.Full_Def;
                     win.Money -= 100;
                     win.Dua_Date -= 1;
                     win.change("type_select", player_pokemon);
@@ -157,7 +160,8 @@ public class Shop_Panel extends JPanel{
                     Random random = new Random();
                     int ran = random.nextInt(5) + 1;
                     JOptionPane.showMessageDialog(null, "SPD가"+ ran +"만큼 상승했습니다.");
-                    player_pokemon.Spd += ran;
+                    player_pokemon.Full_Spd += ran;
+                    player_pokemon.Spd = player_pokemon.Full_Spd;
                     win.Money -= 100;
                     win.Dua_Date -= 1;
                     win.change("type_select", player_pokemon);

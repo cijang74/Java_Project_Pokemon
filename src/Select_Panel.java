@@ -65,16 +65,16 @@ public class Select_Panel extends JPanel{
         Pokemon_Level_Label = new JLabel("레벨: " + player_pokemon.Level); // 라벨 내용
         Pokemon_Level_Label.setFont(new Font ("Helvetica", Font.PLAIN, 19)); // 라벨 폰트 설정
 
-        Pokemon_HP_Label = new JLabel("HP: " + player_pokemon.Hp); // 라벨 내용
+        Pokemon_HP_Label = new JLabel("HP: " + player_pokemon.Full_Hp); // 라벨 내용
         Pokemon_HP_Label.setFont(new Font ("Helvetica", Font.PLAIN, 19)); // 라벨 폰트 설정
 
-        Pokemon_DF_Label = new JLabel("DF: " + player_pokemon.Def); // 라벨 내용
+        Pokemon_DF_Label = new JLabel("DF: " + player_pokemon.Full_Def); // 라벨 내용
         Pokemon_DF_Label.setFont(new Font ("Helvetica", Font.PLAIN, 19)); // 라벨 폰트 설정
 
-        Pokemon_SPD_Label = new JLabel("SPD: " + player_pokemon.Spd); // 라벨 내용
+        Pokemon_SPD_Label = new JLabel("SPD: " + player_pokemon.Full_Spd); // 라벨 내용
         Pokemon_SPD_Label.setFont(new Font ("Helvetica", Font.PLAIN, 19)); // 라벨 폰트 설정
 
-        Pokemon_ATK_Label = new JLabel("ATK: " + player_pokemon.Atk); // 라벨 내용
+        Pokemon_ATK_Label = new JLabel("ATK: " + player_pokemon.Full_Atk); // 라벨 내용
         Pokemon_ATK_Label.setFont(new Font ("Helvetica", Font.PLAIN, 19)); // 라벨 폰트 설정
 
         // 버튼 설정 + 버튼 리스너 설정

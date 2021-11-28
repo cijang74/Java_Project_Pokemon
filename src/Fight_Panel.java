@@ -6,6 +6,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Fight_Panel extends JPanel
 {
@@ -15,10 +17,20 @@ public class Fight_Panel extends JPanel
     public Opponent opponent;
     private int Dua_Date; // 남은기간
     private int Money; // 소지금
+    private int turn = 0;
 
     // 컴포넌트: 라벨
     private JLabel now_Panel;
     private JLabel battle_Log;
+    private JLabel battle_Log2;
+    private JLabel battle_Log3;
+    private JLabel battle_Log4;
+    private JLabel battle_Log5;
+    private JLabel battle_Log6;
+    private JLabel battle_Log7;
+    private JLabel battle_Log8;
+    private JLabel battle_Log9;
+
     private JLabel player_name;
     private JLabel opponent_name; // 상대 트래이너 이름
 
@@ -28,14 +40,8 @@ public class Fight_Panel extends JPanel
     private JButton p_Skill3;
     private JButton p_Skill4;
 
-    // 컴포넌트: 버튼(상대)
-    private JButton o_Skill1;
-    private JButton o_Skill2;
-    private JButton o_Skill3;
-    private JButton o_Skill4;
-
     // 컴포넌트: 버튼
-    private JButton exit;
+    private JButton Back_Button; // 돌아가기 버튼
 
     private ImageIcon Log_Background = new ImageIcon("Log.png");
     private JLabel Log_Background_Label = new JLabel(Log_Background);
@@ -73,91 +79,67 @@ public class Fight_Panel extends JPanel
         opponent_name.setFont(new Font ("Helvetica", Font.PLAIN, 19)); // 라벨 폰트 설정
 
         // 버튼 설정 + 버튼 리스너 설정
-        p_Skill1 = new JButton("skill1"); // 버튼 안에 들어갈 텍스트 설정
+        p_Skill1 = new JButton(player_pokemon.skillArray[0]); // 버튼 안에 들어갈 텍스트 설정
         p_Skill1.addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed(ActionEvent e)
             // 버튼을 클릭하면
             {
-
+                player_turn_attack(player_pokemon.skillArray[0]);
             }
         });
 
-        p_Skill2 = new JButton("skill2"); // 버튼 안에 들어갈 텍스트 설정
+        p_Skill2 = new JButton(player_pokemon.skillArray[1]); // 버튼 안에 들어갈 텍스트 설정
         p_Skill2.addActionListener(new ActionListener()
         {
             @Override
             public void actionPerformed(ActionEvent e)
             // 버튼을 클릭하면
             {
-
+                player_turn_attack(player_pokemon.skillArray[1]);
             }
         });
 
-        p_Skill3 = new JButton("skill3"); // 버튼 안에 들어갈 텍스트 설정
-        p_Skill3.addActionListener(new ActionListener()
+        if (player_pokemon.skillArray[2] != null)
         {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            // 버튼을 클릭하면
+            p_Skill3 = new JButton("skill3"); // 버튼 안에 들어갈 텍스트 설정
+            p_Skill3.addActionListener(new ActionListener()
             {
+                @Override
+                public void actionPerformed(ActionEvent e)
+                // 버튼을 클릭하면
+                {
 
-            }
-        });
+                }
+            });
+            p_Skill3.setBounds(50, 550, 290, 50);
+            this.add(p_Skill3);
+        }
 
-        p_Skill4 = new JButton("skill4"); // 버튼 안에 들어갈 텍스트 설정
-        p_Skill4.addActionListener(new ActionListener()
+        if (player_pokemon.skillArray[3] != null)
         {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            // 버튼을 클릭하면
+            p_Skill4 = new JButton("skill4"); // 버튼 안에 들어갈 텍스트 설정
+            p_Skill4.addActionListener(new ActionListener()
             {
+                @Override
+                public void actionPerformed(ActionEvent e)
+                // 버튼을 클릭하면
+                {
 
-            }
-        });
+                }
+            });
+            p_Skill4.setBounds(50, 610, 290, 50);
+            this.add(p_Skill4);
+        }
 
-        o_Skill1 = new JButton("skill1"); // 버튼 안에 들어갈 텍스트 설정
-        o_Skill1.addActionListener(new ActionListener()
+        Back_Button = new JButton("돌아가기");
+        Back_Button.setFont(new Font ("Helvetica", Font.PLAIN, 20));
+        Back_Button.addActionListener(new ActionListener() // 돌아가기 버튼을 클릭했을떄
         {
-            @Override
             public void actionPerformed(ActionEvent e)
-            // 버튼을 클릭하면
             {
-
-            }
-        });
-
-        o_Skill2 = new JButton("skill2"); // 버튼 안에 들어갈 텍스트 설정
-        o_Skill2.addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            // 버튼을 클릭하면
-            {
-
-            }
-        });
-
-        o_Skill3 = new JButton("skill3"); // 버튼 안에 들어갈 텍스트 설정
-        o_Skill3.addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            // 버튼을 클릭하면
-            {
-
-            }
-        });
-
-        o_Skill4 = new JButton("skill4"); // 버튼 안에 들어갈 텍스트 설정
-        o_Skill4.addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            // 버튼을 클릭하면
-            {
-
+                win.change("type_select", player_pokemon); // 선택 패널로 돌아가기
             }
         });
 
@@ -168,13 +150,7 @@ public class Fight_Panel extends JPanel
 
         p_Skill1.setBounds(50, 430, 290, 50);
         p_Skill2.setBounds(50, 490, 290, 50);
-        p_Skill3.setBounds(50, 550, 290, 50);
-        p_Skill4.setBounds(50, 610, 290, 50);
-
-        o_Skill1.setBounds(930, 430, 290, 50);
-        o_Skill2.setBounds(930, 490, 290, 50);
-        o_Skill3.setBounds(930, 550, 290, 50);
-        o_Skill4.setBounds(930, 610, 290, 50);
+        Back_Button.setBounds(1000,500,150,100);
 
         player_pokemon.Portray.setBounds(50,50,290,290);
         opponent.opponent_pokemon.Portray.setBounds(930,50,290,290);
@@ -194,23 +170,16 @@ public class Fight_Panel extends JPanel
 
         this.add(p_Skill1);
         this.add(p_Skill2);
-        this.add(p_Skill3);
-        this.add(p_Skill4);
-
-        this.add(o_Skill1);
-        this.add(o_Skill2);
-        this.add(o_Skill3);
-        this.add(o_Skill4);
-        o_Skill1.setEnabled(false);
-        o_Skill2.setEnabled(false);
-        o_Skill3.setEnabled(false);
-        o_Skill4.setEnabled(false);
 
         this.add(player_pokemon.Portray);
         this.add(opponent.opponent_pokemon.Portray);
         this.add(Log_Background_Label);
 
-
+        if (player_pokemon.Spd < opponent.opponent_pokemon.Spd || turn == 0)
+        // 상대가 스피드가 더 빠르다면 상대 먼저 선제공격
+        {
+            Opponent_turn_attack();
+        }
     }
 
     public void paint(Graphics g)
@@ -219,17 +188,87 @@ public class Fight_Panel extends JPanel
         g.setColor(Color.BLACK);
         g.drawRect(52 - 1, 350 - 1, 286+1, 30+1);
         g.setColor(Color.RED);
-        g.fillRect(52,350,286,30);
+
+        if ((int)(286*((double)player_pokemon.Hp / (double) player_pokemon.Full_Hp)) > 0)
+        {
+            g.fillRect(52,350,(int)(286*((double)player_pokemon.Hp / (double) player_pokemon.Full_Hp)),30);
+            this.add(Back_Button);
+        }
+
+        else
+        {
+            g.fillRect(52,350,0,30);
+        }
 
         g.setColor(Color.BLACK);
         g.drawRect(932 - 1, 350 - 1, 286+1, 30+1);
         g.setColor(Color.RED);
-        g.fillRect(932,350,286,30);
+
+        if ((int)(286*((double)opponent.opponent_pokemon.Hp / (double) opponent.opponent_pokemon.Full_Hp)) > 0)
+        {
+            g.fillRect(52,350,(int)(286*((double)opponent.opponent_pokemon.Hp / (double) opponent.opponent_pokemon.Full_Hp)),30);
+            this.add(Back_Button);
+        }
+
+        else
+        {
+            g.fillRect(52,350,0,30);
+        }
+
+        repaint();
     }
 
     private String Label_Config()
     {
         String str = new String("일반 대전");
         return str;
+    }
+
+    public void player_turn_attack(String skill)
+    {
+        // 일정 시간 이후에 실행할 코드
+        System.out.print("플레이어 포켓몬 행동함");
+        player_pokemon.Use_Skill(player_pokemon, opponent, skill);
+        turn++;
+        Opponent_turn_attack();
+    }
+
+    private void Opponent_turn_attack()
+    {
+        p_Skill1.setEnabled(false);
+        p_Skill2.setEnabled(false);
+
+        if (player_pokemon.skillArray[2] != null)
+        {
+            p_Skill3.setEnabled(false);
+        }
+        if (player_pokemon.skillArray[3] != null)
+        {
+            p_Skill4.setEnabled(false);
+        }
+
+        Timer timer1 = new Timer();
+        TimerTask task1 = new TimerTask() {
+            @Override
+            public void run() {
+                // 일정 시간 이후에 실행할 코드
+                opponent.opponent_pokemon.Opponent_Use_Skill(player_pokemon, opponent);
+                p_Skill1.setEnabled(true);
+                p_Skill2.setEnabled(true);
+
+                if (player_pokemon.skillArray[2] != null)
+                {
+                    p_Skill3.setEnabled(true);
+                }
+                if (player_pokemon.skillArray[3] != null)
+                {
+                    p_Skill4.setEnabled(true);
+                }
+                System.out.print("현재 체력은 " + player_pokemon.Hp + " / " + player_pokemon.Full_Hp + "\n");
+                System.out.print((int)(286*((double)player_pokemon.Hp / (double) player_pokemon.Full_Hp)));
+            }
+        };
+        timer1.schedule(task1,3000);
+        turn++;
     }
 }
