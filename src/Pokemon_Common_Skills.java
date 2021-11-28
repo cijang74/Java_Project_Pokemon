@@ -118,11 +118,19 @@ class Pokemon_Common_Skills
         if (my_turn == false)
         {
             player_pokemon.Def -= 5;
+            if(player_pokemon.Def < 1)
+            {
+                player_pokemon.Def =1;
+            }
         }
 
         else
         {
             opponent.opponent_pokemon.Def -= 5;
+            if(opponent.opponent_pokemon.Def < 1)
+            {
+                opponent.opponent_pokemon.Def =1;
+            }
         }
     }
 
@@ -132,11 +140,19 @@ class Pokemon_Common_Skills
         if (my_turn == false)
         {
             player_pokemon.Atk -= 5;
+            if(player_pokemon.Atk < 1)
+            {
+                player_pokemon.Atk =1;
+            }
         }
 
         else
         {
             opponent.opponent_pokemon.Atk -= 5;
+            if(opponent.opponent_pokemon.Atk < 1)
+            {
+                opponent.opponent_pokemon.Atk =1;
+            }
         }
     }
 
@@ -314,12 +330,20 @@ class Pokemon_Common_Skills
     {
         if (my_turn == false)
         {
-            opponent.opponent_pokemon.Def += 5;
+            opponent.opponent_pokemon.Hp += 10;
+            if(opponent.opponent_pokemon.Hp > opponent.opponent_pokemon.Full_Hp)
+            {
+                opponent.opponent_pokemon.Hp = opponent.opponent_pokemon.Full_Hp;
+            }
         }
 
         else
         {
-            player_pokemon.Def += 5;
+            player_pokemon.Hp += 10;
+            if(player_pokemon.Hp > player_pokemon.Full_Hp)
+            {
+                player_pokemon.Hp = player_pokemon.Full_Hp;
+            }
         }
     }
 

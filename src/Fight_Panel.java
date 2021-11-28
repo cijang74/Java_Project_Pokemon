@@ -206,13 +206,13 @@ public class Fight_Panel extends JPanel
 
         if ((int)(286*((double)opponent.opponent_pokemon.Hp / (double) opponent.opponent_pokemon.Full_Hp)) > 0)
         {
-            g.fillRect(52,350,(int)(286*((double)opponent.opponent_pokemon.Hp / (double) opponent.opponent_pokemon.Full_Hp)),30);
+            g.fillRect(932,350,(int)(286*((double)opponent.opponent_pokemon.Hp / (double) opponent.opponent_pokemon.Full_Hp)),30);
             this.add(Back_Button);
         }
 
         else
         {
-            g.fillRect(52,350,0,30);
+            g.fillRect(932,350,0,30);
         }
 
         repaint();
@@ -264,8 +264,8 @@ public class Fight_Panel extends JPanel
                 {
                     p_Skill4.setEnabled(true);
                 }
-                System.out.print("현재 체력은 " + player_pokemon.Hp + " / " + player_pokemon.Full_Hp + "\n");
-                System.out.print((int)(286*((double)player_pokemon.Hp / (double) player_pokemon.Full_Hp)));
+                System.out.print("현재 체력은 " + opponent.opponent_pokemon.Hp + " / " + opponent.opponent_pokemon.Full_Hp + "\n");
+                System.out.print((int)(286*((double)opponent.opponent_pokemon.Hp / (double) opponent.opponent_pokemon.Full_Hp)));
             }
         };
         timer1.schedule(task1,3000);
