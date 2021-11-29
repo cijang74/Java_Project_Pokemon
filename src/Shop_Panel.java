@@ -39,6 +39,9 @@ public class Shop_Panel extends JPanel{
     private JLabel bae_fruit_Img = new JLabel(bae_fruit);
     private JLabel gwa_fruit_Img = new JLabel(gwa_fruit);
 
+    private ImageIcon BackGround = new ImageIcon("Shop_BackGround.png");
+    private JLabel BackGround_Label = new JLabel(BackGround);
+
     public Shop_Panel(JPanelChange win, Pokemon player_pokemon, int Dua_Date, int Money)
     {
         this.win = win;
@@ -174,8 +177,8 @@ public class Shop_Panel extends JPanel{
         });
 
         // 라벨과 버튼 배치
-        Dua_Date_Label.setBounds(1050, 550, 1280, 50);
-        Money_Label.setBounds(1050, 580, 1280, 50);
+        Dua_Date_Label.setBounds(1120, 620, 1280, 50);
+        Money_Label.setBounds(1120, 650, 1280, 50);
 
         Hp_Plus_Label.setBounds(180, 0, 300, 100);
         Atk_Plus_Label.setBounds(780, 0, 300, 100);
@@ -193,6 +196,7 @@ public class Shop_Panel extends JPanel{
         bae_fruit_Img.setBounds(40, 250, 500, 500);
         gwa_fruit_Img.setBounds(670, 250, 500, 500);
 
+        BackGround_Label.setBounds(0,0,1280,720);
 
         this.add(Dua_Date_Label);
         this.add(Money_Label);
@@ -213,5 +217,6 @@ public class Shop_Panel extends JPanel{
         this.add(bae_fruit_Img);
         this.add(gwa_fruit_Img);
 
+        this.add(BackGround_Label);
     }
 }

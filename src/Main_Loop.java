@@ -21,7 +21,7 @@ public class Main_Loop
 
         // 프레임 설정
         win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // x 누르면 꺼짐
-        win.setSize(1280,720); // 프레임 창 크기 설정
+        win.setSize(1296,759); // 프레임 창 크기 설정
         win.setVisible(true); // 보여지도록 설정
     }
 }

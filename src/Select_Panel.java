@@ -34,6 +34,9 @@ public class Select_Panel extends JPanel{
 
     private JPanelChange win; // win
 
+    private ImageIcon BackGround = new ImageIcon("Select_BackGround.png");
+    private JLabel BackGround_Label = new JLabel(BackGround);
+
     public Select_Panel(JPanelChange win, String NAME, Pokemon player_pokemon, int Dua_Date, int Money)
     // 처음 시작패널, 사용자에게 이름을 입력받음
     {
@@ -135,24 +138,26 @@ public class Select_Panel extends JPanel{
         });
 
         // 위에서 설정한 컴포넌트들의 크기설정
-        Dua_Date_Label.setBounds(1050, 550, 1280, 50);
-        Money_Label.setBounds(1050, 580, 1280, 50);
+        Dua_Date_Label.setBounds(1120, 620, 1280, 50);
+        Money_Label.setBounds(1120, 650, 1280, 50);
 
-        Pokemon_Level_Label.setBounds(90, 380, 1280, 50);
-        Pokemon_Inform_Label.setBounds(190, 380, 1280, 50);
-        Pokemon_HP_Label.setBounds(90, 430, 1280, 50);
-        Pokemon_ATK_Label.setBounds(190, 430, 1280, 50);
-        Pokemon_DF_Label.setBounds(90, 480, 1280, 50);
-        Pokemon_SPD_Label.setBounds(190, 480, 1280, 50);
+        Pokemon_Level_Label.setBounds(90, 410, 1280, 50);
+        Pokemon_Inform_Label.setBounds(190, 410, 1280, 50);
+        Pokemon_HP_Label.setBounds(90, 460, 1280, 50);
+        Pokemon_ATK_Label.setBounds(190, 460, 1280, 50);
+        Pokemon_DF_Label.setBounds(90, 510, 1280, 50);
+        Pokemon_SPD_Label.setBounds(190, 510, 1280, 50);
 
         Training_Button.setBounds(400, 120, 300, 100);
-        Normal_Fight_Button.setBounds(400, 360, 300, 100);
         Grand_Prix_Button.setBounds(800, 120, 300, 100);
-        Shop_Button.setBounds(800, 360, 300, 100);
+        Normal_Fight_Button.setBounds(400, 400, 300, 100);
+        Shop_Button.setBounds(800, 400, 300, 100);
 
         Last_Battle_Button.setBounds(600,240,300,100);
 
         player_pokemon.Portray.setBounds(50,100,290,290);
+
+        BackGround_Label.setBounds(0,0,1280,720);
 
         // 위에서 설정한 컴포넌트들을 패널에 추가해줌
         this.add(Dua_Date_Label);
@@ -194,5 +199,7 @@ public class Select_Panel extends JPanel{
             Shop_Button.setEnabled(true);
             Grand_Prix_Button.setEnabled(false);
         }
+
+        this.add(BackGround_Label);
     }
 }

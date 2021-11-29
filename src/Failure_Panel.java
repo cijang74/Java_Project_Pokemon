@@ -31,6 +31,9 @@ public class Failure_Panel extends JPanel
 
     private JPanelChange win; // win
 
+    private ImageIcon BackGround = new ImageIcon("Fail_BackGround.png");
+    private JLabel BackGround_Label = new JLabel(BackGround);
+
     public Failure_Panel(JPanelChange win, String NAME, Pokemon player_pokemon)
     {
         this.win = win;
@@ -48,7 +51,7 @@ public class Failure_Panel extends JPanel
         this.add(player_pokemon.Portray); // 포켓몬 이미지 라벨 그려주기
 
         GP_Result_Label = new JLabel("실패..."); // 라벨 내용
-        GP_Result_Label.setFont(new Font ("Helvetica", Font.BOLD, 35)); // 승리 강조, 라벨 폰트 설정
+        GP_Result_Label.setFont(new Font ("Helvetica", Font.BOLD, 50)); // 승리 강조, 라벨 폰트 설정
 
         GP_Result_Comment_Label = new JLabel("마지막 승부에서 승리하지 못했습니다. "); // 라벨 내용
         GP_Result_Comment_Label.setFont(new Font ("Helvetica", Font.PLAIN, 19)); // 승리 강조, 라벨 폰트 설정
@@ -65,16 +68,16 @@ public class Failure_Panel extends JPanel
         Day_Passed_Label = new JLabel("날짜 : " + Day_Passed); // 라벨 내용
         Day_Passed_Label.setFont(new Font ("Helvetica", Font.PLAIN, 19)); // 라벨 폰트 설정
 
-        GP_Result_Label.setBounds(600, 80, 1280, 100);
-        GP_Result_Comment_Label.setBounds(600, 200, 1280, 50);
-        NAME_Label.setBounds(700, 350, 1280, 50);
-        player_pokemon_Name_Label.setBounds(700, 450, 1280, 50);
-        player_pokemon_Level_Label.setBounds(700, 550, 1280, 50);
-        Day_Passed_Label.setBounds(700, 650, 1280, 50);
+        GP_Result_Label.setBounds(580, 70, 1280, 100);
+        GP_Result_Comment_Label.setBounds(700, 200, 1280, 50);
+        NAME_Label.setBounds(700, 270, 1280, 50);
+        player_pokemon_Name_Label.setBounds(700, 305, 1280, 50);
+        player_pokemon_Level_Label.setBounds(700, 340, 1280, 50);
+        Day_Passed_Label.setBounds(700, 375, 1280, 50);
 
-        player_pokemon.Portray.setBounds(50,100,290,290);
+        player_pokemon.Portray.setBounds(350,180,290,290);
 
-        setBackground(Color.white);
+        BackGround_Label.setBounds(0,0,1280,720);
 
         this.add(GP_Result_Label);
         this.add(NAME_Label);
@@ -82,6 +85,7 @@ public class Failure_Panel extends JPanel
         this.add(player_pokemon_Level_Label);
         this.add(Day_Passed_Label);
         this.add(GP_Result_Comment_Label);
+        this.add(BackGround_Label);
     }
 
 }

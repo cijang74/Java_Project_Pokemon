@@ -39,6 +39,9 @@ public class Training_Panel extends JPanel{
     private JLabel Punch_Img = new JLabel(Punch);
     private JLabel Rope_Img = new JLabel(Rope);
 
+    private ImageIcon BackGround = new ImageIcon("Tranning_BackGround.png");
+    private JLabel BackGround_Label = new JLabel(BackGround);
+
     public Training_Panel(JPanelChange win, Pokemon player_pokemon, int Dua_Date, int Money)
     {
         this.win = win;
@@ -145,8 +148,8 @@ public class Training_Panel extends JPanel{
         });
 
         // 라벨과 버튼 배치
-        Dua_Date_Label.setBounds(1050, 550, 1280, 50);
-        Money_Label.setBounds(1050, 580, 1280, 50);
+        Dua_Date_Label.setBounds(1120, 620, 1280, 50);
+        Money_Label.setBounds(1120, 650, 1280, 50);
 
         Hp_Training_Label.setBounds(180, 0, 300, 100);
         Atk_Training_Label.setBounds(780, 0, 300, 100);
@@ -154,9 +157,9 @@ public class Training_Panel extends JPanel{
         Spd_Training_Label.setBounds(780, 330, 350, 100);
 
         Back_Button.setBounds(0, 0, 150, 100);
-        Running_Button.setBounds(250, 300, 150, 50);
+        Running_Button.setBounds(200, 300, 150, 50);
         Bench_button.setBounds(850, 300, 150, 50);
-        Punch_button.setBounds(250, 600, 150, 50);
+        Punch_button.setBounds(200, 600, 150, 50);
         Rope_button.setBounds(850, 600, 150, 50);
 
         Running_Img.setBounds(40, 80,  500, 200);
@@ -164,6 +167,7 @@ public class Training_Panel extends JPanel{
         Punch_Img.setBounds(40, 250, 500, 500);
         Rope_Img.setBounds(670, 250, 500, 500);
 
+        BackGround_Label.setBounds(0,0,1280,720);
 
         this.add(Dua_Date_Label);
         this.add(Money_Label);
@@ -184,5 +188,6 @@ public class Training_Panel extends JPanel{
         this.add(Punch_Img);
         this.add(Rope_Img);
 
+        this.add(BackGround_Label);
     }
 }

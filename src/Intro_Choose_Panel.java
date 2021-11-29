@@ -18,6 +18,8 @@ class Intro_Choose_Panel extends JPanel
     private JLabel ImageLabel = new JLabel(); // 라벨
     private JButton Choose_Button; // 버튼
     private JPanelChange win; // win
+    private ImageIcon BackGround = new ImageIcon("Choose_BackGround.png");
+    private JLabel BackGround_Label = new JLabel(BackGround);
 
     public Intro_Choose_Panel(JPanelChange win, String NAME)
     // 처음 시작패널, 사용자에게 이름을 입력받음
@@ -52,13 +54,13 @@ class Intro_Choose_Panel extends JPanel
         Starting_Pokemon_Img[0].setSelected(true); // 처음에는 0번째 배열에 있는 버튼이 선택되어있음(리아코)
 
         // 위에서 설정한 컴포넌트들의 크기설정
-        radioPanel.setBounds(150, 530, 1000, 30);
-        Choose_Button.setBounds(150, 580, 1000, 80);
+        radioPanel.setBounds(485, 530, 340, 30);
+        Choose_Button.setBounds(400, 580, 500, 80);
         Say_Dr.setBounds(310, 10, 1000, 100);
         ImageLabel.setBounds(550, 240, 250, 250);
         Dr_Image_Label.setBounds(180, 120, 180, 384);
+        BackGround_Label.setBounds(0,0,1280,720);
 
-        setBackground(Color.white);
         radioPanel.setBackground(Color.white);
 
         // 위에서 설정한 컴포넌트들을 패널에 추가해줌
@@ -67,6 +69,7 @@ class Intro_Choose_Panel extends JPanel
         this.add(Say_Dr); // 번복 ㄴㄴ
         this.add(ImageLabel); // 포켓몬 이미지
         this.add(Dr_Image_Label); // 박사 이미지
+        this.add(BackGround_Label);
     }
 
     class MyItemListener implements ItemListener{

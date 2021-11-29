@@ -12,6 +12,8 @@ public class Start_Panel extends JPanel{
     private JTextField Name_Text_Field; // 텍스트 필드
     private JButton Start_Button; // 버튼
     private JPanelChange win; // win
+    private ImageIcon BackGround = new ImageIcon("Title.png");
+    private JLabel BackGround_Label = new JLabel(BackGround);
 
     public Start_Panel(JPanelChange win)
     // 처음 시작패널, 사용자에게 이름을 입력받음
@@ -75,15 +77,17 @@ public class Start_Panel extends JPanel{
         });
 
         // 위에서 설정한 컴포넌트들의 크기설정
-        Say_Give_Name.setBounds(400, 100, 1280, 50);
-        Name_Text_Field.setBounds(120, 200, 1020, 50);
-        Start_Button.setBounds(500, 400, 300, 100);
+        Say_Give_Name.setBounds(400, 250, 1280, 50);
+        Name_Text_Field.setBounds(400, 300, 520, 50);
+        Start_Button.setBounds(500, 450, 300, 100);
+        BackGround_Label.setBounds(0,0,1280,720);
 
 
         // 위에서 설정한 컴포넌트들을 패널에 추가해줌
         this.add(Say_Give_Name);
         this.add(Name_Text_Field);
         this.add(Start_Button);
+        this.add(BackGround_Label);
 
         // 해당 패널에 포커스를 두어야 키보드 입력이 정상적으로 작동
         setFocusable(true);

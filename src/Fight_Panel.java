@@ -45,6 +45,9 @@ public class Fight_Panel extends JPanel
 
     private JPanelChange win; // win
 
+    private ImageIcon BackGround = new ImageIcon("Battle_BackGround.png");
+    private JLabel BackGround_Label = new JLabel(BackGround);
+
     public Fight_Panel(JPanelChange win, String NAME, Pokemon player_pokemon, int Dua_Date, int Money, String type)
     {
         // 매개변수로 전달받은 값들을 해당 클래스에 저장
@@ -230,7 +233,7 @@ public class Fight_Panel extends JPanel
         super.paint(g);
         g.setColor(Color.BLACK);
         g.drawRect(52 - 1, 350 - 1, 286+1, 30+1);
-        g.setColor(Color.RED);
+        g.setColor(Color.GREEN);
 
         if ((int)(286*((double)player_pokemon.Hp / (double) player_pokemon.Full_Hp)) > 0)
         {
@@ -279,6 +282,8 @@ public class Fight_Panel extends JPanel
             }
         }
 
+        BackGround_Label.setBounds(0,0,1280,720);
+        this.add(BackGround_Label);
         repaint();
     }
 
