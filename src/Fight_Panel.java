@@ -21,6 +21,8 @@ public class Fight_Panel extends JPanel
     private String[] result = new String[20];
     boolean end = true;
     boolean isWin = true;
+    private int before_level;
+    private int after_level;
 
     // 컴포넌트: 라벨
     private JLabel now_Panel;
@@ -109,14 +111,16 @@ public class Fight_Panel extends JPanel
 
         if (player_pokemon.skillArray[2] != null)
         {
-            p_Skill3 = new JButton("skill3"); // 버튼 안에 들어갈 텍스트 설정
+            p_Skill3 = new JButton(player_pokemon.skillArray[2]); // 버튼 안에 들어갈 텍스트 설정
             p_Skill3.addActionListener(new ActionListener()
             {
                 @Override
                 public void actionPerformed(ActionEvent e)
                 // 버튼을 클릭하면
                 {
-
+                    {
+                        player_turn_attack(player_pokemon.skillArray[2]);
+                    }
                 }
             });
             p_Skill3.setBounds(50, 550, 290, 50);
@@ -125,14 +129,14 @@ public class Fight_Panel extends JPanel
 
         if (player_pokemon.skillArray[3] != null)
         {
-            p_Skill4 = new JButton("skill4"); // 버튼 안에 들어갈 텍스트 설정
+            p_Skill4 = new JButton(player_pokemon.skillArray[3]); // 버튼 안에 들어갈 텍스트 설정
             p_Skill4.addActionListener(new ActionListener()
             {
                 @Override
                 public void actionPerformed(ActionEvent e)
                 // 버튼을 클릭하면
                 {
-
+                    player_turn_attack(player_pokemon.skillArray[3]);
                 }
             });
             p_Skill4.setBounds(50, 610, 290, 50);
@@ -150,7 +154,13 @@ public class Fight_Panel extends JPanel
                 {
                     win.Money += 50;
                     player_pokemon.Exp += 5;
+                    before_level = player_pokemon.Level;
                     player_pokemon.Exp_Update();
+                    after_level = player_pokemon.Level;
+                    if (before_level != after_level)
+                    {
+                        player_pokemon.Level_Stat_Update();
+                    }
                     win.Dua_Date -= 1;
                     win.change("type_select", player_pokemon); // 선택 패널로 돌아가기
                 }
@@ -158,7 +168,13 @@ public class Fight_Panel extends JPanel
                 {
                     win.Money += 200;
                     player_pokemon.Exp += 10;
+                    before_level = player_pokemon.Level;
                     player_pokemon.Exp_Update();
+                    after_level = player_pokemon.Level;
+                    if (before_level != after_level)
+                    {
+                        player_pokemon.Level_Stat_Update();
+                    }
                     win.Dua_Date -= 1;
                     win.change("type_select", player_pokemon); // 선택 패널로 돌아가기
                 }
@@ -166,7 +182,13 @@ public class Fight_Panel extends JPanel
                 {
                     win.Money += 200;
                     player_pokemon.Exp += 10;
+                    before_level = player_pokemon.Level;
                     player_pokemon.Exp_Update();
+                    after_level = player_pokemon.Level;
+                    if (before_level != after_level)
+                    {
+                        player_pokemon.Level_Stat_Update();
+                    }
                     win.Dua_Date -= 1;
                     win.change("type_outro", player_pokemon); // 선택 패널로 돌아가기
                 }

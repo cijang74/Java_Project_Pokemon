@@ -27,7 +27,7 @@ class Pokemon extends Pokemon_Common_Skills
         // 매개변수르를 받아서 해당 포켓몬 객체에 저장
         this.Name = Name;
         this.type = type;
-        this.Level = level;
+        this.Level = 50;
         this.Hp = this.Level;
         this.Def = this.Level;
         this.Atk = this.Level;
@@ -53,6 +53,8 @@ class Pokemon extends Pokemon_Common_Skills
             this.Portray = new JLabel(this.Pokemon_Image);
             this.skillArray[0] = "몸통박치기";
             this.skillArray[1] = "울음소리";
+            this.skillArray[2] = null;
+            this.skillArray[3] = null;
         }
         else
         {
@@ -60,6 +62,8 @@ class Pokemon extends Pokemon_Common_Skills
             this.Portray = new JLabel(this.Pokemon_Image);
             this.skillArray[0] = "몸통박치기";
             this.skillArray[1] = "꼬리흔들기";
+            this.skillArray[2] = null;
+            this.skillArray[3] = null;
         }
     }
 
@@ -109,6 +113,7 @@ class Pokemon extends Pokemon_Common_Skills
 
     public void Exp_Update()
     {
+
         System.out.print(this.Exp);
         if (this.Exp >= 5 && this.Exp <= 15)
         {
@@ -118,6 +123,20 @@ class Pokemon extends Pokemon_Common_Skills
         else if (this.Exp > 15 && this.Exp <= 30)
         {
             this.Level = 3;
+            if (this.Name == "리아코")
+            {
+                this.skillArray[2] = "거품광선";
+            }
+
+            else if (this.Name == "브케인")
+            {
+                this.skillArray[2] = "불꽃세례";
+            }
+
+            else if (this.Name == "치코리타")
+            {
+                this.skillArray[2] = "잎날가르기";
+            }
         }
 
         else if (this.Exp > 30 && this.Exp <= 50)
@@ -128,6 +147,7 @@ class Pokemon extends Pokemon_Common_Skills
         else if (this.Exp > 50 && this.Exp <= 75)
         {
             this.Level = 5;
+            this.skillArray[3] = "파괴광선";
         }
 
         else if (this.Exp > 75 && this.Exp <= 105)
@@ -144,6 +164,14 @@ class Pokemon extends Pokemon_Common_Skills
         {
             this.Level = 8;
         }
+    }
+
+    public void Level_Stat_Update()
+    {
+        this.Full_Hp += 3;
+        this.Full_Spd += 3;
+        this.Full_Atk += 3;
+        this.Full_Def += 3;
     }
 
 }

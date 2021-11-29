@@ -76,7 +76,7 @@ public class Outro_Panel extends JPanel
         player_pokemon_Level_Label.setBounds(700, 340, 1280, 50);
         Day_Passed_Label.setBounds(700, 375, 1280, 50);
 
-        player_pokemon.Portray.setBounds(50,100,290,290);
+        player_pokemon.Portray.setBounds(350,180,290,290);
 
         BackGround_Label.setBounds(0,0,1280,720);
 
