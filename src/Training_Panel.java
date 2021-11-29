@@ -151,7 +151,7 @@ public class Training_Panel extends JPanel{
         Hp_Training_Label.setBounds(180, 0, 300, 100);
         Atk_Training_Label.setBounds(780, 0, 300, 100);
         Def_Training_Label.setBounds(180, 330, 300, 100);
-        Spd_Training_Label.setBounds(780, 330, 300, 100);
+        Spd_Training_Label.setBounds(780, 330, 350, 100);
 
         Back_Button.setBounds(0, 0, 150, 100);
         Running_Button.setBounds(250, 300, 150, 50);

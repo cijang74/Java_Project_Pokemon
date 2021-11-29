@@ -20,6 +20,7 @@ public class Fight_Panel extends JPanel
     private int turn = 0;
     private String[] result = new String[20];
     boolean end = true;
+    boolean isWin = true;
 
     // 컴포넌트: 라벨
     private JLabel now_Panel;
@@ -135,27 +136,50 @@ public class Fight_Panel extends JPanel
             this.add(p_Skill4);
         }
 
-        Back_Button = new JButton("돌아가기");
+        Back_Button = new JButton(Button_Config(type));
         Back_Button.setFont(new Font ("Helvetica", Font.PLAIN, 20));
         Back_Button.setEnabled(false);
         Back_Button.addActionListener(new ActionListener() // 돌아가기 버튼을 클릭했을 때
         {
             public void actionPerformed(ActionEvent e)
             {
-                if (type == "type_normal_fight")
+                if (type == "type_normal_fight" && isWin == true)
                 {
-                    win.Money += 100;
+                    win.Money += 50;
                     player_pokemon.Exp += 5;
                     player_pokemon.Exp_Update();
+                    win.Dua_Date -= 1;
+                    win.change("type_select", player_pokemon); // 선택 패널로 돌아가기
                 }
-                else if (type == "type_grand_prix")
+                else if (type == "type_grand_prix" && isWin == true)
                 {
-                    win.Money += 500;
+                    win.Money += 200;
                     player_pokemon.Exp += 10;
                     player_pokemon.Exp_Update();
+                    win.Dua_Date -= 1;
+                    win.change("type_select", player_pokemon); // 선택 패널로 돌아가기
                 }
-                win.Dua_Date -= 1;
-                win.change("type_select", player_pokemon); // 선택 패널로 돌아가기
+                else if (type == "type_last_fight" && isWin == true)
+                {
+                    win.Money += 200;
+                    player_pokemon.Exp += 10;
+                    player_pokemon.Exp_Update();
+                    win.Dua_Date -= 1;
+                    win.change("type_outro", player_pokemon); // 선택 패널로 돌아가기
+                }
+                else if (type == "type_last_fight" && isWin == false)
+                {
+                    win.Money += 200;
+                    player_pokemon.Exp += 10;
+                    player_pokemon.Exp_Update();
+                    win.Dua_Date -= 1;
+                    win.change("type_failure", player_pokemon); // 선택 패널로 돌아가기
+                }
+                else
+                {
+                    win.Dua_Date -= 1;
+                    win.change("type_select", player_pokemon); // 선택 패널로 돌아가기
+                }
             }
         });
 
@@ -279,6 +303,21 @@ public class Fight_Panel extends JPanel
         }
     }
 
+    private String Button_Config(String type)
+    {
+        if (type == "type_last_fight")
+        {
+            String str = new String("엔딩");
+            return str;
+        }
+
+        else
+        {
+            String str = new String("돌아가기");
+            return str;
+        }
+    }
+
     public void player_turn_attack(String skill)
     {
         turn++;
@@ -293,6 +332,7 @@ public class Fight_Panel extends JPanel
             battle_Log[turn + 1] = new JLabel("대전에서 승리하였다!"); // 라벨 내용
             battle_Log[turn + 1].setFont(new Font ("Helvetica", Font.PLAIN, 15)); // 라벨 폰트 설정
             Update_Log(end);
+            isWin = true;
         }
         else
         {
@@ -327,6 +367,7 @@ public class Fight_Panel extends JPanel
                     battle_Log[turn + 1] = new JLabel("대전에서 패배하였다..."); // 라벨 내용
                     battle_Log[turn + 1].setFont(new Font ("Helvetica", Font.PLAIN, 15)); // 라벨 폰트 설정
                     Update_Log(end);
+                    isWin = false;
                 }
 
                 else

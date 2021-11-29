@@ -20,6 +20,8 @@ public class JPanelChange extends JFrame
     private Fight_Panel normal_fight_panel = null;
     private Fight_Panel grand_prix_panel = null;
     private Fight_Panel last_fight_panel = null;
+    private Outro_Panel outro_panel = null;
+    private Failure_Panel failure_panel = null;
 
     public Start_Panel getStart_panel()
     // 메인 클래스에서 해당 패널을 불러오기 위한 메서드
@@ -138,6 +140,24 @@ public class JPanelChange extends JFrame
             last_fight_panel = new Fight_Panel(this, NAME, player_pokemon, this.Dua_Date, this.Money, "type_last_fight");
             getContentPane().removeAll();
             getContentPane().add(last_fight_panel);
+            revalidate();
+            repaint();
+        }
+
+        else if (panelType.equals("type_outro"))
+        {
+            outro_panel = new Outro_Panel(this, NAME, player_pokemon);
+            getContentPane().removeAll();
+            getContentPane().add(outro_panel);
+            revalidate();
+            repaint();
+        }
+
+        else if (panelType.equals("type_failure"))
+        {
+            failure_panel = new Failure_Panel(this, NAME, player_pokemon);
+            getContentPane().removeAll();
+            getContentPane().add(failure_panel);
             revalidate();
             repaint();
         }
