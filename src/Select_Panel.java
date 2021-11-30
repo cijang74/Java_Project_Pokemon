@@ -173,7 +173,6 @@ public class Select_Panel extends JPanel{
         this.add(Normal_Fight_Button);
         this.add(Grand_Prix_Button);
         this.add(Shop_Button);
-        this.add(Last_Battle_Button);
 
         // 5의 배수인 날은 그랑프리 패널만 선택 가능
         if ((Dua_Date != 30 && Dua_Date != 0) && Dua_Date % 5 ==0)

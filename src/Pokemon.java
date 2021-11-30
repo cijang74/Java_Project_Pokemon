@@ -27,7 +27,7 @@ class Pokemon extends Pokemon_Common_Skills
         // 매개변수르를 받아서 해당 포켓몬 객체에 저장
         this.Name = Name;
         this.type = type;
-        this.Level = 50;
+        this.Level = level;
         this.Hp = this.Level;
         this.Def = this.Level;
         this.Atk = this.Level;
