@@ -19,19 +19,21 @@ public class Fight_Panel extends JPanel
     private int Money; // 소지금
     private int turn = 0;
     private String[] result = new String[20];
-    boolean end = true;
-    boolean isWin = true;
-    private int before_level;
-    private int after_level;
+    boolean end = true; // 현재 배틀이 끝났는지 알기 위한 부울 변수
+    boolean isWin = true; // 배틀에서 이겼는지 확인하기 위한 부울 변수
+
+    // 포켓몬이 레벨업 했는지를 확인하기 위한 변수들
+    private int before_level; // 대전에 참여하기 전 포켓몬의 레벨
+    private int after_level; // 대전에 참여 후 포켓몬의 레벨
 
     // 컴포넌트: 라벨
-    private JLabel now_Panel;
-    private JLabel[] battle_Log = new JLabel[20];
+    private JLabel now_Panel; // 현재 패널 (일반 대전 or 그랑프리 or 마지막 대전)
+    private JLabel[] battle_Log = new JLabel[20]; // 배틀 로그
 
-    private JLabel player_name;
-    private JLabel opponent_name; // 상대 트래이너 이름
+    private JLabel player_name; // 플레이어 이름
+    private JLabel opponent_name; // 상대 트레이너 이름
 
-    // 컴포넌트: 버튼(플레이어)
+    // 컴포넌트: 버튼(플레이어) - 포켓몬 스킬들
     private JButton p_Skill1;
     private JButton p_Skill2;
     private JButton p_Skill3;
@@ -47,8 +49,8 @@ public class Fight_Panel extends JPanel
 
     private JPanelChange win; // win
 
-    private ImageIcon BackGround = new ImageIcon("Battle_BackGround.png");
-    private JLabel BackGround_Label = new JLabel(BackGround);
+    private ImageIcon BackGround = new ImageIcon("Battle_BackGround.png"); // 배경 이미지
+    private JLabel BackGround_Label = new JLabel(BackGround); // 배경 이미지를 라벨로 만들어서 배치
 
     public Fight_Panel(JPanelChange win, String NAME, Pokemon player_pokemon, int Dua_Date, int Money, String type)
     {

@@ -100,7 +100,7 @@ class Intro_Choose_Panel extends JPanel
             if (Starting_Pokemon_Img[0].isSelected())
             {
                 // 포켓몬 객체 생성
-                Pokemon player_pokemon = new Pokemon("리아코", "물", 1);
+                Pokemon player_pokemon = new pokemon_riako();
                 // 박사와 대화를 하는 패널2로 이동
                 win.change("type_after_intro", player_pokemon);
             }
@@ -109,14 +109,14 @@ class Intro_Choose_Panel extends JPanel
             else if (Starting_Pokemon_Img[1].isSelected())
             {
                 // 위 if문과 동일
-                Pokemon player_pokemon = new Pokemon("브케인", "불", 1);
+                Pokemon player_pokemon = new pokemon_bcain();
                 win.change("type_after_intro", player_pokemon);
             }
 
             // 만약 1번째 라디오 버튼(치코리타)가 선택되었다면
             else
             {
-                Pokemon player_pokemon = new Pokemon("치코리타", "풀", 1);
+                Pokemon player_pokemon = new pokemon_chikorita();
                 win.change("type_after_intro", player_pokemon);
             }
         }

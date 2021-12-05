@@ -34,8 +34,8 @@ public class Select_Panel extends JPanel{
 
     private JPanelChange win; // win
 
-    private ImageIcon BackGround = new ImageIcon("Select_BackGround.png");
-    private JLabel BackGround_Label = new JLabel(BackGround);
+    private ImageIcon BackGround = new ImageIcon("Select_BackGround.png"); // 배경 이미지
+    private JLabel BackGround_Label = new JLabel(BackGround); // 배경 이미지를 라벨로 만들어서 배치
 
     public Select_Panel(JPanelChange win, String NAME, Pokemon player_pokemon, int Dua_Date, int Money)
     // 처음 시작패널, 사용자에게 이름을 입력받음

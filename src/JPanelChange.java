@@ -100,6 +100,8 @@ public class JPanelChange extends JFrame
             revalidate();
             repaint();
         }
+
+        // 상점 패널로 바꿔주기
         else if (panelType.equals("type_shop"))
         {
             shop_panel = new Shop_Panel(this, player_pokemon, this.Dua_Date, this.Money);
@@ -108,6 +110,8 @@ public class JPanelChange extends JFrame
             revalidate();
             repaint();
         }
+
+        // 훈련 패널로 바꿔주기
         else if (panelType.equals("type_training"))
         {
             training_panel = new Training_Panel(this, player_pokemon, this.Dua_Date, this.Money);
@@ -117,6 +121,7 @@ public class JPanelChange extends JFrame
             repaint();
         }
 
+        // 일반 대전 패널로 바꿔주기 (이걸 부모로 써서 아래 두 패널을 상속 시켜도 될 듯)
         else if (panelType.equals("type_normal_fight"))
         {
             normal_fight_panel = new Fight_Panel(this, NAME, player_pokemon, this.Dua_Date, this.Money, "type_normal_fight");
@@ -126,6 +131,7 @@ public class JPanelChange extends JFrame
             repaint();
         }
 
+        // 그랑프리 패널로 바꿔주기
         else if (panelType.equals("type_grand_prix"))
         {
             grand_prix_panel = new Fight_Panel(this, NAME, player_pokemon, this.Dua_Date, this.Money, "type_grand_prix");
@@ -135,6 +141,7 @@ public class JPanelChange extends JFrame
             repaint();
         }
 
+        // 마지막 패널로 바꿔주기
         else if (panelType.equals("type_last_fight"))
         {
             last_fight_panel = new Fight_Panel(this, NAME, player_pokemon, this.Dua_Date, this.Money, "type_last_fight");
@@ -144,6 +151,7 @@ public class JPanelChange extends JFrame
             repaint();
         }
 
+        // 엔딩(성공) 패널로 바꿔주기
         else if (panelType.equals("type_outro"))
         {
             outro_panel = new Outro_Panel(this, NAME, player_pokemon);
@@ -153,6 +161,7 @@ public class JPanelChange extends JFrame
             repaint();
         }
 
+        // 실패 패널로 바꿔주기
         else if (panelType.equals("type_failure"))
         {
             failure_panel = new Failure_Panel(this, NAME, player_pokemon);
@@ -163,6 +172,8 @@ public class JPanelChange extends JFrame
         }
 
     }
+
+    // 대전이 끝나고 대전에서 입은 피해나 버프 / 디버프 초기화
     private void resetPokemon()
     {
         player_pokemon.Hp = player_pokemon.Full_Hp;
