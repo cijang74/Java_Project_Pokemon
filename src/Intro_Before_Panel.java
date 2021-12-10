@@ -10,9 +10,9 @@ class Intro_Before_Panel extends JPanel
     // 해당 클래스에서 사용할 변수들 선언 (win은 앵간하면 선언해줘)
     private String NAME; // 이름
     private JLabel Say_Dr; // 라벨
-    private ImageIcon Dr_Image = new ImageIcon("오박사.png"); // 아이콘 이미지
+    private ImageIcon Dr_Image = new ImageIcon("ui_Image\\오박사.png"); // 아이콘 이미지
     private JLabel Image_Label = new JLabel(Dr_Image); // 아이콘 이미지를 라벨화
-    private ImageIcon BackGround = new ImageIcon("BackGround_Chat.png");
+    private ImageIcon BackGround = new ImageIcon("backGround_Image\\BackGround_Chat.png");
     private JLabel BackGround_Label = new JLabel(BackGround);
     private JButton Next_Button; // 버튼
     private int count = 0; // 대화가 끝났는지 확인하기 위한 변수

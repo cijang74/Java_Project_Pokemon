@@ -24,6 +24,15 @@ abstract class Pokemon
     // 포켓몬 생성자
     {
         Set_Profile();
+        BufferedImage bufferedImage = null;
+        try {
+            bufferedImage = ImageIO.read(new File("pokemon_Image//" + this.Name + ".png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Image image = bufferedImage.getScaledInstance(250, 250, Image.SCALE_DEFAULT);
+        this.Pokemon_Image = new ImageIcon(image); // 아이콘 이미지
+        this.Portray = new JLabel(this.Pokemon_Image); // 위 아이콘 이미지를 받아 이미지 라벨 생성
     }
 
     public abstract void Set_Profile();
@@ -220,7 +229,7 @@ abstract class Pokemon
         return "오류 발생";
     }
 
-    private String Tackle(Pokemon player_pokemon, Opponent opponent, boolean my_turn)
+    public String Tackle(Pokemon player_pokemon, Opponent opponent, boolean my_turn)
     // 몸통 박치기
     {
         if (!my_turn)
@@ -258,7 +267,7 @@ abstract class Pokemon
         }
     }
 
-    private String Scratch(Pokemon player_pokemon, Opponent opponent, boolean my_turn)
+    public String Scratch(Pokemon player_pokemon, Opponent opponent, boolean my_turn)
     // 햘퀴기
     {
         if (!my_turn)
@@ -296,7 +305,7 @@ abstract class Pokemon
         }
     }
 
-    private String Tail_Whip(Pokemon player_pokemon, Opponent opponent, boolean my_turn)
+    public String Tail_Whip(Pokemon player_pokemon, Opponent opponent, boolean my_turn)
     // 꼬리 흔들기
     {
         if (my_turn == false)
@@ -322,7 +331,7 @@ abstract class Pokemon
         }
     }
 
-    private String Growl(Pokemon player_pokemon, Opponent opponent, boolean my_turn)
+    public String Growl(Pokemon player_pokemon, Opponent opponent, boolean my_turn)
     // 울음소리
     {
         if (my_turn == false)

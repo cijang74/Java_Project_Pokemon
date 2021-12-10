@@ -12,13 +12,13 @@ class Intro_Choose_Panel extends JPanel
     private JLabel Say_Dr; // 라벨
     private JRadioButton [] Starting_Pokemon_Img = new JRadioButton[3]; // 라디오 버튼형 배열
     private String [] Text = {"열정적인 성격", "차분한 성격", "고통을 즐기는 성격"}; // 문자 배열
-    private ImageIcon[] Pokemon_Images = {new ImageIcon("리아코.png"), new ImageIcon("브케인.png"), new ImageIcon("치코리타.png")}; // 이미지 아이콘 배열
-    private ImageIcon Dr_Image = new ImageIcon("오박사.png"); // 이미지 아이콘
+    private ImageIcon[] Pokemon_Images = {new ImageIcon("pokemon_Image\\리아코.png"), new ImageIcon("pokemon_Image\\브케인.png"), new ImageIcon("pokemon_Image\\치코리타.png")}; // 이미지 아이콘 배열
+    private ImageIcon Dr_Image = new ImageIcon("ui_Image\\오박사.png"); // 이미지 아이콘
     private JLabel Dr_Image_Label = new JLabel(Dr_Image); // 아이콘 이미지를 라벨화
     private JLabel ImageLabel = new JLabel(); // 라벨
     private JButton Choose_Button; // 버튼
     private JPanelChange win; // win
-    private ImageIcon BackGround = new ImageIcon("Choose_BackGround.png");
+    private ImageIcon BackGround = new ImageIcon("backGround_Image\\Choose_BackGround.png");
     private JLabel BackGround_Label = new JLabel(BackGround);
 
     public Intro_Choose_Panel(JPanelChange win, String NAME)

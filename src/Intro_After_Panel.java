@@ -11,9 +11,9 @@ class Intro_After_Panel extends JPanel
     private String NAME; // 이름
     private Pokemon player_pokemon;
     private JLabel Say_Dr; // 라벨
-    private ImageIcon Dr_Image = new ImageIcon("오박사.png"); // 아이콘 이미지
+    private ImageIcon Dr_Image = new ImageIcon("ui_Image\\오박사.png"); // 아이콘 이미지
     private JLabel Image_Label = new JLabel(Dr_Image); // 아이콘 이미지를 라벨화
-    private ImageIcon BackGround = new ImageIcon("BackGround_Chat.png");
+    private ImageIcon BackGround = new ImageIcon("backGround_Image\\BackGround_Chat.png");
     private JLabel BackGround_Label = new JLabel(BackGround);
     private JButton Next_Button; // 버튼
     private int count = 0; // 대화가 끝났는지 확인하기 위한 변수

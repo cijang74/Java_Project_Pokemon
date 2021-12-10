@@ -31,7 +31,7 @@ public class Failure_Panel extends JPanel
 
     private JPanelChange win; // win
 
-    private ImageIcon BackGround = new ImageIcon("Fail_BackGround.png");
+    private ImageIcon BackGround = new ImageIcon("backGround_Image\\Fail_BackGround.png");
     private JLabel BackGround_Label = new JLabel(BackGround);
 
     public Failure_Panel(JPanelChange win, String NAME, Pokemon player_pokemon)

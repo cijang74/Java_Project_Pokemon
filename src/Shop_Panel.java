@@ -29,17 +29,17 @@ public class Shop_Panel extends JPanel{
 
     private JPanelChange win;
 
-    private ImageIcon O_fruit = new ImageIcon("오랭열매.png");
-    private ImageIcon beo_fruit = new ImageIcon("버치열매.png");
-    private ImageIcon bae_fruit = new ImageIcon("배리열매.png");
-    private ImageIcon gwa_fruit = new ImageIcon("과사열매.png");
+    private ImageIcon O_fruit = new ImageIcon("ui_Image\\오랭열매.png");
+    private ImageIcon beo_fruit = new ImageIcon("ui_Image\\버치열매.png");
+    private ImageIcon bae_fruit = new ImageIcon("ui_Image\\배리열매.png");
+    private ImageIcon gwa_fruit = new ImageIcon("ui_Image\\과사열매.png");
 
     private JLabel O_fruit_Img = new JLabel(O_fruit);
     private JLabel beo_fruit_Img = new JLabel(beo_fruit);
     private JLabel bae_fruit_Img = new JLabel(bae_fruit);
     private JLabel gwa_fruit_Img = new JLabel(gwa_fruit);
 
-    private ImageIcon BackGround = new ImageIcon("Shop_BackGround.png");
+    private ImageIcon BackGround = new ImageIcon("backGround_Image\\Shop_BackGround.png");
     private JLabel BackGround_Label = new JLabel(BackGround);
 
     public Shop_Panel(JPanelChange win, Pokemon player_pokemon, int Dua_Date, int Money)

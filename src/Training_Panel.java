@@ -29,17 +29,17 @@ public class Training_Panel extends JPanel{
 
     private JPanelChange win;
 
-    private ImageIcon Running = new ImageIcon("달리기.png");
-    private ImageIcon Bench = new ImageIcon("역기.png");
-    private ImageIcon Punch = new ImageIcon("펀치.png");
-    private ImageIcon Rope = new ImageIcon("줄넘기.png");
+    private ImageIcon Running = new ImageIcon("ui_Image\\달리기.png");
+    private ImageIcon Bench = new ImageIcon("ui_Image\\역기.png");
+    private ImageIcon Punch = new ImageIcon("ui_Image\\펀치.png");
+    private ImageIcon Rope = new ImageIcon("ui_Image\\줄넘기.png");
 
     private JLabel Running_Img = new JLabel(Running);
     private JLabel Bench_Img = new JLabel(Bench);
     private JLabel Punch_Img = new JLabel(Punch);
     private JLabel Rope_Img = new JLabel(Rope);
 
-    private ImageIcon BackGround = new ImageIcon("Tranning_BackGround.png");
+    private ImageIcon BackGround = new ImageIcon("backGround_Image\\Tranning_BackGround.png");
     private JLabel BackGround_Label = new JLabel(BackGround);
 
     public Training_Panel(JPanelChange win, Pokemon player_pokemon, int Dua_Date, int Money)

@@ -42,14 +42,14 @@ public class Fight_Panel extends JPanel
     // 컴포넌트: 버튼
     private JButton Back_Button; // 돌아가기 버튼
 
-    private ImageIcon Log_Background = new ImageIcon("Log.png");
+    private ImageIcon Log_Background = new ImageIcon("ui_Image\\Log.png");
     private JLabel Log_Background_Label = new JLabel(Log_Background);
 
     private TitledBorder tborder; // 컴포넌트를 둘러싸는 테두리
 
     private JPanelChange win; // win
 
-    private ImageIcon BackGround = new ImageIcon("Battle_BackGround.png"); // 배경 이미지
+    private ImageIcon BackGround = new ImageIcon("backGround_Image\\Battle_BackGround.png"); // 배경 이미지
     private JLabel BackGround_Label = new JLabel(BackGround); // 배경 이미지를 라벨로 만들어서 배치
 
     public Fight_Panel(JPanelChange win, String NAME, Pokemon player_pokemon, int Dua_Date, int Money, String type)

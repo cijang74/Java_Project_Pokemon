@@ -26,15 +26,5 @@ public class pokemon_tamless extends Pokemon
         this.skillArray[1] = "꼬리흔들기";
         this.skillArray[2] = "몸통박치기";
         this.skillArray[3] = "꼬리흔들기";
-
-        BufferedImage bufferedImage = null;
-        try {
-            bufferedImage = ImageIO.read(new File(this.Name + ".png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Image image = bufferedImage.getScaledInstance(250, 250, Image.SCALE_DEFAULT);
-        this.Pokemon_Image = new ImageIcon(image); // 아이콘 이미지
-        this.Portray = new JLabel(this.Pokemon_Image); // 위 아이콘 이미지를 받아 이미지 라벨 생성
     }
 }
