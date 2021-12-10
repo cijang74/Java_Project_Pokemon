@@ -40,6 +40,10 @@ public class Training_Panel extends JPanel{
     private JLabel Rope_Img = new JLabel(Rope);
 
     private ImageIcon BackGround = new ImageIcon("backGround_Image\\Tranning_BackGround.png");
+    private ImageIcon returnImg1 = new ImageIcon("button_Image\\return1.png");
+    private ImageIcon returnImg2 = new ImageIcon("button_Image\\return2.png");
+    private ImageIcon startImg1 = new ImageIcon("button_Image\\training_start1.png");
+    private ImageIcon startImg2 = new ImageIcon("button_Image\\training_start2.png");
     private JLabel BackGround_Label = new JLabel(BackGround);
 
     public Training_Panel(JPanelChange win, Pokemon player_pokemon, int Dua_Date, int Money)
@@ -69,8 +73,9 @@ public class Training_Panel extends JPanel{
         Spd_Training_Label = new JLabel("줄넘기 훈련(SPD를 일정치 올려준다.)");
         Spd_Training_Label.setFont(new Font ("Helvetica", Font.PLAIN, 19));
 
-        Back_Button = new JButton("돌아가기");
-        Back_Button.setFont(new Font ("Helvetica", Font.PLAIN, 20));
+        Back_Button = new JButton(returnImg1);
+        Back_Button.setRolloverIcon(returnImg2);
+        Back_Button.setBorderPainted(false);
         Back_Button.addActionListener(new ActionListener() // 돌아가기 버튼을 클릭했을떄
         {
             public void actionPerformed(ActionEvent e)
@@ -79,8 +84,9 @@ public class Training_Panel extends JPanel{
             }
         });
 
-        Running_Button = new JButton("훈련하기");
-        Running_Button.setFont(new Font ("Helvetica", Font.PLAIN, 20));
+        Running_Button = new JButton(startImg1);
+        Running_Button.setRolloverIcon(startImg2);
+        Running_Button.setBorderPainted(false);
         Running_Button.setForeground(Color.BLACK);
         Running_Button.addActionListener(new ActionListener() // 오랭열매 구매버튼을 클릭했을때
         {
@@ -96,8 +102,9 @@ public class Training_Panel extends JPanel{
 
             }
         }); // 이하 같음
-        Bench_button = new JButton("훈련하기");
-        Bench_button.setFont(new Font ("Helvetica", Font.PLAIN, 20));
+        Bench_button = new JButton(startImg1);
+        Bench_button.setRolloverIcon(startImg2);
+        Bench_button.setBorderPainted(false);
         Bench_button.setForeground(Color.BLACK);
         Bench_button.addActionListener(new ActionListener()
         {
@@ -113,8 +120,9 @@ public class Training_Panel extends JPanel{
                 win.change("type_select", player_pokemon);
             }
         });
-        Punch_button = new JButton("훈련하기");
-        Punch_button.setFont(new Font ("Helvetica", Font.PLAIN, 20));
+        Punch_button = new JButton(startImg1);
+        Punch_button.setRolloverIcon(startImg2);
+        Punch_button.setBorderPainted(false);
         Punch_button.setForeground(Color.BLACK);
         Punch_button.addActionListener(new ActionListener()
         {
@@ -130,8 +138,9 @@ public class Training_Panel extends JPanel{
                 win.change("type_select", player_pokemon);
             }
         });
-        Rope_button = new JButton("훈련하기");
-        Rope_button.setFont(new Font ("Helvetica", Font.PLAIN, 20));
+        Rope_button = new JButton(startImg1);
+        Rope_button.setRolloverIcon(startImg2);
+        Rope_button.setBorderPainted(false);
         Rope_button.setForeground(Color.BLACK);
         Rope_button.addActionListener(new ActionListener()
         {

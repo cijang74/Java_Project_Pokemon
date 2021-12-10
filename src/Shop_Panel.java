@@ -40,6 +40,10 @@ public class Shop_Panel extends JPanel{
     private JLabel gwa_fruit_Img = new JLabel(gwa_fruit);
 
     private ImageIcon BackGround = new ImageIcon("backGround_Image\\Shop_BackGround.png");
+    private ImageIcon returnImg1 = new ImageIcon("button_Image\\return1.png");
+    private ImageIcon returnImg2 = new ImageIcon("button_Image\\return2.png");
+    private ImageIcon g100Img1 = new ImageIcon("button_Image\\100g1.png");
+    private ImageIcon g100Img2 = new ImageIcon("button_Image\\100g2.png");
     private JLabel BackGround_Label = new JLabel(BackGround);
 
     public Shop_Panel(JPanelChange win, Pokemon player_pokemon, int Dua_Date, int Money)
@@ -69,8 +73,9 @@ public class Shop_Panel extends JPanel{
         Spd_Plus_Label = new JLabel("과사열매(SPD를 일정치 올려준다.)");
         Spd_Plus_Label.setFont(new Font ("Helvetica", Font.PLAIN, 19));
 
-        Back_Button = new JButton("돌아가기");
-        Back_Button.setFont(new Font ("Helvetica", Font.PLAIN, 20));
+        Back_Button = new JButton(returnImg1);
+        Back_Button.setRolloverIcon(returnImg2);
+        Back_Button.setBorderPainted(false);
         Back_Button.addActionListener(new ActionListener() // 돌아가기 버튼을 클릭했을떄
         {
             public void actionPerformed(ActionEvent e)
@@ -79,8 +84,9 @@ public class Shop_Panel extends JPanel{
             }
         });
 
-        O_fruit_Button = new JButton("100G");
-        O_fruit_Button.setFont(new Font ("Helvetica", Font.PLAIN, 20));
+        O_fruit_Button = new JButton(g100Img1);
+        O_fruit_Button.setRolloverIcon(g100Img2);
+        O_fruit_Button.setBorderPainted(false);
         O_fruit_Button.setForeground(Color.BLACK);
         O_fruit_Button.addActionListener(new ActionListener() // 오랭열매 구매버튼을 클릭했을때
         {
@@ -103,8 +109,9 @@ public class Shop_Panel extends JPanel{
                 }
             }
         }); // 이하 같음
-        beo_fruit_button = new JButton("100G");
-        beo_fruit_button.setFont(new Font ("Helvetica", Font.PLAIN, 20));
+        beo_fruit_button = new JButton(g100Img1);
+        beo_fruit_button.setRolloverIcon(g100Img2);
+        beo_fruit_button.setBorderPainted(false);
         beo_fruit_button.setForeground(Color.BLACK);
         beo_fruit_button.addActionListener(new ActionListener()
         {
@@ -127,8 +134,9 @@ public class Shop_Panel extends JPanel{
                 }
             }
         });
-        bae_fruit_button = new JButton("100G");
-        bae_fruit_button.setFont(new Font ("Helvetica", Font.PLAIN, 20));
+        bae_fruit_button = new JButton(g100Img1);
+        bae_fruit_button.setRolloverIcon(g100Img2);
+        bae_fruit_button.setBorderPainted(false);
         bae_fruit_button.setForeground(Color.BLACK);
         bae_fruit_button.addActionListener(new ActionListener()
         {
@@ -151,8 +159,9 @@ public class Shop_Panel extends JPanel{
                 }
             }
         });
-        gwa_fruit_button = new JButton("100G");
-        gwa_fruit_button.setFont(new Font ("Helvetica", Font.PLAIN, 20));
+        gwa_fruit_button = new JButton(g100Img1);
+        gwa_fruit_button.setRolloverIcon(g100Img2);
+        gwa_fruit_button.setBorderPainted(false);
         gwa_fruit_button.setForeground(Color.BLACK);
         gwa_fruit_button.addActionListener(new ActionListener()
         {
@@ -186,6 +195,7 @@ public class Shop_Panel extends JPanel{
         Spd_Plus_Label.setBounds(780, 330, 300, 100);
 
         Back_Button.setBounds(0, 0, 150, 100);
+
         O_fruit_Button.setBounds(250, 300, 100, 50);
         beo_fruit_button.setBounds(850, 300, 100, 50);
         bae_fruit_button.setBounds(250, 600, 100, 50);

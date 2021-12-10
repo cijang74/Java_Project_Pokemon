@@ -18,6 +18,8 @@ class Intro_Choose_Panel extends JPanel
     private JLabel ImageLabel = new JLabel(); // 라벨
     private JButton Choose_Button; // 버튼
     private JPanelChange win; // win
+    private ImageIcon chooseImg1 = new ImageIcon("button_Image\\choose1.png");
+    private ImageIcon chooseImg2 = new ImageIcon("button_Image\\choose2.png");
     private ImageIcon BackGround = new ImageIcon("backGround_Image\\Choose_BackGround.png");
     private JLabel BackGround_Label = new JLabel(BackGround);
 
@@ -35,7 +37,9 @@ class Intro_Choose_Panel extends JPanel
         Say_Dr.setFont(new Font ("Helvetica", Font.BOLD, 30)); // 라벨 폰트 설정
 
         // 버튼 설정
-        Choose_Button = new JButton("이 포켓몬으로 할래요!");
+        Choose_Button = new JButton(chooseImg1);
+        Choose_Button.setRolloverIcon(chooseImg2);
+        Choose_Button.setBorderPainted(false);
         Choose_Button.addActionListener(new ButtonListener());
 
         ButtonGroup g = new ButtonGroup(); // 버튼들을 묶어줄 그룹 선언

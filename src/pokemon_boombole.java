@@ -22,9 +22,9 @@ public class pokemon_boombole extends Pokemon
         this.Atk = Full_Atk;
         this.Spd = Full_Spd;
 
-        this.skillArray[0] = "햘퀴기";
+        this.skillArray[0] = "몸통박치기";
         this.skillArray[1] = "울음소리";
-        this.skillArray[2] = null;
-        this.skillArray[3] = null;
+        this.skillArray[2] = "10만볼트";
+        this.skillArray[3] = "울음소리";
     }
 }

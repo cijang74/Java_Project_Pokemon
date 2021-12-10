@@ -35,6 +35,22 @@ public class Select_Panel extends JPanel{
     private JPanelChange win; // win
 
     private ImageIcon BackGround = new ImageIcon("backGround_Image\\Select_BackGround.png"); // 배경 이미지
+
+    private ImageIcon practiceImg1 = new ImageIcon("button_Image\\practice_battle1.png");
+    private ImageIcon practiceImg2 = new ImageIcon("button_Image\\practice_battle2.png");
+
+    private ImageIcon grandprixImg1 = new ImageIcon("button_Image\\grandprix1.png");
+    private ImageIcon grandprixImg2 = new ImageIcon("button_Image\\grandprix2.png");
+
+    private ImageIcon shopImg1 = new ImageIcon("button_Image\\shop1.png");
+    private ImageIcon shopImg2 = new ImageIcon("button_Image\\shop2.png");
+
+    private ImageIcon trainingImg1 = new ImageIcon("button_Image\\Training1.png");
+    private ImageIcon trainingImg2 = new ImageIcon("button_Image\\Training2.png");
+
+    private ImageIcon lastImg1 = new ImageIcon("button_Image\\Last_battle1.png");
+    private ImageIcon lastImg2 = new ImageIcon("button_Image\\Last_battle2.png");
+
     private JLabel BackGround_Label = new JLabel(BackGround); // 배경 이미지를 라벨로 만들어서 배치
 
     public Select_Panel(JPanelChange win, String NAME, Pokemon player_pokemon, int Dua_Date, int Money)
@@ -82,7 +98,9 @@ public class Select_Panel extends JPanel{
         Pokemon_ATK_Label.setFont(new Font ("Helvetica", Font.PLAIN, 19)); // 라벨 폰트 설정
 
         // 버튼 설정 + 버튼 리스너 설정
-        Training_Button = new JButton("훈련"); // 버튼 안에 들어갈 텍스트 설정
+        Training_Button = new JButton(trainingImg1); // 버튼 안에 들어갈 텍스트 설정
+        Training_Button.setRolloverIcon(trainingImg2);
+        Training_Button.setBorderPainted(false);
         Training_Button.addActionListener(new ActionListener()
         {
             @Override
@@ -93,7 +111,9 @@ public class Select_Panel extends JPanel{
             }
         });
 
-        Grand_Prix_Button = new JButton("그랑프리"); // 버튼 안에 들어갈 텍스트 설정
+        Grand_Prix_Button = new JButton(grandprixImg1); // 버튼 안에 들어갈 텍스트 설정
+        Grand_Prix_Button.setRolloverIcon(grandprixImg2);
+        Grand_Prix_Button.setBorderPainted(false);
         Grand_Prix_Button.addActionListener(new ActionListener()
         {
             @Override
@@ -104,7 +124,9 @@ public class Select_Panel extends JPanel{
             }
         });
 
-        Normal_Fight_Button = new JButton("일반대전"); // 버튼 안에 들어갈 텍스트 설정
+        Normal_Fight_Button = new JButton(practiceImg1); // 버튼 안에 들어갈 텍스트 설정
+        Normal_Fight_Button.setRolloverIcon(practiceImg2);
+        Normal_Fight_Button.setBorderPainted(false);
         Normal_Fight_Button.addActionListener(new ActionListener()
         {
             @Override
@@ -115,7 +137,9 @@ public class Select_Panel extends JPanel{
             }
         });
 
-        Shop_Button = new JButton("상점"); // 버튼 안에 들어갈 텍스트 설정
+        Shop_Button = new JButton(shopImg1); // 버튼 안에 들어갈 텍스트 설정
+        Shop_Button.setRolloverIcon(shopImg2);
+        Shop_Button.setBorderPainted(false);
         Shop_Button.addActionListener(new ActionListener()
         {
             @Override
@@ -126,7 +150,9 @@ public class Select_Panel extends JPanel{
             }
         });
 
-        Last_Battle_Button = new JButton("결전"); // 버튼 안에 들어갈 텍스트 설정
+        Last_Battle_Button = new JButton(lastImg1); // 버튼 안에 들어갈 텍스트 설정
+        Last_Battle_Button.setRolloverIcon(lastImg2);
+        Last_Battle_Button.setBorderPainted(false);
         Last_Battle_Button.addActionListener(new ActionListener()
         {
             @Override

@@ -49,6 +49,10 @@ public class Fight_Panel extends JPanel
 
     private JPanelChange win; // win
 
+    private ImageIcon returnImg1 = new ImageIcon("button_Image\\return1.png");
+    private ImageIcon returnImg2 = new ImageIcon("button_Image\\return2.png");
+    private ImageIcon endingImg1 = new ImageIcon("button_Image\\ending1.png");
+    private ImageIcon endingImg2 = new ImageIcon("button_Image\\ending2.png");
     private ImageIcon BackGround = new ImageIcon("backGround_Image\\Battle_BackGround.png"); // 배경 이미지
     private JLabel BackGround_Label = new JLabel(BackGround); // 배경 이미지를 라벨로 만들어서 배치
 
@@ -145,8 +149,7 @@ public class Fight_Panel extends JPanel
             this.add(p_Skill4);
         }
 
-        Back_Button = new JButton(Button_Config(type));
-        Back_Button.setFont(new Font ("Helvetica", Font.PLAIN, 20));
+        Button_Config(type);
         Back_Button.setEnabled(false);
         Back_Button.addActionListener(new ActionListener() // 돌아가기 버튼을 클릭했을 때
         {
@@ -336,12 +339,18 @@ public class Fight_Panel extends JPanel
     {
         if (type == "type_last_fight")
         {
+            Back_Button = new JButton(endingImg1);
+            Back_Button.setRolloverIcon(endingImg2);
+            Back_Button.setBorderPainted(false);
             String str = new String("엔딩");
             return str;
         }
 
         else
         {
+            Back_Button = new JButton(returnImg1);
+            Back_Button.setRolloverIcon(returnImg2);
+            Back_Button.setBorderPainted(false);
             String str = new String("돌아가기");
             return str;
         }

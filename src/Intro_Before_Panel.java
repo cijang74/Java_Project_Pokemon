@@ -12,6 +12,8 @@ class Intro_Before_Panel extends JPanel
     private JLabel Say_Dr; // 라벨
     private ImageIcon Dr_Image = new ImageIcon("ui_Image\\오박사.png"); // 아이콘 이미지
     private JLabel Image_Label = new JLabel(Dr_Image); // 아이콘 이미지를 라벨화
+    private ImageIcon nextImg1 = new ImageIcon("button_Image\\next1.png");
+    private ImageIcon nextImg2 = new ImageIcon("button_Image\\next2.png");
     private ImageIcon BackGround = new ImageIcon("backGround_Image\\BackGround_Chat.png");
     private JLabel BackGround_Label = new JLabel(BackGround);
     private JButton Next_Button; // 버튼
@@ -39,7 +41,9 @@ class Intro_Before_Panel extends JPanel
 
 
         // 버튼 설정 + 버튼 리스너 설정
-        Next_Button = new JButton("다음"); // 버튼 안에 들어갈 텍스트 설정
+        Next_Button = new JButton(nextImg1); // 버튼 안에 들어갈 텍스트 설정
+        Next_Button.setRolloverIcon(nextImg2);
+        Next_Button.setBorderPainted(false);
         Next_Button.addActionListener(new ActionListener()
         {
             @Override

@@ -29,7 +29,7 @@ public class Outro_Panel extends JPanel
 
     private JPanelChange win; // win
 
-    private ImageIcon BackGround = new ImageIcon("Clear_BackGround.png");
+    private ImageIcon BackGround = new ImageIcon("backGround_Image\\Clear_BackGround.png");
     private JLabel BackGround_Label = new JLabel(BackGround);
 
     public Outro_Panel(JPanelChange win, String NAME, Pokemon player_pokemon)

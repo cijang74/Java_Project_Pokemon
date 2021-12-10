@@ -14,9 +14,9 @@ public class pokemon_diaruga extends Pokemon
 
         this.Level = 5;
         this.Full_Hp = 40;
-        this.Full_Def = 40;
-        this.Full_Atk = 40;
-        this.Full_Spd = 30;
+        this.Full_Def = 20;
+        this.Full_Atk = 30;
+        this.Full_Spd = 20;
         this.Hp = Full_Hp;
         this.Def = Full_Def;
         this.Atk = Full_Atk;

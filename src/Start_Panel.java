@@ -13,6 +13,8 @@ public class Start_Panel extends JPanel{
     private JButton Start_Button; // 버튼
     private JPanelChange win; // win
     private ImageIcon BackGround = new ImageIcon("backGround_Image\\Title.png"); // 배경 이미지
+    private ImageIcon startImg1 = new ImageIcon("button_Image\\start1.png");
+    private ImageIcon startImg2 = new ImageIcon("button_Image\\start2.png");
     private JLabel BackGround_Label = new JLabel(BackGround); // 배경 이미지를 라벨로 만들어서 배치
 
     public Start_Panel(JPanelChange win)
@@ -62,7 +64,9 @@ public class Start_Panel extends JPanel{
         });
 
         // 버튼 설정 + 버튼 리스너 설정
-        Start_Button = new JButton("시작"); // 버튼 안에 들어갈 텍스트 설정
+        Start_Button = new JButton(startImg1); // 버튼 안에 들어갈 텍스트 설정
+        Start_Button.setRolloverIcon(startImg2);
+        Start_Button.setBorderPainted(false);
         Start_Button.addActionListener(new ActionListener()
         {
             @Override
@@ -79,7 +83,8 @@ public class Start_Panel extends JPanel{
         // 위에서 설정한 컴포넌트들의 크기설정
         Say_Give_Name.setBounds(400, 250, 1280, 50);
         Name_Text_Field.setBounds(400, 300, 520, 50);
-        Start_Button.setBounds(500, 450, 300, 100);
+        Start_Button.setBounds(500, 500, 300, 100);
+
         BackGround_Label.setBounds(0,0,1280,720);
 
 
