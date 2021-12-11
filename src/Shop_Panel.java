@@ -103,7 +103,7 @@ public class Shop_Panel extends JPanel{
                 if(Money >= 100)//돈이 100골드 이상이라면
                 {
                     Random random = new Random();
-                    int ran = random.nextInt(5) + 1; // 1부터 5까지 임의의 숫자 생성
+                    int ran = random.nextInt(3) + 2; // 1부터 5까지 임의의 숫자 생성
                     JOptionPane.showMessageDialog(null, "HP가"+ ran +"만큼 상승했습니다."); //알림
                     player_pokemon.Full_Hp += ran; // 임의의 숫자 해당하는 값에 더하기
                     player_pokemon.Hp = player_pokemon.Full_Hp;
@@ -129,7 +129,7 @@ public class Shop_Panel extends JPanel{
                 if(Money >= 100)
                 {
                     Random random = new Random();
-                    int ran = random.nextInt(5) + 1;
+                    int ran = random.nextInt(3) + 2;
                     JOptionPane.showMessageDialog(null, "ATK가"+ ran +"만큼 상승했습니다.");
                     player_pokemon.Full_Atk += ran;
                     player_pokemon.Atk = player_pokemon.Full_Atk;
@@ -155,7 +155,7 @@ public class Shop_Panel extends JPanel{
                 if(Money >= 100)
                 {
                     Random random = new Random();
-                    int ran = random.nextInt(5) + 1;
+                    int ran = random.nextInt(3) + 2;
                     JOptionPane.showMessageDialog(null, "DF가"+ ran +"만큼 상승했습니다.");
                     player_pokemon.Full_Def += ran;
                     player_pokemon.Def = player_pokemon.Full_Def;
@@ -181,7 +181,7 @@ public class Shop_Panel extends JPanel{
                 if(Money >= 100)
                 {
                     Random random = new Random();
-                    int ran = random.nextInt(5) + 1;
+                    int ran = random.nextInt(3) + 2;
                     JOptionPane.showMessageDialog(null, "SPD가"+ ran +"만큼 상승했습니다.");
                     player_pokemon.Full_Spd += ran;
                     player_pokemon.Spd = player_pokemon.Full_Spd;

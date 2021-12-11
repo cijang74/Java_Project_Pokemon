@@ -78,7 +78,7 @@ public abstract class Pokemon
                 this.skillArray[2] = "불꽃세례";
             }
 
-            else if (this.Name == "치코리타")
+            else if (this.Name == "쓰레기")
             {
                 this.skillArray[2] = "잎날가르기";
             }
@@ -1040,5 +1040,4 @@ public abstract class Pokemon
             return player_pokemon.Name + "은(는) 엄마가 준비한 식사를 먹어 체력이 올랐다!";
         }
     }
-
 }

@@ -9,7 +9,7 @@ public class pokemon_chikorita extends Pokemon
 {
     public void Set_Profile()
     {
-        this.Name = "치코리타";
+        this.Name = "쓰레기";
         this.type = "풀";
 
         this.Level = 1;
