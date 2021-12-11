@@ -56,7 +56,7 @@ public class Outro_Panel extends JPanel
         GP_Result_Label = new JLabel("우승!"); // 라벨 내용
         GP_Result_Label.setFont(new Font ("Helvetica", Font.BOLD, 50)); // 승리 강조, 라벨 폰트 설정
 
-        GP_Result_Comment_Label = new JLabel("그랑프리에서 최종 승리했습니다."); // 라벨 내용
+        GP_Result_Comment_Label = new JLabel("마지막 승부에서 최종 승리했습니다."); // 라벨 내용
         GP_Result_Comment_Label.setFont(new Font ("Helvetica", Font.PLAIN, 19)); // 승리 강조, 라벨 폰트 설정
 
         NAME_Label = new JLabel("이름 : " + NAME); // 라벨 내용

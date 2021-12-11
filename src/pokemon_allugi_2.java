@@ -25,6 +25,6 @@ public class pokemon_allugi_2 extends Pokemon
         this.skillArray[0] = "몸통박치기";
         this.skillArray[1] = "꼬리흔들기";
         this.skillArray[2] = "힘껏치기";
-        this.skillArray[3] = "파괴광선";
+        this.skillArray[3] = "지진";
     }
 }

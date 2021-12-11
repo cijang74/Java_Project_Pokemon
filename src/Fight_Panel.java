@@ -463,7 +463,6 @@ public class Fight_Panel extends JPanel
 
     private void Update_Log()
     {
-        System.out.println(turn);
         if (turn % 18 == 0)
         {
             for(int i = 0; i < battle_Log.length-2; i++)

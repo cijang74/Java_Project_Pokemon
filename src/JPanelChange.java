@@ -11,7 +11,7 @@ public class JPanelChange extends JFrame
     public static String NAME; // 이름
     public Pokemon player_pokemon; // 플레이어의 포켓몬
     public int Dua_Date = 30; // 남은기간(default)
-    public int Money = 500; // 소지금(default)
+    public int Money = 0; // 소지금(default)
     public Clip clip;
     public AudioInputStream ais;
 

@@ -23,7 +23,7 @@ public class pokemon_bomanda extends Pokemon
         this.Spd = Full_Spd;
 
         this.skillArray[0] = "몸통박치기";
-        this.skillArray[1] = "파괴광선";
+        this.skillArray[1] = "지진";
         this.skillArray[2] = "드래곤크루";
         this.skillArray[3] = "베어가르기";
     }

@@ -15,6 +15,7 @@ public abstract class Pokemon
     public String Name;
     public String type;
     String[] skillArray = new String[4];
+    int add = 0;
 
     // 포켓몬 객체의 이미지 관련 변수
     public ImageIcon Pokemon_Image;
@@ -59,8 +60,6 @@ public abstract class Pokemon
 
     public void Exp_Update()
     {
-
-        System.out.print(this.Exp);
         if (this.Exp >= 5 && this.Exp < 15)
         {
             this.Level = 2;
@@ -93,7 +92,7 @@ public abstract class Pokemon
         else if (this.Exp >= 50 && this.Exp <= 75)
         {
             this.Level = 5;
-            this.skillArray[3] = "파괴광선";
+            this.skillArray[3] = "지진";
         }
 
         else if (this.Exp > 75 && this.Exp < 105)
@@ -167,7 +166,7 @@ public abstract class Pokemon
             return Log;
         }
 
-        else if(Skill_Type == "파괴광선")
+        else if(Skill_Type == "지진")
         {
             Log = Hyper_Beam(player_pokemon, opponent, my_turn);
             return Log;
@@ -449,39 +448,74 @@ public abstract class Pokemon
     }
 
     public String Hyper_Beam(Pokemon player_pokemon, Opponent opponent, boolean my_turn)
-    // 파괴광선
+    // 지진
     {
         if (!my_turn)
         // 상대가 나에게 공격
         {
-            if(-1 * (opponent.opponent_pokemon.Atk + 15) + player_pokemon.Def >= 0)
+            if (player_pokemon.type == "불" || player_pokemon.type == "전기" || player_pokemon.type == "독" || player_pokemon.type == "바위" || player_pokemon.type == "강철")
+            // 공격 받는 포켓몬의 약점을 찌르는 속성이면 데미지를 2배로 준다.
             {
-                int leastDamage = 1;
-                player_pokemon.Hp -= leastDamage;
-                return opponent.opponent_pokemon.Name + "의 파괴광선으로 " + player_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                if (-1 * (opponent.opponent_pokemon.Atk + 30) + player_pokemon.Def >= 0)
+                {
+                    int leastDamage = 2;
+                    player_pokemon.Hp -= leastDamage;
+                    return opponent.opponent_pokemon.Name + "의 지진으로 " + player_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다! 효과가 굉장했다!";
+                }
+
+                else
+                {
+                    player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 30 - player_pokemon.Def;
+                    return opponent.opponent_pokemon.Name + "의 지진으로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk - player_pokemon.Def + 30) + "의 피해를 입었다! 효과가 굉장했다!";
+                }
             }
 
             else
             {
-                player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 15 - player_pokemon.Def;
-                return opponent.opponent_pokemon.Name + "의 파괴광선으로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk - player_pokemon.Def + 15) + "의 피해를 입었다!";
+                if (-1 * (opponent.opponent_pokemon.Atk + 15) + player_pokemon.Def >= 0)
+                {
+                    int leastDamage = 1;
+                    player_pokemon.Hp -= leastDamage;
+                    return opponent.opponent_pokemon.Name + "의 지진으로 " + player_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                }
+
+                else
+                {
+                    player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 15 - player_pokemon.Def;
+                    return opponent.opponent_pokemon.Name + "의 지진으로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk - player_pokemon.Def + 15) + "의 피해를 입었다!";
+                }
             }
         }
 
         else
         // 플레이어가 상대를 공격
         {
-            if(-1 * (player_pokemon.Atk + 15) + opponent.opponent_pokemon.Def >= 0)
+            if (opponent.opponent_pokemon.type == "불" || opponent.opponent_pokemon.type == "전기" ||opponent.opponent_pokemon.type == "독" || opponent.opponent_pokemon.type == "바위" || opponent.opponent_pokemon.type == "강철")
+            // 공격 받는 포켓몬의 약점을 찌르는 속성이면 데미지를 2배로 준다.
             {
-                int leastDamage = 1;
-                opponent.opponent_pokemon.Hp -= leastDamage;
-                return player_pokemon.Name + "의 파괴광선으로 " + opponent.opponent_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                if(-1 * (player_pokemon.Atk + 30) + opponent.opponent_pokemon.Def >= 0)
+                {
+                    int leastDamage = 2;
+                    opponent.opponent_pokemon.Hp -= leastDamage;
+                    return player_pokemon.Name + "의 지진으로 " + opponent.opponent_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다! 효과가 굉장했다!";
+                }
+
+                else
+                {
+                    opponent.opponent_pokemon.Hp -= player_pokemon.Atk + 30 - opponent.opponent_pokemon.Def;
+                    return player_pokemon.Name + "의 지진으로 " + opponent.opponent_pokemon.Name + "은(는) " + (player_pokemon.Atk - opponent.opponent_pokemon.Def + 30) + "의 피해를 입었다! 효과가 굉장했다!";
+                }
             }
 
-            else
-            {
-                opponent.opponent_pokemon.Hp -= player_pokemon.Atk + 15 - opponent.opponent_pokemon.Def;
-                return player_pokemon.Name + "의 파괴광선으로 " + opponent.opponent_pokemon.Name + "은(는) " + (player_pokemon.Atk - opponent.opponent_pokemon.Def + 15) + "의 피해를 입었다!";
+            else {
+                if (-1 * (player_pokemon.Atk + 15) + opponent.opponent_pokemon.Def >= 0) {
+                    int leastDamage = 1;
+                    opponent.opponent_pokemon.Hp -= leastDamage;
+                    return player_pokemon.Name + "의 지진으로 " + opponent.opponent_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                } else {
+                    opponent.opponent_pokemon.Hp -= player_pokemon.Atk + 15 - opponent.opponent_pokemon.Def;
+                    return player_pokemon.Name + "의 지진으로 " + opponent.opponent_pokemon.Name + "은(는) " + (player_pokemon.Atk - opponent.opponent_pokemon.Def + 15) + "의 피해를 입었다!";
+                }
             }
         }
     }
@@ -492,72 +526,133 @@ public abstract class Pokemon
         if (!my_turn)
         // 상대가 나에게 공격
         {
-            if(-1 * (opponent.opponent_pokemon.Atk + 10) + player_pokemon.Def >= 0)
+            if (player_pokemon.type == "불" || player_pokemon.type == "땅" || player_pokemon.type == "바위")
             {
-                int leastDamage = 1;
-                player_pokemon.Hp -= leastDamage;
-                return opponent.opponent_pokemon.Name + "의 거품광선으로 " + player_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                if (-1 * (opponent.opponent_pokemon.Atk + 20) + player_pokemon.Def >= 0)
+                {
+                    int leastDamage = 2;
+                    player_pokemon.Hp -= leastDamage;
+                    return opponent.opponent_pokemon.Name + "의 거품광선으로 " + player_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다! 효과가 굉장했다!";
+                }
+
+                else
+                {
+                    player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 20 - player_pokemon.Def;
+                    return opponent.opponent_pokemon.Name + "의 거품광선으로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk - player_pokemon.Def + 20) + "의 피해를 입었다! 효과가 굉장했다!";
+                }
             }
 
             else
             {
-                player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 10 - player_pokemon.Def;
-                return opponent.opponent_pokemon.Name + "의 거품광선으로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk - player_pokemon.Def + 10) + "의 피해를 입었다!";
+                if (-1 * (opponent.opponent_pokemon.Atk + 10) + player_pokemon.Def >= 0)
+                {
+                    int leastDamage = 1;
+                    player_pokemon.Hp -= leastDamage;
+                    return opponent.opponent_pokemon.Name + "의 거품광선으로 " + player_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                }
+
+                else
+                {
+                    player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 10 - player_pokemon.Def;
+                    return opponent.opponent_pokemon.Name + "의 거품광선으로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk - player_pokemon.Def + 10) + "의 피해를 입었다!";
+                }
             }
         }
 
         else
         // 플레이어가 상대를 공격
         {
-            if(-1 * (player_pokemon.Atk + 10) + opponent.opponent_pokemon.Def >= 0)
+            if (opponent.opponent_pokemon.type == "불" || opponent.opponent_pokemon.type == "땅" || opponent.opponent_pokemon.type == "바위")
             {
-                int leastDamage = 1;
-                opponent.opponent_pokemon.Hp -= leastDamage;
-                return player_pokemon.Name + "의 거품광선으로 " + opponent.opponent_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                if(-1 * (player_pokemon.Atk + 20) + opponent.opponent_pokemon.Def >= 0)
+                {
+                    int leastDamage = 2;
+                    opponent.opponent_pokemon.Hp -= leastDamage;
+                    return player_pokemon.Name + "의 거품광선으로 " + opponent.opponent_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다! 효과가 굉장했다!";
+                }
+
+                else
+                {
+                    opponent.opponent_pokemon.Hp -= player_pokemon.Atk + 20 - opponent.opponent_pokemon.Def;
+                    return player_pokemon.Name + "의 거품광선으로 " + opponent.opponent_pokemon.Name + "은(는) " + (player_pokemon.Atk - opponent.opponent_pokemon.Def + 20) + "의 피해를 입었다! 효과가 굉장했다!";
+                }
             }
 
-            else
-            {
-                opponent.opponent_pokemon.Hp -= player_pokemon.Atk + 10 - opponent.opponent_pokemon.Def;
-                return player_pokemon.Name + "의 거품광선으로 " + opponent.opponent_pokemon.Name + "은(는) " + (player_pokemon.Atk - opponent.opponent_pokemon.Def + 10) + "의 피해를 입었다!";
+            else {
+                if (-1 * (player_pokemon.Atk + 10) + opponent.opponent_pokemon.Def >= 0) {
+                    int leastDamage = 1;
+                    opponent.opponent_pokemon.Hp -= leastDamage;
+                    return player_pokemon.Name + "의 거품광선으로 " + opponent.opponent_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                } else {
+                    opponent.opponent_pokemon.Hp -= player_pokemon.Atk + 10 - opponent.opponent_pokemon.Def;
+                    return player_pokemon.Name + "의 거품광선으로 " + opponent.opponent_pokemon.Name + "은(는) " + (player_pokemon.Atk - opponent.opponent_pokemon.Def + 10) + "의 피해를 입었다!";
+                }
             }
         }
     }
 
     public String Ember(Pokemon player_pokemon, Opponent opponent, boolean my_turn)
-    // 거품광선
+    // 불꽃세례
     {
         if (!my_turn)
         // 상대가 나에게 공격
         {
-            if(-1 * (opponent.opponent_pokemon.Atk + 10) + player_pokemon.Def >= 0)
+            if (player_pokemon.type == "강철" || player_pokemon.type == "벌레" || player_pokemon.type == "얼음" || player_pokemon.type == "풀")
             {
-                int leastDamage = 1;
-                player_pokemon.Hp -= leastDamage;
-                return opponent.opponent_pokemon.Name + "의 불꽃세례로 " + player_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                if (-1 * (opponent.opponent_pokemon.Atk + 20) + player_pokemon.Def >= 0)
+                {
+                    int leastDamage = 2;
+                    player_pokemon.Hp -= leastDamage;
+                    return opponent.opponent_pokemon.Name + "의 불꽃세례로 " + player_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다! 효과가 굉장했다!";
+                }
+
+                else
+                {
+                    player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 20 - player_pokemon.Def;
+                    return opponent.opponent_pokemon.Name + "의 불꽃세례로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk - player_pokemon.Def + 20) + "의 피해를 입었다! 효과가 굉장했다!";
+                }
             }
 
-            else
-            {
-                player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 10 - player_pokemon.Def;
-                return opponent.opponent_pokemon.Name + "의 불꽃세례로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk - player_pokemon.Def + 10) + "의 피해를 입었다!";
+            else {
+                if (-1 * (opponent.opponent_pokemon.Atk + 10) + player_pokemon.Def >= 0) {
+                    int leastDamage = 1;
+                    player_pokemon.Hp -= leastDamage;
+                    return opponent.opponent_pokemon.Name + "의 불꽃세례로 " + player_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                } else {
+                    player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 10 - player_pokemon.Def;
+                    return opponent.opponent_pokemon.Name + "의 불꽃세례로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk - player_pokemon.Def + 10) + "의 피해를 입었다!";
+                }
             }
         }
 
         else
         // 플레이어가 상대를 공격
         {
-            if(-1 * (player_pokemon.Atk + 10) + opponent.opponent_pokemon.Def >= 0)
+            if (opponent.opponent_pokemon.type == "강철" || opponent.opponent_pokemon.type == "벌레" ||opponent.opponent_pokemon.type == "얼음" || opponent.opponent_pokemon.type == "풀")
             {
-                int leastDamage = 1;
-                opponent.opponent_pokemon.Hp -= leastDamage;
-                return player_pokemon.Name + "의 불꽃세례로 " + opponent.opponent_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                if(-1 * (player_pokemon.Atk + 20) + opponent.opponent_pokemon.Def >= 0)
+                {
+                    int leastDamage = 2;
+                    opponent.opponent_pokemon.Hp -= leastDamage;
+                    return player_pokemon.Name + "의 불꽃세례로 " + opponent.opponent_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다! 효과가 굉장했다!";
+                }
+
+                else
+                {
+                    opponent.opponent_pokemon.Hp -= player_pokemon.Atk + 20 - opponent.opponent_pokemon.Def;
+                    return player_pokemon.Name + "의 불꽃세례로 " + opponent.opponent_pokemon.Name + "은(는) " + (player_pokemon.Atk - opponent.opponent_pokemon.Def + 20) + "의 피해를 입었다! 효과가 굉장했다!";
+                }
             }
 
-            else
-            {
-                opponent.opponent_pokemon.Hp -= player_pokemon.Atk + 10 - opponent.opponent_pokemon.Def;
-                return player_pokemon.Name + "의 불꽃세례로 " + opponent.opponent_pokemon.Name + "은(는) " + (player_pokemon.Atk - opponent.opponent_pokemon.Def + 10) + "의 피해를 입었다!";
+            else {
+                if (-1 * (player_pokemon.Atk + 10) + opponent.opponent_pokemon.Def >= 0) {
+                    int leastDamage = 1;
+                    opponent.opponent_pokemon.Hp -= leastDamage;
+                    return player_pokemon.Name + "의 불꽃세례로 " + opponent.opponent_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                } else {
+                    opponent.opponent_pokemon.Hp -= player_pokemon.Atk + 10 - opponent.opponent_pokemon.Def;
+                    return player_pokemon.Name + "의 불꽃세례로 " + opponent.opponent_pokemon.Name + "은(는) " + (player_pokemon.Atk - opponent.opponent_pokemon.Def + 10) + "의 피해를 입었다!";
+                }
             }
         }
     }
@@ -568,34 +663,62 @@ public abstract class Pokemon
         if (!my_turn)
         // 상대가 나에게 공격
         {
-            if(-1 * (opponent.opponent_pokemon.Atk + 10) + player_pokemon.Def >= 0)
+            if (player_pokemon.type == "땅" || player_pokemon.type == "물" || player_pokemon.type == "바위")
             {
-                int leastDamage = 1;
-                player_pokemon.Hp -= leastDamage;
-                return opponent.opponent_pokemon.Name + "의 잎날가르기로 " + player_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                if (-1 * (opponent.opponent_pokemon.Atk + 20) + player_pokemon.Def >= 0)
+                {
+                    int leastDamage = 2;
+                    player_pokemon.Hp -= leastDamage;
+                    return opponent.opponent_pokemon.Name + "의 잎날가르기로 " + player_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다! 효과가 굉장했다!";
+                }
+
+                else
+                {
+                    player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 20 - player_pokemon.Def;
+                    return opponent.opponent_pokemon.Name + "의 잎날가르기로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk - player_pokemon.Def + 20) + "의 피해를 입었다! 효과가 굉장했다!";
+                }
             }
 
-            else
-            {
-                player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 10 - player_pokemon.Def;
-                return opponent.opponent_pokemon.Name + "의 잎날가르기로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk - player_pokemon.Def + 10) + "의 피해를 입었다!";
+            else {
+                if (-1 * (opponent.opponent_pokemon.Atk + 10) + player_pokemon.Def >= 0) {
+                    int leastDamage = 1;
+                    player_pokemon.Hp -= leastDamage;
+                    return opponent.opponent_pokemon.Name + "의 잎날가르기로 " + player_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                } else {
+                    player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 10 - player_pokemon.Def;
+                    return opponent.opponent_pokemon.Name + "의 잎날가르기로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk - player_pokemon.Def + 10) + "의 피해를 입었다!";
+                }
             }
         }
 
         else
         // 플레이어가 상대를 공격
         {
-            if(-1 * (player_pokemon.Atk + 10) + opponent.opponent_pokemon.Def >= 0)
+            if (opponent.opponent_pokemon.type == "불" || opponent.opponent_pokemon.type == "전기" ||opponent.opponent_pokemon.type == "독" || opponent.opponent_pokemon.type == "바위")
             {
-                int leastDamage = 1;
-                opponent.opponent_pokemon.Hp -= leastDamage;
-                return player_pokemon.Name + "의 잎날가르기로 " + opponent.opponent_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                if(-1 * (player_pokemon.Atk + 20) + opponent.opponent_pokemon.Def >= 0)
+                {
+                    int leastDamage = 2;
+                    opponent.opponent_pokemon.Hp -= leastDamage;
+                    return player_pokemon.Name + "의 잎날가르기로 " + opponent.opponent_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다! 효과가 굉장했다!";
+                }
+
+                else
+                {
+                    opponent.opponent_pokemon.Hp -= player_pokemon.Atk + 20 - opponent.opponent_pokemon.Def;
+                    return player_pokemon.Name + "의 잎날가르기로 " + opponent.opponent_pokemon.Name + "은(는) " + (player_pokemon.Atk - opponent.opponent_pokemon.Def + 20) + "의 피해를 입었다! 효과가 굉장했다!";
+                }
             }
 
-            else
-            {
-                opponent.opponent_pokemon.Hp -= player_pokemon.Atk + 10 - opponent.opponent_pokemon.Def;
-                return player_pokemon.Name + "의 잎날가르기로 " + opponent.opponent_pokemon.Name + "은(는) " + (player_pokemon.Atk - opponent.opponent_pokemon.Def + 10) + "의 피해를 입었다!";
+            else {
+                if (-1 * (player_pokemon.Atk + 10) + opponent.opponent_pokemon.Def >= 0) {
+                    int leastDamage = 1;
+                    opponent.opponent_pokemon.Hp -= leastDamage;
+                    return player_pokemon.Name + "의 잎날가르기로 " + opponent.opponent_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                } else {
+                    opponent.opponent_pokemon.Hp -= player_pokemon.Atk + 10 - opponent.opponent_pokemon.Def;
+                    return player_pokemon.Name + "의 잎날가르기로 " + opponent.opponent_pokemon.Name + "은(는) " + (player_pokemon.Atk - opponent.opponent_pokemon.Def + 10) + "의 피해를 입었다!";
+                }
             }
         }
     }
@@ -606,34 +729,62 @@ public abstract class Pokemon
         if (!my_turn)
         // 상대가 나에게 공격
         {
-            if(-1 * (opponent.opponent_pokemon.Atk + 10) + player_pokemon.Def >= 0)
+            if (player_pokemon.type == "물" || player_pokemon.type == "비행")
             {
-                int leastDamage = 1;
-                player_pokemon.Hp -= leastDamage;
-                return opponent.opponent_pokemon.Name + "의 10만볼트로 " + player_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                if (-1 * (opponent.opponent_pokemon.Atk + 20) + player_pokemon.Def >= 0)
+                {
+                    int leastDamage = 2;
+                    player_pokemon.Hp -= leastDamage;
+                    return opponent.opponent_pokemon.Name + "의 10만볼트로 " + player_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다! 효과가 굉장했다!";
+                }
+
+                else
+                {
+                    player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 20 - player_pokemon.Def;
+                    return opponent.opponent_pokemon.Name + "의 10만볼트로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk - player_pokemon.Def + 20) + "의 피해를 입었다! 효과가 굉장했다!";
+                }
             }
 
-            else
-            {
-                player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 10 - player_pokemon.Def;
-                return opponent.opponent_pokemon.Name + "의 10만볼트로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk - player_pokemon.Def + 10) + "의 피해를 입었다!";
+            else {
+                if (-1 * (opponent.opponent_pokemon.Atk + 10) + player_pokemon.Def >= 0) {
+                    int leastDamage = 1;
+                    player_pokemon.Hp -= leastDamage;
+                    return opponent.opponent_pokemon.Name + "의 10만볼트로 " + player_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                } else {
+                    player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 10 - player_pokemon.Def;
+                    return opponent.opponent_pokemon.Name + "의 10만볼트로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk - player_pokemon.Def + 10) + "의 피해를 입었다!";
+                }
             }
         }
 
         else
         // 플레이어가 상대를 공격
         {
-            if(-1 * (player_pokemon.Atk + 10) + opponent.opponent_pokemon.Def >= 0)
+            if (opponent.opponent_pokemon.type == "물" || opponent.opponent_pokemon.type == "비행")
             {
-                int leastDamage = 1;
-                opponent.opponent_pokemon.Hp -= leastDamage;
-                return player_pokemon.Name + "의 10만볼트로 " + opponent.opponent_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                if(-1 * (player_pokemon.Atk + 20) + opponent.opponent_pokemon.Def >= 0)
+                {
+                    int leastDamage = 2;
+                    opponent.opponent_pokemon.Hp -= leastDamage;
+                    return player_pokemon.Name + "의 10만볼트로 " + opponent.opponent_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다! 효과가 굉장했다!";
+                }
+
+                else
+                {
+                    opponent.opponent_pokemon.Hp -= player_pokemon.Atk + 20 - opponent.opponent_pokemon.Def;
+                    return player_pokemon.Name + "의 10만볼트로 " + opponent.opponent_pokemon.Name + "은(는) " + (player_pokemon.Atk - opponent.opponent_pokemon.Def + 20) + "의 피해를 입었다! 효과가 굉장했다!";
+                }
             }
 
-            else
-            {
-                opponent.opponent_pokemon.Hp -= player_pokemon.Atk + 10 - opponent.opponent_pokemon.Def;
-                return player_pokemon.Name + "의 10만볼트로 " + opponent.opponent_pokemon.Name + "은(는) " + (player_pokemon.Atk - opponent.opponent_pokemon.Def + 10) + "의 피해를 입었다!";
+            else {
+                if (-1 * (player_pokemon.Atk + 10) + opponent.opponent_pokemon.Def >= 0) {
+                    int leastDamage = 1;
+                    opponent.opponent_pokemon.Hp -= leastDamage;
+                    return player_pokemon.Name + "의 10만볼트로 " + opponent.opponent_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                } else {
+                    opponent.opponent_pokemon.Hp -= player_pokemon.Atk + 10 - opponent.opponent_pokemon.Def;
+                    return player_pokemon.Name + "의 10만볼트로 " + opponent.opponent_pokemon.Name + "은(는) " + (player_pokemon.Atk - opponent.opponent_pokemon.Def + 10) + "의 피해를 입었다!";
+                }
             }
         }
     }
@@ -644,34 +795,62 @@ public abstract class Pokemon
         if (!my_turn)
         // 상대가 나에게 공격
         {
-            if(-1 * (opponent.opponent_pokemon.Atk + 10) + player_pokemon.Def >= 0)
+            if (player_pokemon.type == "드래곤")
             {
-                int leastDamage = 1;
-                player_pokemon.Hp -= leastDamage;
-                return opponent.opponent_pokemon.Name + "의 드래곤크루로 " + player_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                if (-1 * (opponent.opponent_pokemon.Atk + 20) + player_pokemon.Def >= 0)
+                {
+                    int leastDamage = 2;
+                    player_pokemon.Hp -= leastDamage;
+                    return opponent.opponent_pokemon.Name + "의 드래곤크루로 " + player_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다! 효과가 굉장했다!";
+                }
+
+                else
+                {
+                    player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 20 - player_pokemon.Def;
+                    return opponent.opponent_pokemon.Name + "의 드래곤크루로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk - player_pokemon.Def + 20) + "의 피해를 입었다! 효과가 굉장했다!";
+                }
             }
 
-            else
-            {
-                player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 10 - player_pokemon.Def;
-                return opponent.opponent_pokemon.Name + "의 드래곤크루로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk - player_pokemon.Def + 10) + "의 피해를 입었다!";
+            else {
+                if (-1 * (opponent.opponent_pokemon.Atk + 10) + player_pokemon.Def >= 0) {
+                    int leastDamage = 1;
+                    player_pokemon.Hp -= leastDamage;
+                    return opponent.opponent_pokemon.Name + "의 드래곤크루로 " + player_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                } else {
+                    player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 10 - player_pokemon.Def;
+                    return opponent.opponent_pokemon.Name + "의 드래곤크루로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk - player_pokemon.Def + 10) + "의 피해를 입었다!";
+                }
             }
         }
 
         else
         // 플레이어가 상대를 공격
         {
-            if(-1 * (player_pokemon.Atk + 10) + opponent.opponent_pokemon.Def >= 0)
+            if (opponent.opponent_pokemon.type == "드래곤")
             {
-                int leastDamage = 1;
-                opponent.opponent_pokemon.Hp -= leastDamage;
-                return player_pokemon.Name + "의 드래곤크루로 " + opponent.opponent_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                if(-1 * (player_pokemon.Atk + 20) + opponent.opponent_pokemon.Def >= 0)
+                {
+                    int leastDamage = 2;
+                    opponent.opponent_pokemon.Hp -= leastDamage;
+                    return player_pokemon.Name + "의 드래곤크루로 " + opponent.opponent_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다! 효과가 굉장했다!";
+                }
+
+                else
+                {
+                    opponent.opponent_pokemon.Hp -= player_pokemon.Atk + 20 - opponent.opponent_pokemon.Def;
+                    return player_pokemon.Name + "의 드래곤크루로 " + opponent.opponent_pokemon.Name + "은(는) " + (player_pokemon.Atk - opponent.opponent_pokemon.Def + 20) + "의 피해를 입었다! 효과가 굉장했다!";
+                }
             }
 
-            else
-            {
-                opponent.opponent_pokemon.Hp -= player_pokemon.Atk + 10 - opponent.opponent_pokemon.Def;
-                return player_pokemon.Name + "의 드래곤크루로 " + opponent.opponent_pokemon.Name + "은(는) " + (player_pokemon.Atk - opponent.opponent_pokemon.Def + 10) + "의 피해를 입었다!";
+            else {
+                if (-1 * (player_pokemon.Atk + 10) + opponent.opponent_pokemon.Def >= 0) {
+                    int leastDamage = 1;
+                    opponent.opponent_pokemon.Hp -= leastDamage;
+                    return player_pokemon.Name + "의 드래곤크루로 " + opponent.opponent_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                } else {
+                    opponent.opponent_pokemon.Hp -= player_pokemon.Atk + 10 - opponent.opponent_pokemon.Def;
+                    return player_pokemon.Name + "의 드래곤크루로 " + opponent.opponent_pokemon.Name + "은(는) " + (player_pokemon.Atk - opponent.opponent_pokemon.Def + 10) + "의 피해를 입었다!";
+                }
             }
         }
     }
@@ -682,34 +861,62 @@ public abstract class Pokemon
         if (!my_turn)
         // 상대가 나에게 공격
         {
-            if(-1 * (opponent.opponent_pokemon.Atk + 10) + player_pokemon.Def >= 0)
+            if (player_pokemon.type == "고스트" || player_pokemon.type == "에스퍼")
             {
-                int leastDamage = 1;
-                player_pokemon.Hp -= leastDamage;
-                return opponent.opponent_pokemon.Name + "의 속임수로 " + player_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                if (-1 * (opponent.opponent_pokemon.Atk + 20) + player_pokemon.Def >= 0)
+                {
+                    int leastDamage = 2;
+                    player_pokemon.Hp -= leastDamage;
+                    return opponent.opponent_pokemon.Name + "의 속임수로 " + player_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다! 효과가 굉장했다!";
+                }
+
+                else
+                {
+                    player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 20 - player_pokemon.Def;
+                    return opponent.opponent_pokemon.Name + "의 속임수로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk - player_pokemon.Def + 20) + "의 피해를 입었다! 효과가 굉장했다!";
+                }
             }
 
-            else
-            {
-                player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 10 - player_pokemon.Def;
-                return opponent.opponent_pokemon.Name + "의 속임수로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk - player_pokemon.Def + 10) + "의 피해를 입었다!";
+            else {
+                if (-1 * (opponent.opponent_pokemon.Atk + 10) + player_pokemon.Def >= 0) {
+                    int leastDamage = 1;
+                    player_pokemon.Hp -= leastDamage;
+                    return opponent.opponent_pokemon.Name + "의 속임수로 " + player_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                } else {
+                    player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 10 - player_pokemon.Def;
+                    return opponent.opponent_pokemon.Name + "의 속임수로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk - player_pokemon.Def + 10) + "의 피해를 입었다!";
+                }
             }
         }
 
         else
         // 플레이어가 상대를 공격
         {
-            if(-1 * (player_pokemon.Atk + 10) + opponent.opponent_pokemon.Def >= 0)
+            if (opponent.opponent_pokemon.type == "고스트" || opponent.opponent_pokemon.type == "에스퍼")
             {
-                int leastDamage = 1;
-                opponent.opponent_pokemon.Hp -= leastDamage;
-                return player_pokemon.Name + "의 속임수로 " + opponent.opponent_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                if(-1 * (player_pokemon.Atk + 20) + opponent.opponent_pokemon.Def >= 0)
+                {
+                    int leastDamage = 2;
+                    opponent.opponent_pokemon.Hp -= leastDamage;
+                    return player_pokemon.Name + "의 속임수로 " + opponent.opponent_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다! 효과가 굉장했다!";
+                }
+
+                else
+                {
+                    opponent.opponent_pokemon.Hp -= player_pokemon.Atk + 20 - opponent.opponent_pokemon.Def;
+                    return player_pokemon.Name + "의 속임수로 " + opponent.opponent_pokemon.Name + "은(는) " + (player_pokemon.Atk - opponent.opponent_pokemon.Def + 20) + "의 피해를 입었다! 효과가 굉장했다!";
+                }
             }
 
-            else
-            {
-                opponent.opponent_pokemon.Hp -= player_pokemon.Atk + 10 - opponent.opponent_pokemon.Def;
-                return player_pokemon.Name + "의 속임수로 " + opponent.opponent_pokemon.Name + "은(는) " + (player_pokemon.Atk - opponent.opponent_pokemon.Def + 10) + "의 피해를 입었다!";
+            else {
+                if (-1 * (player_pokemon.Atk + 10) + opponent.opponent_pokemon.Def >= 0) {
+                    int leastDamage = 1;
+                    opponent.opponent_pokemon.Hp -= leastDamage;
+                    return player_pokemon.Name + "의 속임수로 " + opponent.opponent_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                } else {
+                    opponent.opponent_pokemon.Hp -= player_pokemon.Atk + 10 - opponent.opponent_pokemon.Def;
+                    return player_pokemon.Name + "의 속임수로 " + opponent.opponent_pokemon.Name + "은(는) " + (player_pokemon.Atk - opponent.opponent_pokemon.Def + 10) + "의 피해를 입었다!";
+                }
             }
         }
     }
@@ -758,34 +965,62 @@ public abstract class Pokemon
         if (!my_turn)
         // 상대가 나에게 공격
         {
-            if(-1 * (opponent.opponent_pokemon.Atk + 10) + player_pokemon.Def >= 0)
+            if (player_pokemon.type == "격투" || player_pokemon.type == "독")
             {
-                int leastDamage = 1;
-                player_pokemon.Hp -= leastDamage;
-                return opponent.opponent_pokemon.Name + "의 염동력으로 " + player_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                if (-1 * (opponent.opponent_pokemon.Atk + 20) + player_pokemon.Def >= 0)
+                {
+                    int leastDamage = 2;
+                    player_pokemon.Hp -= leastDamage;
+                    return opponent.opponent_pokemon.Name + "의 염동력으로 " + player_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다! 효과가 굉장했다!";
+                }
+
+                else
+                {
+                    player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 20 - player_pokemon.Def;
+                    return opponent.opponent_pokemon.Name + "의 염동력으로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk - player_pokemon.Def + 20) + "의 피해를 입었다! 효과가 굉장했다!";
+                }
             }
 
-            else
-            {
-                player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 10 - player_pokemon.Def;
-                return opponent.opponent_pokemon.Name + "의 염동력으로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk - player_pokemon.Def + 10) + "의 피해를 입었다!";
+            else {
+                if (-1 * (opponent.opponent_pokemon.Atk + 10) + player_pokemon.Def >= 0) {
+                    int leastDamage = 1;
+                    player_pokemon.Hp -= leastDamage;
+                    return opponent.opponent_pokemon.Name + "의 염동력으로 " + player_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                } else {
+                    player_pokemon.Hp -= opponent.opponent_pokemon.Atk + 10 - player_pokemon.Def;
+                    return opponent.opponent_pokemon.Name + "의 염동력으로 " + player_pokemon.Name + "은(는) " + (opponent.opponent_pokemon.Atk - player_pokemon.Def + 10) + "의 피해를 입었다!";
+                }
             }
         }
 
         else
         // 플레이어가 상대를 공격
         {
-            if(-1 * (player_pokemon.Atk + 10) + opponent.opponent_pokemon.Def >= 0)
+            if (opponent.opponent_pokemon.type == "격투" || opponent.opponent_pokemon.type == "독")
             {
-                int leastDamage = 1;
-                opponent.opponent_pokemon.Hp -= leastDamage;
-                return player_pokemon.Name + "의 염동력으로 " + opponent.opponent_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                if(-1 * (player_pokemon.Atk + 20) + opponent.opponent_pokemon.Def >= 0)
+                {
+                    int leastDamage = 2;
+                    opponent.opponent_pokemon.Hp -= leastDamage;
+                    return player_pokemon.Name + "의 염동력으로 " + opponent.opponent_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다! 효과가 굉장했다!";
+                }
+
+                else
+                {
+                    opponent.opponent_pokemon.Hp -= player_pokemon.Atk + 20 - opponent.opponent_pokemon.Def;
+                    return player_pokemon.Name + "의 염동력으로 " + opponent.opponent_pokemon.Name + "은(는) " + (player_pokemon.Atk - opponent.opponent_pokemon.Def + 20) + "의 피해를 입었다! 효과가 굉장했다!";
+                }
             }
 
-            else
-            {
-                opponent.opponent_pokemon.Hp -= player_pokemon.Atk + 10 - opponent.opponent_pokemon.Def;
-                return player_pokemon.Name + "의 염동력으로 " + opponent.opponent_pokemon.Name + "은(는) " + (player_pokemon.Atk - opponent.opponent_pokemon.Def + 10) + "의 피해를 입었다!";
+            else {
+                if (-1 * (player_pokemon.Atk + 10) + opponent.opponent_pokemon.Def >= 0) {
+                    int leastDamage = 1;
+                    opponent.opponent_pokemon.Hp -= leastDamage;
+                    return player_pokemon.Name + "의 염동력으로 " + opponent.opponent_pokemon.Name + "은(는) " + leastDamage + "의 피해를 입었다!";
+                } else {
+                    opponent.opponent_pokemon.Hp -= player_pokemon.Atk + 10 - opponent.opponent_pokemon.Def;
+                    return player_pokemon.Name + "의 염동력으로 " + opponent.opponent_pokemon.Name + "은(는) " + (player_pokemon.Atk - opponent.opponent_pokemon.Def + 10) + "의 피해를 입었다!";
+                }
             }
         }
     }

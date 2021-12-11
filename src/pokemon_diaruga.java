@@ -23,7 +23,7 @@ public class pokemon_diaruga extends Pokemon
         this.Spd = Full_Spd;
 
         this.skillArray[0] = "불꽃세례";
-        this.skillArray[1] = "파괴광선";
+        this.skillArray[1] = "지진";
         this.skillArray[2] = "드래곤크루";
         this.skillArray[3] = "염동력";
     }
