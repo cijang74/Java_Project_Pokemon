@@ -61,12 +61,12 @@ public abstract class Pokemon
     {
 
         System.out.print(this.Exp);
-        if (this.Exp >= 5 && this.Exp <= 15)
+        if (this.Exp >= 5 && this.Exp < 15)
         {
             this.Level = 2;
         }
 
-        else if (this.Exp > 15 && this.Exp <= 30)
+        else if (this.Exp >= 15 && this.Exp <= 30)
         {
             this.Level = 3;
             if (this.Name == "리아코")
@@ -85,28 +85,28 @@ public abstract class Pokemon
             }
         }
 
-        else if (this.Exp > 30 && this.Exp <= 50)
+        else if (this.Exp > 30 && this.Exp < 50)
         {
             this.Level = 4;
         }
 
-        else if (this.Exp > 50 && this.Exp <= 75)
+        else if (this.Exp >= 50 && this.Exp <= 75)
         {
             this.Level = 5;
             this.skillArray[3] = "파괴광선";
         }
 
-        else if (this.Exp > 75 && this.Exp <= 105)
+        else if (this.Exp > 75 && this.Exp < 105)
         {
             this.Level = 6;
         }
 
-        else if (this.Exp > 105 && this.Exp <= 140)
+        else if (this.Exp >= 105 && this.Exp <= 140)
         {
             this.Level = 7;
         }
 
-        else if (this.Exp > 140 && this.Exp <= 180)
+        else if (this.Exp > 140 && this.Exp < 180)
         {
             this.Level = 8;
         }
@@ -314,7 +314,7 @@ public abstract class Pokemon
             if(player_pokemon.Def < 1)
             {
                 player_pokemon.Def =1;
-                return player_pokemon.Name + "의 방어력은 더 이상 내려가지 않는다!";
+                return opponent.opponent_pokemon.Name + "은(는) 꼬리 흔들기를 썼지만 " + player_pokemon.Name + "의 방어력은 더 이상 내려가지 않는다!";
             }
             return opponent.opponent_pokemon.Name + "은(는) 꼬리를 흔들어서 " + player_pokemon.Name + "의 방어력을 떨어뜨렸다!";
         }
@@ -325,7 +325,7 @@ public abstract class Pokemon
             if(opponent.opponent_pokemon.Def < 1)
             {
                 opponent.opponent_pokemon.Def =1;
-                return opponent.opponent_pokemon.Name + "의 방어력은 더 이상 내려가지 않는다!";
+                return player_pokemon.Name + "은(는) 꼬리 흔들기를 썼지만 " + opponent.opponent_pokemon.Name + "의 방어력은 더 이상 내려가지 않는다!";
             }
             return player_pokemon.Name + "은(는) 꼬리를 흔들어서 " + opponent.opponent_pokemon.Name + "의 방어력을 떨어뜨렸다!";
         }
@@ -340,7 +340,7 @@ public abstract class Pokemon
             if(player_pokemon.Atk < 1)
             {
                 player_pokemon.Atk =1;
-                return player_pokemon.Name + "의 공격력은 더 이상 내려가지 않는다!";
+                return opponent.opponent_pokemon.Name + "은(는) 울음소리를 썼지만 " + player_pokemon.Name + "의 공격력은 더 이상 내려가지 않는다!";
             }
             return opponent.opponent_pokemon.Name + "은(는) 울음소리를 내어 " + player_pokemon.Name + "의 공격력을 떨어뜨렸다!";
         }
@@ -351,7 +351,7 @@ public abstract class Pokemon
             if(opponent.opponent_pokemon.Atk < 1)
             {
                 opponent.opponent_pokemon.Atk =1;
-                return opponent.opponent_pokemon.Name + "의 공격력은 더 이상 내려가지 않는다!";
+                return player_pokemon.Name + "은(는) 울음소리를 썼지만 " + opponent.opponent_pokemon.Name + "의 공격력은 더 이상 내려가지 않는다!";
             }
             return player_pokemon.Name + "은(는) 울음소리를 내어 " + opponent.opponent_pokemon.Name + "의 공격력을 떨어뜨렸다!";
         }

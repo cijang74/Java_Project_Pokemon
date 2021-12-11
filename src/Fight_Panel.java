@@ -1,6 +1,7 @@
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
+import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.*;
@@ -218,8 +219,24 @@ public class Fight_Panel extends JPanel
         player_name.setBounds(50, 370, 1280, 50);
         opponent_name.setBounds(930, 370, 1280, 50);
 
+        p_Skill1.setFont(new Font("Helvetica", Font.BOLD, 20));
+        p_Skill2.setFont(new Font("Helvetica", Font.BOLD, 20));
+        p_Skill1.setBackground(Color.WHITE);
+        p_Skill2.setBackground(Color.WHITE);
+
         p_Skill1.setBounds(50, 430, 290, 50);
         p_Skill2.setBounds(50, 490, 290, 50);
+        if (player_pokemon.skillArray[2] != null)
+        {
+            p_Skill3.setBackground(Color.WHITE);
+            p_Skill3.setFont(new Font("Helvetica", Font.BOLD, 20));
+        }
+        if (player_pokemon.skillArray[3] != null)
+        {
+            p_Skill4.setBackground(Color.WHITE);
+            p_Skill4.setFont(new Font("Helvetica", Font.BOLD, 20));
+        }
+
         Back_Button.setBounds(1000,500,150,100);
 
         player_pokemon.Portray.setBounds(50,50,290,290);
@@ -434,20 +451,44 @@ public class Fight_Panel extends JPanel
 
     private void Update_Log()
     {
-        for(int i = 0; i <= turn; i++)
+        System.out.println(turn);
+        if (turn % 18 == 0)
         {
-            battle_Log[i].setFont(new Font ("Helvetica", Font.PLAIN, 15));
-            battle_Log[i].setBounds(370,65 + (i * 30), 1280,30);
+            for(int i = 0; i < battle_Log.length-2; i++)
+            {
+                remove(battle_Log[i]);
+                turn = 0;
+            }
+            battle_Log[0] = battle_Log[battle_Log.length-2];
+            battle_Log[battle_Log.length-2] = null;
+
+        }
+
+        for (int i = 0; i <= turn; i++) {
+            battle_Log[i].setFont(new Font("Helvetica", Font.PLAIN, 15));
+            battle_Log[i].setBounds(370, 65 + (i * 30), 1280, 30);
             this.add(battle_Log[i]);
         }
     }
 
     private void Update_Log(boolean end)
     {
-        for(int i = 0; i <= turn + 1; i++)
+        if (turn % 18 == 0)
         {
-            battle_Log[i].setFont(new Font ("Helvetica", Font.PLAIN, 15));
-            battle_Log[i].setBounds(370,65 + (i * 30), 1280,30);
+            for(int i = 0; i < battle_Log.length; i++)
+            {
+                remove(battle_Log[i]);
+                turn = 0;
+            }
+            battle_Log[0] = battle_Log[battle_Log.length-2];
+            battle_Log[battle_Log.length-2] = null;
+
+        }
+
+
+        for (int i = 0; i <= turn; i++) {
+            battle_Log[i].setFont(new Font("Helvetica", Font.PLAIN, 15));
+            battle_Log[i].setBounds(370, 65 + (i * 30), 1280, 30);
             this.add(battle_Log[i]);
         }
     }

@@ -23,6 +23,7 @@ public class Select_Panel extends JPanel{
     private JLabel Pokemon_DF_Label; // 라벨
     private JLabel Pokemon_SPD_Label; // 라벨
     private JLabel Pokemon_ATK_Label; // 라벨
+    private JLabel Pokemon_Next_Level_Label; // 라벨
 
     private JButton Training_Button; // 버튼
     private JButton Grand_Prix_Button; // 버튼
@@ -97,6 +98,9 @@ public class Select_Panel extends JPanel{
         Pokemon_ATK_Label = new JLabel("ATK: " + player_pokemon.Full_Atk); // 라벨 내용
         Pokemon_ATK_Label.setFont(new Font ("Helvetica", Font.PLAIN, 19)); // 라벨 폰트 설정
 
+        Pokemon_Next_Level_Label = new JLabel("다음 레벨업 까지: " + player_pokemon.Exp + "/" + (Next_Level_Config())); // 라벨 내용
+        Pokemon_Next_Level_Label.setFont(new Font ("Helvetica", Font.PLAIN, 19)); // 라벨 폰트 설정
+
         // 버튼 설정 + 버튼 리스너 설정
         Training_Button = new JButton(trainingImg1); // 버튼 안에 들어갈 텍스트 설정
         Training_Button.setRolloverIcon(trainingImg2);
@@ -167,12 +171,13 @@ public class Select_Panel extends JPanel{
         Dua_Date_Label.setBounds(1120, 620, 1280, 50);
         Money_Label.setBounds(1120, 650, 1280, 50);
 
-        Pokemon_Level_Label.setBounds(90, 410, 1280, 50);
-        Pokemon_Inform_Label.setBounds(190, 410, 1280, 50);
-        Pokemon_HP_Label.setBounds(90, 460, 1280, 50);
-        Pokemon_ATK_Label.setBounds(190, 460, 1280, 50);
-        Pokemon_DF_Label.setBounds(90, 510, 1280, 50);
-        Pokemon_SPD_Label.setBounds(190, 510, 1280, 50);
+        Pokemon_Level_Label.setBounds(90, 390, 1280, 50);
+        Pokemon_Inform_Label.setBounds(190, 390, 1280, 50);
+        Pokemon_HP_Label.setBounds(90, 440, 1280, 50);
+        Pokemon_ATK_Label.setBounds(190, 440, 1280, 50);
+        Pokemon_DF_Label.setBounds(90, 490, 1280, 50);
+        Pokemon_SPD_Label.setBounds(190, 490, 1280, 50);
+        Pokemon_Next_Level_Label.setBounds(90, 540, 1280, 50);
 
         Training_Button.setBounds(400, 120, 300, 100);
         Grand_Prix_Button.setBounds(800, 120, 300, 100);
@@ -194,6 +199,7 @@ public class Select_Panel extends JPanel{
         this.add(Pokemon_DF_Label);
         this.add(Pokemon_SPD_Label);
         this.add(Pokemon_ATK_Label);
+        this.add(Pokemon_Next_Level_Label);
 
         this.add(Training_Button);
         this.add(Normal_Fight_Button);
@@ -227,5 +233,49 @@ public class Select_Panel extends JPanel{
         }
 
         this.add(BackGround_Label);
+    }
+
+    public int Next_Level_Config()
+    {
+        if (player_pokemon.Level == 1)
+        {
+            return 5;
+        }
+
+        else if (player_pokemon.Level == 2)
+        {
+            return 15;
+        }
+
+        else if (player_pokemon.Level == 3)
+        {
+            return 30;
+        }
+
+        else if (player_pokemon.Level == 3)
+        {
+            return 50;
+        }
+
+        else if (player_pokemon.Level == 4)
+        {
+            return 75;
+        }
+
+        else if (player_pokemon.Level == 5)
+        {
+            return 105;
+        }
+
+        else if (player_pokemon.Level == 6)
+        {
+            return 140;
+        }
+
+        else if (player_pokemon.Level == 7)
+        {
+            return 180;
+        }
+        return -1;
     }
 }

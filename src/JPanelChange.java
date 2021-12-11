@@ -39,6 +39,26 @@ public class JPanelChange extends JFrame
     // a패널에서 b패널로 바꿔주기 위한 메서드 (매개변수는 바꾸고자 하는 패널과 전달하고싶은 데이터들)
     // !!!!패널 추가는 아래의 오버로딩한 change 매서드에!!!!
     {
+        if (panelType.equals("type_start"))
+        // 만약 바꾸고자 하는 패널이 "type_start" 이라면
+        {
+            // 이전 패널에서 전달 받은 값을 해당 클래스에 저장시켜줌
+            this.player_pokemon = player_pokemon;
+
+            // 바꾸고자 하는 패널 객체를 생성 (### 매개변수로 무조건 this와 바꾸고자 하는 패널에 전달할 변수를 넣어줘야함!###)
+            start_panel = new Start_Panel(this);
+            Dua_Date = 30;
+            Money = 500;
+
+            // 위에서 생성한 객체로 갈아끼워주기
+            getContentPane().removeAll(); // 기존 패널에 있는 컴포넌트 모두 삭제
+            getContentPane().add(start_panel); // 갈아끼워줄 패널에 존재하는 컴포넌트들을 추가해줌으로서 패널 바꿔줌
+
+            // 다시 그려줌으로서 변경사항 업데이트 해주기
+            revalidate();
+            repaint();
+        }
+
         if (panelType.equals("type_before_intro"))
         // 만약 바꾸고자 하는 패널이 "type_before_intro" 이라면
         {
