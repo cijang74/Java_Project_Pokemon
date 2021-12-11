@@ -55,7 +55,7 @@ public class JPanelChange extends JFrame
             // 바꾸고자 하는 패널 객체를 생성 (### 매개변수로 무조건 this와 바꾸고자 하는 패널에 전달할 변수를 넣어줘야함!###)
             start_panel = new Start_Panel(this);
             Dua_Date = 30;
-            Money = 500;
+            Money = 0;
 
             // 위에서 생성한 객체로 갈아끼워주기
             getContentPane().removeAll(); // 기존 패널에 있는 컴포넌트 모두 삭제

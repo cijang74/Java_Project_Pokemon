@@ -14,7 +14,6 @@ class Opponent
         if (is_last == false)
         {
             int who = (int) ((Math.random() * 10000) % 10);
-            System.out.println(who);
 
             if (who == 0)
             {
