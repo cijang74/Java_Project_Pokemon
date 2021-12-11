@@ -1,9 +1,13 @@
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.File;
 import java.util.Random;
 
 public class Training_Panel extends JPanel{
@@ -45,6 +49,8 @@ public class Training_Panel extends JPanel{
     private ImageIcon startImg1 = new ImageIcon("button_Image\\training_start1.png");
     private ImageIcon startImg2 = new ImageIcon("button_Image\\training_start2.png");
     private JLabel BackGround_Label = new JLabel(BackGround);
+    public Clip clip2;
+    public AudioInputStream ais2;
 
     public Training_Panel(JPanelChange win, Pokemon player_pokemon, int Dua_Date, int Money)
     {
@@ -80,7 +86,8 @@ public class Training_Panel extends JPanel{
         {
             public void actionPerformed(ActionEvent e)
             {
-                win.change("type_select", player_pokemon); // 선택 패널로 돌아가기
+                btSound();
+                win.change("type_select2", player_pokemon); // 선택 패널로 돌아가기
             }
         });
 
@@ -92,13 +99,14 @@ public class Training_Panel extends JPanel{
         {
             public void actionPerformed(ActionEvent e)
             {
+                btSound();
                 Random random = new Random();
                 int ran = random.nextInt(3) + 1; // 1부터 3까지 임의의 숫자 생성
                 JOptionPane.showMessageDialog(null, "HP가"+ ran +"만큼 상승했습니다."); //알림
                 player_pokemon.Full_Hp += ran; // 임의의 숫자 해당하는 값에 더하기
                 player_pokemon.Hp = player_pokemon.Full_Hp;
                 win.Dua_Date -= 1; // 기간 조정
-                win.change("type_select", player_pokemon); // 선택패널로 돌아가기
+                win.change("type_select2", player_pokemon); // 선택패널로 돌아가기
 
             }
         }); // 이하 같음
@@ -110,14 +118,14 @@ public class Training_Panel extends JPanel{
         {
             public void actionPerformed(ActionEvent e)
             {
-
+                btSound();
                 Random random = new Random();
                 int ran = random.nextInt(3) + 1;
                 JOptionPane.showMessageDialog(null, "ATK가"+ ran +"만큼 상승했습니다.");
                 player_pokemon.Full_Atk += ran;
                 player_pokemon.Atk = player_pokemon.Full_Atk;
                 win.Dua_Date -= 1;
-                win.change("type_select", player_pokemon);
+                win.change("type_select2", player_pokemon);
             }
         });
         Punch_button = new JButton(startImg1);
@@ -128,14 +136,14 @@ public class Training_Panel extends JPanel{
         {
             public void actionPerformed(ActionEvent e)
             {
-
+                btSound();
                 Random random = new Random();
                 int ran = random.nextInt(3) + 1;
                 JOptionPane.showMessageDialog(null, "DF가"+ ran +"만큼 상승했습니다.");
                 player_pokemon.Full_Def += ran;
                 player_pokemon.Def = player_pokemon.Full_Def;
                 win.Dua_Date -= 1;
-                win.change("type_select", player_pokemon);
+                win.change("type_select2", player_pokemon);
             }
         });
         Rope_button = new JButton(startImg1);
@@ -146,13 +154,14 @@ public class Training_Panel extends JPanel{
         {
             public void actionPerformed(ActionEvent e)
             {
+                btSound();
                 Random random = new Random();
                 int ran = random.nextInt(3) + 1;
                 JOptionPane.showMessageDialog(null, "SPD가"+ ran +"만큼 상승했습니다.");
                 player_pokemon.Full_Spd += ran;
                 player_pokemon.Spd = player_pokemon.Full_Spd;
                 win.Dua_Date -= 1;
-                win.change("type_select", player_pokemon);
+                win.change("type_select2", player_pokemon);
             }
         });
 
@@ -198,5 +207,16 @@ public class Training_Panel extends JPanel{
         this.add(Rope_Img);
 
         this.add(BackGround_Label);
+    }
+
+    public void btSound(){
+        try {
+            this.ais2 = AudioSystem.getAudioInputStream(new File("bgm\\button.wav"));
+            this.clip2 = AudioSystem.getClip();
+            clip2.stop();
+            clip2.open(ais2);
+            clip2.start();
+        }
+        catch (Exception ex) { }
     }
 }

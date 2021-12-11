@@ -1,9 +1,13 @@
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.File;
 
 class Intro_Before_Panel extends JPanel
 {
@@ -19,6 +23,8 @@ class Intro_Before_Panel extends JPanel
     private JButton Next_Button; // 버튼
     private int count = 0; // 대화가 끝났는지 확인하기 위한 변수
     private JPanelChange win; // win
+    public Clip clip2;
+    public AudioInputStream ais2;
 
     public Intro_Before_Panel(JPanelChange win, String NAME)
     // 포켓몬을 선택하기 전에 박사와 대화하는 패널
@@ -51,6 +57,7 @@ class Intro_Before_Panel extends JPanel
             // 버튼을 클릭하면
             {
                 count++; // 카운트를 1 증가
+                btSound();
 
                 if(count == Say_Dr_Text.length) // 대화가 끝났다면(카운트 횟수가 준비된 대화 배열의 길이와 같아지면)
                 {
@@ -79,6 +86,16 @@ class Intro_Before_Panel extends JPanel
         this.add(Say_Dr);
         this.add(Next_Button);
         this.add(BackGround_Label);
+    }
 
+    public void btSound(){
+        try {
+            this.ais2 = AudioSystem.getAudioInputStream(new File("bgm\\button.wav"));
+            this.clip2 = AudioSystem.getClip();
+            clip2.stop();
+            clip2.open(ais2);
+            clip2.start();
+        }
+        catch (Exception ex) { }
     }
 }

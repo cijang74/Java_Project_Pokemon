@@ -1,9 +1,13 @@
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.File;
 
 class Intro_Choose_Panel extends JPanel
 {
@@ -22,6 +26,8 @@ class Intro_Choose_Panel extends JPanel
     private ImageIcon chooseImg2 = new ImageIcon("button_Image\\choose2.png");
     private ImageIcon BackGround = new ImageIcon("backGround_Image\\Choose_BackGround.png");
     private JLabel BackGround_Label = new JLabel(BackGround);
+    public Clip clip2;
+    public AudioInputStream ais2;
 
     public Intro_Choose_Panel(JPanelChange win, String NAME)
     // 처음 시작패널, 사용자에게 이름을 입력받음
@@ -100,6 +106,7 @@ class Intro_Choose_Panel extends JPanel
     class ButtonListener implements ActionListener {
         public void actionPerformed (ActionEvent event)
         {
+            btSound();
             // 만약 0번째 라디오 버튼(리아코)가 선택되었다면
             if (Starting_Pokemon_Img[0].isSelected())
             {
@@ -124,5 +131,16 @@ class Intro_Choose_Panel extends JPanel
                 win.change("type_after_intro", player_pokemon);
             }
         }
+    }
+
+    public void btSound(){
+        try {
+            this.ais2 = AudioSystem.getAudioInputStream(new File("bgm\\button.wav"));
+            this.clip2 = AudioSystem.getClip();
+            clip2.stop();
+            clip2.open(ais2);
+            clip2.start();
+        }
+        catch (Exception ex) { }
     }
 }

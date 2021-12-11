@@ -1,3 +1,6 @@
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
@@ -5,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
 
 public class Select_Panel extends JPanel{
     // 각 프레임에 전달받아 쓰는 변수들
@@ -51,6 +55,9 @@ public class Select_Panel extends JPanel{
 
     private ImageIcon lastImg1 = new ImageIcon("button_Image\\Last_battle1.png");
     private ImageIcon lastImg2 = new ImageIcon("button_Image\\Last_battle2.png");
+
+    public Clip clip2;
+    public AudioInputStream ais2;
 
     private JLabel BackGround_Label = new JLabel(BackGround); // 배경 이미지를 라벨로 만들어서 배치
 
@@ -111,6 +118,7 @@ public class Select_Panel extends JPanel{
             public void actionPerformed(ActionEvent e)
             // 버튼을 클릭하면
             {
+                btSound();
                 win.change("type_training", player_pokemon);
             }
         });
@@ -124,6 +132,7 @@ public class Select_Panel extends JPanel{
             public void actionPerformed(ActionEvent e)
             // 버튼을 클릭하면
             {
+                btSound();
                 win.change("type_grand_prix", player_pokemon);
             }
         });
@@ -137,6 +146,7 @@ public class Select_Panel extends JPanel{
             public void actionPerformed(ActionEvent e)
             // 버튼을 클릭하면
             {
+                btSound();
                 win.change("type_normal_fight", player_pokemon);
             }
         });
@@ -150,6 +160,7 @@ public class Select_Panel extends JPanel{
             public void actionPerformed(ActionEvent e)
             // 버튼을 클릭하면
             {
+                btSound();
                 win.change("type_shop", player_pokemon);
             }
         });
@@ -163,6 +174,7 @@ public class Select_Panel extends JPanel{
             public void actionPerformed(ActionEvent e)
             // 버튼을 클릭하면
             {
+                btSound();
                 win.change("type_last_fight", player_pokemon);
             }
         });
@@ -277,5 +289,16 @@ public class Select_Panel extends JPanel{
             return 180;
         }
         return -1;
+    }
+
+    public void btSound(){
+        try {
+            this.ais2 = AudioSystem.getAudioInputStream(new File("bgm\\button.wav"));
+            this.clip2 = AudioSystem.getClip();
+            clip2.stop();
+            clip2.open(ais2);
+            clip2.start();
+        }
+        catch (Exception ex) { }
     }
 }

@@ -1,3 +1,6 @@
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
@@ -7,6 +10,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -57,6 +61,9 @@ public class Fight_Panel extends JPanel
     private ImageIcon BackGround = new ImageIcon("backGround_Image\\Battle_BackGround.png"); // 배경 이미지
     private JLabel BackGround_Label = new JLabel(BackGround); // 배경 이미지를 라벨로 만들어서 배치
 
+    public Clip clip2;
+    public AudioInputStream ais2;
+
     public Fight_Panel(JPanelChange win, String NAME, Pokemon player_pokemon, int Dua_Date, int Money, String type)
     {
         // 매개변수로 전달받은 값들을 해당 클래스에 저장
@@ -101,6 +108,7 @@ public class Fight_Panel extends JPanel
             public void actionPerformed(ActionEvent e)
             // 버튼을 클릭하면
             {
+                btSound("attack");
                 player_turn_attack(player_pokemon.skillArray[0]);
             }
         });
@@ -112,6 +120,7 @@ public class Fight_Panel extends JPanel
             public void actionPerformed(ActionEvent e)
             // 버튼을 클릭하면
             {
+                btSound("tail");
                 player_turn_attack(player_pokemon.skillArray[1]);
             }
         });
@@ -126,6 +135,7 @@ public class Fight_Panel extends JPanel
                 // 버튼을 클릭하면
                 {
                     {
+                        btSound("attack");
                         player_turn_attack(player_pokemon.skillArray[2]);
                     }
                 }
@@ -143,6 +153,7 @@ public class Fight_Panel extends JPanel
                 public void actionPerformed(ActionEvent e)
                 // 버튼을 클릭하면
                 {
+                    btSound("attack");
                     player_turn_attack(player_pokemon.skillArray[3]);
                 }
             });
@@ -156,6 +167,7 @@ public class Fight_Panel extends JPanel
         {
             public void actionPerformed(ActionEvent e)
             {
+                btSound("return");
                 if (type == "type_normal_fight" && isWin == true)
                 {
                     win.Money += 50;
@@ -491,5 +503,32 @@ public class Fight_Panel extends JPanel
             battle_Log[i].setBounds(370, 65 + (i * 30), 1280, 30);
             this.add(battle_Log[i]);
         }
+    }
+
+    public void btSound(String type){
+        String filepath = "";
+        if (type == "return")
+        {
+            filepath = "bgm\\button.wav";
+        }
+
+        else if (type == "attack")
+        {
+            filepath = "bgm\\attack.wav";
+        }
+
+        else if (type == "tail")
+        {
+            filepath = "bgm\\tail.wav";
+        }
+
+        try {
+            this.ais2 = AudioSystem.getAudioInputStream(new File(filepath));
+            this.clip2 = AudioSystem.getClip();
+            clip2.stop();
+            clip2.open(ais2);
+            clip2.start();
+        }
+        catch (Exception ex) { }
     }
 }

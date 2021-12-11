@@ -1,4 +1,8 @@
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.*;
+import java.io.File;
 
 public class JPanelChange extends JFrame
 //이전 패널의 컴포넌트를 모두 지우고 다음 패널의 컴포넌트를 불러오는 메소드가 있는 클래스, 프레임 역할을 함.
@@ -8,6 +12,8 @@ public class JPanelChange extends JFrame
     public Pokemon player_pokemon; // 플레이어의 포켓몬
     public int Dua_Date = 30; // 남은기간(default)
     public int Money = 500; // 소지금(default)
+    public Clip clip;
+    public AudioInputStream ais;
 
     // 다른 패널로 변경시켜주기 위해 선언된 패널들
     private Start_Panel start_panel = null;
@@ -42,6 +48,7 @@ public class JPanelChange extends JFrame
         if (panelType.equals("type_start"))
         // 만약 바꾸고자 하는 패널이 "type_start" 이라면
         {
+            clip.stop();
             // 이전 패널에서 전달 받은 값을 해당 클래스에 저장시켜줌
             this.player_pokemon = player_pokemon;
 
@@ -62,6 +69,7 @@ public class JPanelChange extends JFrame
         if (panelType.equals("type_before_intro"))
         // 만약 바꾸고자 하는 패널이 "type_before_intro" 이라면
         {
+            bgSound("intro");
             // 이전 패널에서 전달 받은 값을 해당 클래스에 저장시켜줌
             this.NAME = NAME;
 
@@ -113,6 +121,18 @@ public class JPanelChange extends JFrame
         // 위 if문과 구조 동일. 새로운 패널 만들 떄는 else if문으로 추가해줘!
         else if (panelType.equals("type_select"))
         {
+            clip.stop();
+            bgSound("select");
+            resetPokemon();
+            select_panel = new Select_Panel(this, NAME, player_pokemon, this.Dua_Date, this.Money);
+            getContentPane().removeAll();
+            getContentPane().add(select_panel);
+            revalidate();
+            repaint();
+        }
+
+        else if (panelType.equals("type_select2"))
+        {
             resetPokemon();
             select_panel = new Select_Panel(this, NAME, player_pokemon, this.Dua_Date, this.Money);
             getContentPane().removeAll();
@@ -144,6 +164,8 @@ public class JPanelChange extends JFrame
         // 일반 대전 패널로 바꿔주기 (이걸 부모로 써서 아래 두 패널을 상속 시켜도 될 듯)
         else if (panelType.equals("type_normal_fight"))
         {
+            clip.stop();
+            bgSound("battle");
             normal_fight_panel = new Fight_Panel(this, NAME, player_pokemon, this.Dua_Date, this.Money, "type_normal_fight");
             getContentPane().removeAll();
             getContentPane().add(normal_fight_panel);
@@ -154,6 +176,8 @@ public class JPanelChange extends JFrame
         // 그랑프리 패널로 바꿔주기
         else if (panelType.equals("type_grand_prix"))
         {
+            clip.stop();
+            bgSound("grandprix");
             grand_prix_panel = new Fight_Panel(this, NAME, player_pokemon, this.Dua_Date, this.Money, "type_grand_prix");
             getContentPane().removeAll();
             getContentPane().add(grand_prix_panel);
@@ -164,6 +188,8 @@ public class JPanelChange extends JFrame
         // 마지막 패널로 바꿔주기
         else if (panelType.equals("type_last_fight"))
         {
+            clip.stop();
+            bgSound("last");
             last_fight_panel = new Fight_Panel(this, NAME, player_pokemon, this.Dua_Date, this.Money, "type_last_fight");
             getContentPane().removeAll();
             getContentPane().add(last_fight_panel);
@@ -174,6 +200,8 @@ public class JPanelChange extends JFrame
         // 엔딩(성공) 패널로 바꿔주기
         else if (panelType.equals("type_outro"))
         {
+            clip.stop();
+            bgSound("clear");
             outro_panel = new Outro_Panel(this, NAME, player_pokemon);
             getContentPane().removeAll();
             getContentPane().add(outro_panel);
@@ -184,6 +212,8 @@ public class JPanelChange extends JFrame
         // 실패 패널로 바꿔주기
         else if (panelType.equals("type_failure"))
         {
+            clip.stop();
+            bgSound("fail");
             failure_panel = new Failure_Panel(this, NAME, player_pokemon);
             getContentPane().removeAll();
             getContentPane().add(failure_panel);
@@ -200,5 +230,54 @@ public class JPanelChange extends JFrame
         player_pokemon.Def = player_pokemon.Full_Def;
         player_pokemon.Atk = player_pokemon.Full_Atk;
         player_pokemon.Spd = player_pokemon.Full_Spd;
+    }
+
+    public void bgSound(String type){
+        String filepath = "";
+
+        if (type == "intro")
+        {
+            filepath = "bgm\\intro.wav";
+        }
+
+        else if (type == "select")
+        {
+            filepath = "bgm\\select.wav";
+        }
+
+        else if (type == "battle")
+        {
+            filepath = "bgm\\battle.wav";
+        }
+
+        else if (type == "grandprix")
+        {
+            filepath = "bgm\\grandprix.wav";
+        }
+
+        else if (type == "last")
+        {
+            filepath = "bgm\\last.wav";
+        }
+
+        else if (type == "clear")
+        {
+            filepath = "bgm\\clear.wav";
+        }
+
+        else if (type == "fail")
+        {
+            filepath = "bgm\\fail.wav";
+        }
+
+        try {
+            this.ais = AudioSystem.getAudioInputStream(new File(filepath));
+            this.clip = AudioSystem.getClip();
+            clip.stop();
+            clip.open(ais);
+            clip.loop(Clip.LOOP_CONTINUOUSLY);
+            clip.start();
+        }
+        catch (Exception ex) { }
     }
 }
