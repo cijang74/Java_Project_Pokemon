@@ -5,7 +5,7 @@ public class Main_Loop
 {
     public static void main(String[] args)
     {
-        // 패널을 교채하는 기능을 하는 JPanelChange 객체를 생성하고 win 변수 안에 저장, 사실상 win은 프레임 역할
+        // 패널을 교체하는 기능을 하는 JPanelChange 객체를 생성하고 win 변수 안에 저장, 사실상 win은 프레임 역할
         JPanelChange win = new JPanelChange();
 
         // 타이틀 설정
