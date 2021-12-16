@@ -11,7 +11,7 @@ import java.io.IOException;
 import javax.sound.sampled.*;
 
 public class Start_Panel extends JPanel{
-    // 해당 클래스에서 사용할 변수들 선언 (win은 앵간하면 선언해줘)
+    // 해당 클래스에서 사용할 변수들 선언
     public static String NAME = null; // 이름
     private JLabel CopyRight1;
     private JLabel CopyRight2;
