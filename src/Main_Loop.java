@@ -1,3 +1,5 @@
+// 커밋하기 귀찮을 때 이걸로 날먹할게요.. 너무 바쁠 때만 쓸게영
+
 import javax.swing.*;
 
 public class Main_Loop
